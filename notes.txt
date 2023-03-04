@@ -1,0 +1,2 @@
+BE - nugget packages: EntityFrameworkCore, EntityFrameworkCore.Design, EntityFrameworkCore.Tools, EntityFrameworkCore.PostgreSQL (all 7.0.1)
+	- dotnet ef dbcontext scaffold "Host=localhost;Database=bakalarka;Username=daniellieskovsky;Password=" Npgsql.EntityFrameworkCore.PostgreSQL -o Models
