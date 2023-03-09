@@ -23,6 +23,8 @@ public partial class Pacient
 
     public string Heslo { get; set; } = null!;
 
+    public string Rola { get; set; } = null!;
+
     public virtual ICollection<Historiadoktorov> Historiadoktorovs { get; } = new List<Historiadoktorov>();
 
     public virtual ICollection<Historiapoistovni> Historiapoistovnis { get; } = new List<Historiapoistovni>();

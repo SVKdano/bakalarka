@@ -133,6 +133,9 @@ public partial class DatabazaBcContext : DbContext
             entity.Property(e => e.Osobnecislo)
                 .HasMaxLength(7)
                 .HasColumnName("osobnecislo");
+            entity.Property(e => e.Heslo)
+                .HasColumnType("character varying")
+                .HasColumnName("heslo");
             entity.Property(e => e.Idnemocnice)
                 .HasMaxLength(7)
                 .HasColumnName("idnemocnice");
@@ -146,6 +149,9 @@ public partial class DatabazaBcContext : DbContext
             entity.Property(e => e.Priezvisko)
                 .HasMaxLength(80)
                 .HasColumnName("priezvisko");
+            entity.Property(e => e.Rola)
+                .HasColumnType("character varying")
+                .HasColumnName("rola");
 
             entity.HasOne(d => d.Oddelenie).WithMany(p => p.Doktors)
                 .HasForeignKey(d => new { d.Kododdelenia, d.Idnemocnice })
@@ -365,6 +371,9 @@ public partial class DatabazaBcContext : DbContext
             entity.Property(e => e.Idnemocnice)
                 .HasMaxLength(7)
                 .HasColumnName("idnemocnice");
+            entity.Property(e => e.Heslo)
+                .HasColumnType("character varying")
+                .HasColumnName("heslo");
             entity.Property(e => e.Idmesta).HasColumnName("idmesta");
             entity.Property(e => e.Nazov)
                 .HasMaxLength(120)
@@ -520,6 +529,9 @@ public partial class DatabazaBcContext : DbContext
             entity.Property(e => e.Priezvisko)
                 .HasMaxLength(40)
                 .HasColumnName("priezvisko");
+            entity.Property(e => e.Rola)
+                .HasColumnType("character varying")
+                .HasColumnName("rola");
             entity.Property(e => e.Ulica)
                 .HasMaxLength(40)
                 .HasColumnName("ulica");

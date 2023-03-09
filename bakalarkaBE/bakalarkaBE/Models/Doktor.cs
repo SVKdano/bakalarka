@@ -15,6 +15,10 @@ public partial class Doktor
 
     public string? Idnemocnice { get; set; }
 
+    public string Rola { get; set; } = null!;
+
+    public string Heslo { get; set; } = null!;
+
     public virtual ICollection<Alergiazdielanie> AlergiazdielanieCielovyNavigations { get; } = new List<Alergiazdielanie>();
 
     public virtual ICollection<Alergiazdielanie> AlergiazdielanieZdielajuciNavigations { get; } = new List<Alergiazdielanie>();
