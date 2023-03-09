@@ -7,9 +7,9 @@ namespace bakalarkaBE.Controllers
     [ApiController]
     public class PacientController : ControllerBase
     {
-        private readonly BakalarkaContext _dbContext;
+        private readonly DatabazaBcContext _dbContext;
 
-        public PacientController(BakalarkaContext dbContext)
+        public PacientController(DatabazaBcContext dbContext)
         {
             _dbContext = dbContext;
         }

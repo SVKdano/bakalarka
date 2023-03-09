@@ -16,7 +16,7 @@ builder.Services.AddCors(
             policy.WithOrigins("http://localhost:4200").AllowAnyMethod().AllowAnyHeader();
         }
     ));
-builder.Services.AddDbContext<BakalarkaContext>();
+builder.Services.AddDbContext<DatabazaBcContext>();
 
 var app = builder.Build();
 
