@@ -1,2 +1,29 @@
-<p>welcome-page works!</p>
-<h2>GSADGADGASsdg</h2>
+<div class="component">
+  <mat-toolbar>
+    <img src="assets/imgs/frilogo.png" alt="FRI logo">
+    <button mat-raised-button>Nemocnica</button>
+  </mat-toolbar>
+
+  <div class="flex">
+    <mat-card class="logincard">
+      <mat-card-content>
+        <form class="example-form" [formGroup]="loginForm">
+          <mat-form-field>
+            <input type="email" matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('required')">
+              Email is required</mat-error>
+            <mat-error *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('email')">
+              Email must be a valid Email</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password" formControlName="password">
+            <mat-error
+              *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+              Password is required</mat-error>
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

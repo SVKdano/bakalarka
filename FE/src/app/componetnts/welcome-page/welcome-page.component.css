@@ -1,0 +1,44 @@
+.component {
+  height: 100vh;
+  background-color: #fdddcb;
+
+  background-image: url("../../../assets/imgs/palica.png");
+  background-repeat: no-repeat;
+  background-size: 60%;
+  background-position: left center;
+}
+
+mat-toolbar {
+  background-color: #ec6602;
+}
+
+mat-toolbar button {
+  margin-left: auto;
+
+}
+
+mat-toolbar img {
+  height: 90%;
+}
+
+.flex {
+  display: flex;
+  margin-top: 25%;
+}
+
+.logincard {
+  margin-right: 10%;
+  margin-left: auto;
+}
+
+
+@media only screen and (max-width: 650px) {
+  .component {
+    background-position: center 20%;
+    background-size: 100%;
+  }
+
+  .flex {
+    margin-right: 10%;
+  }
+}
