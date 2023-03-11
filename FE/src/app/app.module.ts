@@ -12,12 +12,17 @@ import {MatCardModule} from "@angular/material/card";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import { PacientProfileComponent } from './componetnts/pacient-profil/pacient-profile.component';
+import { PanelComponent } from './componetnts/panel/panel.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomePageComponent,
-    BoardPageComponent
+    BoardPageComponent,
+    PacientProfileComponent,
+    PanelComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

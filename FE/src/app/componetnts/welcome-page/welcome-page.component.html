@@ -7,23 +7,33 @@
   <div class="flex">
     <mat-card class="logincard">
       <mat-card-content>
+        Vitajte,
+        <br>
+        pre pokračovanie sa prihláste!
+        <br>
+        <br>
         <form class="example-form" [formGroup]="loginForm">
           <mat-form-field>
-            <input type="email" matInput placeholder="Email" formControlName="email">
-            <mat-error *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('required')">
-              Email is required</mat-error>
-            <mat-error *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('email')">
-              Email must be a valid Email</mat-error>
+            <input type="email" matInput placeholder="Rodné čislo" formControlName="rodneCislo">
+            <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('required')">
+              Zadaj rodné číslo!</mat-error>
+            <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('pattern')">
+              Zadaj valídne rodné čislo!</mat-error>
+
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input type="password" matInput placeholder="Password" formControlName="password">
+            <input type="password" matInput placeholder="Heslo" formControlName="password">
             <mat-error
               *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
               Password is required</mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>
+      <div class="buttons">
+        <button mat-raised-button color="warn">Registorvať</button>
+        <button mat-raised-button class="loginButton" (click)="login()">Prihlásiť</button>
+      </div>
     </mat-card>
   </div>
 </div>

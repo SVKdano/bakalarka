@@ -14,11 +14,11 @@ namespace bakalarkaBE.Controllers
             _dbContext = dbContext;
         }
         
-        //get pacienti aj bez poistovne alebo bydliska
-        [HttpGet("pacienti")]
-        public async Task<ActionResult<List<Pacient>>> GetAllPacients()
+        //get pacient (funguje aj ked nema poistovnu alebo bydlisko)
+        [HttpGet("pacient/{rodneCislo}")]
+        public async Task<ActionResult<List<Pacient>>> GetPacient(string rodneCislo)
         {
-            var pacienti = await _dbContext.Pacients.GroupJoin(_dbContext.Poistovnas,
+            var pacient = await _dbContext.Pacients.GroupJoin(_dbContext.Poistovnas,
                 a => a.Idpoistovne, b => b.Idpoistovne,
                 (a, b) => new
                 {
@@ -34,9 +34,9 @@ namespace bakalarkaBE.Controllers
                     Rola = a.Rola,
                     IdpoistovneNavigation = b,
                     IdmestaNavigation = a.IdmestaNavigation
-                }).ToListAsync();
+                }).Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
 
-            return Ok(pacienti);
+            return Ok(pacient);
         }
     }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-welcome-page',
@@ -8,8 +9,14 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class WelcomePageComponent {
 
+  constructor(private router: Router) {}
+
   loginForm: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email]),
+    rodneCislo: new FormControl(null, [Validators.required, Validators.pattern("/d/gs")]),
     password: new FormControl(null, [Validators.required]),
   });
+
+  login() {
+    this.router.navigate(["/pacient"]);
+  }
 }

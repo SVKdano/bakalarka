@@ -23,7 +23,9 @@ mat-toolbar img {
 
 .flex {
   display: flex;
-  margin-top: 25%;
+  margin-top: 20%;
+  text-align: center;
+  font-size: larger;
 }
 
 .logincard {
@@ -31,6 +33,15 @@ mat-toolbar img {
   margin-left: auto;
 }
 
+.loginButton {
+  background-color: #ec6602 !important;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 2%;
+}
 
 @media only screen and (max-width: 650px) {
   .component {
