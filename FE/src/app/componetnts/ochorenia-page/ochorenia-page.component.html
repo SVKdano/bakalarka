@@ -43,7 +43,7 @@
       </mat-card-header>
       <mat-card-content *ngFor="let pacOchorenie of ochorenia">
         <div *ngIf="!pacOchorenie.datumdo">
-          <mat-card class="innerCardTwo">
+          <mat-card class="innerCard">
             <mat-card-content>
               <b><i>Datum od:</i></b> {{pacOchorenie.datumod | date: "dd.MM.yyyy"}}
             </mat-card-content>

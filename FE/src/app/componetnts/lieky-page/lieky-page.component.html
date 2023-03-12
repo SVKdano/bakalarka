@@ -1,0 +1,67 @@
+<app-panel></app-panel>
+<app-navbar></app-navbar>
+
+<div class="cards">
+  <div class="ukoncene">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Ukončené užívanie
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content *ngFor="let pacLieky of lieky">
+        <div *ngIf="pacLieky.datumdo">
+          <mat-card class="innerCard">
+            <mat-card-content *ngIf="pacLieky.registracnecisloNavigation">
+              <b><i>Nazov:</i></b> {{pacLieky.registracnecisloNavigation.nazov}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Datum od:</i></b> {{pacLieky.datumod | date: "dd.MM.yyyy"}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Datum do:</i></b> {{pacLieky.datumdo | date : "dd.MM.yyyy"}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dávkovanie:</i></b> {{pacLieky.davkovanie}}
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="neukoncene">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Pretrvávajúce
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngFor="let pacLieky of lieky">
+        <div *ngIf="!pacLieky.datumdo">
+          <mat-card class="innerCard">
+            <mat-card-content *ngIf="pacLieky.registracnecisloNavigation">
+              <b><i>Názov:</i></b> {{pacLieky.registracnecisloNavigation.nazov}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dátum od:</i></b> {{pacLieky.datumod}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Datum do:</i></b> -
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dávkovanie:</i></b> {{pacLieky.davkovanie}}
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

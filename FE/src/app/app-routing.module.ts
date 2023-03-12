@@ -4,6 +4,7 @@ import {WelcomePageComponent} from "./componetnts/welcome-page/welcome-page.comp
 import {BoardPageComponent} from "./componetnts/board-page/board-page.component";
 import {AlergiePageComponent} from "./componetnts/alergie-page/alergie-page.component";
 import {OchoreniaPageComponent} from "./componetnts/ochorenia-page/ochorenia-page.component";
+import {LiekyPageComponent} from "./componetnts/lieky-page/lieky-page.component";
 
 
 
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path:"", component: WelcomePageComponent },
   { path:"pacient", component: AlergiePageComponent},
   { path: "ochorenia", component: OchoreniaPageComponent},
+  { path: "lieky", component: LiekyPageComponent},
   { path:"borad", component:BoardPageComponent }
 ];
 

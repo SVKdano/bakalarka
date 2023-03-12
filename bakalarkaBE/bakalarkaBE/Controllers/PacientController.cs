@@ -74,5 +74,24 @@ namespace bakalarkaBE.Controllers
 
             return Ok(pacOchorenia);
         }
+
+        [HttpGet("lieky/{rodneCislo}")]
+        public async Task<ActionResult<List<Pacientoveochorenium>>> GetPacientoveLieky(string rodneCislo)
+        {
+            var pacLieky = await _dbContext.Pacientoveliekies.Join(_dbContext.Liekies, 
+                    a => a.Registracnecislo, b => b.Registracnecislo,
+                    (a,b) => new Pacientovelieky()
+                    {
+                        Rodnecislo = a.Rodnecislo,
+                        Datumod = a.Datumod,
+                        Datumdo = a.Datumdo,
+                        Davkovanie = a.Davkovanie,
+                        Registracnecislo = a.Registracnecislo,
+                        RegistracnecisloNavigation = b
+                    })
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
+
+            return Ok(pacLieky);
+        }
     }
 }

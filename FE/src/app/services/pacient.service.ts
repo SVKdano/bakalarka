@@ -5,6 +5,7 @@ import {environment} from "../../environments/environmenst";
 import {Observable} from "rxjs";
 import {PacientAlergie} from "../models/PacientAlergie";
 import {PacientOchorenie} from "../models/PacientOchorenie";
+import {PacientLieky} from "../models/PacientLieky";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class PacientService {
 
   public getPacientOchorenia(rodneCislo:string) : Observable<PacientOchorenie[]> {
     return this.http.get<PacientOchorenie[]>(`${environment.apiUrl}/ochorenia/${rodneCislo}`);
+  }
+
+  public getPacientLieky(rodneCislo: string) : Observable<PacientLieky[]> {
+    return this.http.get<PacientLieky[]>(`${environment.apiUrl}/lieky/${rodneCislo}`);
   }
 }

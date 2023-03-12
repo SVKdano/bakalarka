@@ -19,6 +19,7 @@ import { NavbarComponent } from './componetnts/navbar/navbar.component';
 import { AlergieComponent } from './componetnts/alergie/alergie.component';
 import { AlergiePageComponent } from './componetnts/alergie-page/alergie-page.component';
 import { OchoreniaPageComponent } from './componetnts/ochorenia-page/ochorenia-page.component';
+import { LiekyPageComponent } from './componetnts/lieky-page/lieky-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OchoreniaPageComponent } from './componetnts/ochorenia-page/ochorenia-p
     NavbarComponent,
     AlergieComponent,
     AlergiePageComponent,
-    OchoreniaPageComponent
+    OchoreniaPageComponent,
+    LiekyPageComponent
   ],
   imports: [
     BrowserModule,
