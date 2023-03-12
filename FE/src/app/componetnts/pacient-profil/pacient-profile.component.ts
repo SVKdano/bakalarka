@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PacientService} from "../../services/pacient.service";
 import {Pacient} from "../../models/Pacient";
-import {PacientAlergie} from "../../models/PacientAlergie";
 
 @Component({
   selector: 'app-pacient-profile',
@@ -11,7 +10,6 @@ import {PacientAlergie} from "../../models/PacientAlergie";
 export class PacientProfileComponent implements OnInit {
 
   pacient: Pacient[] = [];
-  alergie: PacientAlergie[] = [];
 
   constructor(private pacientService:PacientService) {}
 
@@ -21,13 +19,6 @@ export class PacientProfileComponent implements OnInit {
         (this.pacient = result);
       }
     );
-
-    this.pacientService.getPacientAlergie("7057150353").subscribe(
-      (result:PacientAlergie[]) => {
-        (this.alergie = result);
-        console.log(this.alergie);
-      }
-    )
   }
 
   upravRC(string:String) : string {

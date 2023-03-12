@@ -55,5 +55,24 @@ namespace bakalarkaBE.Controllers
 
             return Ok(pacAlergie);
         }
+
+        [HttpGet("ochorenia/{rodneCislo}")]
+        public async Task<ActionResult<List<Pacientoveochorenium>>> GetPacientoveOchorenia(string rodneCislo)
+        {
+            var pacOchorenia = await _dbContext.Pacientoveochorenia.Join(_dbContext.Ochorenia,
+                a => a.Kodochorenia, b => b.Kodochorenia,
+                (a,b) => new Pacientoveochorenium()
+                {
+                    Datumod = a.Datumod,
+                    Datumdo = a.Datumdo,
+                    Rodnecislo = a.Rodnecislo,
+                    Kodochorenia = a.Kodochorenia,
+                    Dalsiaspecifikacia = a.Dalsiaspecifikacia,
+                    KodochoreniaNavigation = b
+                })
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
+
+            return Ok(pacOchorenia);
+        }
     }
 }

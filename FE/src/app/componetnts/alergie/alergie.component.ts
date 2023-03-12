@@ -17,7 +17,6 @@ export class AlergieComponent {
     this.pacientService.getPacientAlergie("7057150353").subscribe(
       (result:PacientAlergie[]) => {
         (this.alergie = result);
-        console.log(this.alergie);
       }
     )
   }
