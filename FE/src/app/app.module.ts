@@ -20,6 +20,7 @@ import { AlergieComponent } from './componetnts/alergie/alergie.component';
 import { AlergiePageComponent } from './componetnts/alergie-page/alergie-page.component';
 import { OchoreniaPageComponent } from './componetnts/ochorenia-page/ochorenia-page.component';
 import { LiekyPageComponent } from './componetnts/lieky-page/lieky-page.component';
+import { DoktoriPageComponent } from './componetnts/doktori-page/doktori-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LiekyPageComponent } from './componetnts/lieky-page/lieky-page.componen
     AlergieComponent,
     AlergiePageComponent,
     OchoreniaPageComponent,
-    LiekyPageComponent
+    LiekyPageComponent,
+    DoktoriPageComponent
   ],
   imports: [
     BrowserModule,

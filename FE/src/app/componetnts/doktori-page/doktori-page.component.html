@@ -1,0 +1,12 @@
+<app-panel></app-panel>
+<app-navbar></app-navbar>
+
+<div class="cards">
+  <mat-card *ngFor="let pacDoktor of doktori">
+    <img src="assets/imgs/Person-Placeholder.png" alt="Obrazok">
+    <div *ngIf="pacDoktor.osobnecisloNavigation" class="centered">
+      <b><i>{{pacDoktor.osobnecisloNavigation.meno}} </i></b>
+      <b><i>{{pacDoktor.osobnecisloNavigation.priezvisko}}</i></b>
+    </div>
+  </mat-card>
+</div>

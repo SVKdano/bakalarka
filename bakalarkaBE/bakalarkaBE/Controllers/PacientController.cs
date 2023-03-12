@@ -93,5 +93,22 @@ namespace bakalarkaBE.Controllers
 
             return Ok(pacLieky);
         }
+
+        [HttpGet("doktori/{rodneCislo}")]
+        public async Task<ActionResult<List<PacientDoktor>>> GetPacientovyDoktori(string rodneCislo)
+        {
+            var pacDoktori = await _dbContext.PacientDoktors.Join(_dbContext.Doktors,
+                a => a.Osobnecislo, b => b.Osobnecislo,
+                (a,b) => new PacientDoktor()
+                {
+                    Rodnecislo = a.Rodnecislo,
+                    Osobnecislo = a.Osobnecislo,
+                    Datumod = a.Datumod,
+                    OsobnecisloNavigation= b
+                })
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
+
+            return Ok(pacDoktori);
+        }
     }
 }
