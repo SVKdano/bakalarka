@@ -1,0 +1,17 @@
+mat-card {
+  background-color: #e8e8e8;
+  min-height: 95%;
+}
+
+.first {
+  margin-top: 3.5%;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+mat-card-title {
+  font-size: xx-large;
+}

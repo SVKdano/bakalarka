@@ -1,0 +1,35 @@
+.cards {
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  justify-content: space-evenly;
+}
+
+mat-card {
+  background-color: #e8e8e8;
+}
+
+.first {
+  min-width: 40%;
+  margin-top: 12%;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+mat-card-title {
+  font-size: xx-large;
+}
+
+.innerData {
+  display: flex;
+  flex-direction: row;
+}
+
+.lastOne {
+  margin-bottom: 3%;
+}
+
+

@@ -15,6 +15,9 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { PacientProfileComponent } from './componetnts/pacient-profil/pacient-profile.component';
 import { PanelComponent } from './componetnts/panel/panel.component';
 import {HttpClientModule} from "@angular/common/http";
+import { NavbarComponent } from './componetnts/navbar/navbar.component';
+import { AlergieComponent } from './componetnts/alergie/alergie.component';
+import { AlergiePageComponent } from './componetnts/alergie-page/alergie-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import {HttpClientModule} from "@angular/common/http";
     WelcomePageComponent,
     BoardPageComponent,
     PacientProfileComponent,
-    PanelComponent
+    PanelComponent,
+    NavbarComponent,
+    AlergieComponent,
+    AlergiePageComponent
   ],
   imports: [
     BrowserModule,

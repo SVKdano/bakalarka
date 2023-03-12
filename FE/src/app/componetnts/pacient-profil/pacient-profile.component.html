@@ -1,1 +1,54 @@
-<app-panel></app-panel>
+
+<div class="cards">
+  <mat-card class="first">
+
+    <mat-card-header>
+      <mat-card-title>Pacient</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content *ngFor="let pac of pacient">
+      <div class="innerData">
+        <div class="biggerText"><b>Meno: &nbsp; </b></div> <i>{{pac.meno}}</i>
+      </div>
+
+
+      <div class="innerData">
+        <div class="biggerText"><b>Priezvisko: &nbsp; </b></div> <i>{{pac.priezvisko}}</i>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="innerData">
+        <div class="biggerText"><b>Rodné číslo: &nbsp; </b></div> <i>{{upravRC(pac.rodnecislo)}}</i>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="innerData">
+        <div class="biggerText"><b>Poistovna: &nbsp; </b></div>
+            <i *ngIf="pac.idpoistovneNavigation">
+              {{pac.idpoistovneNavigation[0].nazov}}
+               -&nbsp;
+              {{pac.idpoistovneNavigation[0].idpoistovne}}
+            </i>
+      </div>
+
+      <br>
+      <br>
+
+      <div class="innerData lastOne">
+        <div class="biggerText"><b>Bydlisko: &nbsp; </b></div>
+          <i *ngIf="pac.idmestaNavigation">
+            {{pac.idmestaNavigation.nazov}}, {{pac.idmestaNavigation.psc}},
+            <br>
+            {{pac.ulica}}
+          </i>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

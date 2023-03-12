@@ -1,0 +1,10 @@
+.cards {
+  display: flex;
+  flex-direction: row;
+  font-size: large;
+  justify-content: space-evenly;
+}
+
+app-alergie {
+  margin-top: 3%;
+}

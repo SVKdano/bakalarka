@@ -38,5 +38,22 @@ namespace bakalarkaBE.Controllers
 
             return Ok(pacient);
         }
+
+        [HttpGet("alergie/{rodneCislo}")]
+        public async Task<ActionResult<List<PacientAlergie>>> GetPacientoveAlergie(string rodneCislo)
+        {
+            var pacAlergie = await _dbContext.PacientAlergies.Join(_dbContext.Alergies,
+                    a => a.Kodalergie, b => b.Kodalergie,
+                    (a,b) => new PacientAlergie()
+                    {
+                        Rodnecislo = a.Rodnecislo,
+                        Kodalergie = a.Kodalergie,
+                        Informacie = a.Informacie,
+                        KodalergieNavigation = b
+                    })
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
+
+            return Ok(pacAlergie);
+        }
     }
 }

@@ -2,7 +2,7 @@ import {Poistovna} from "./Poistovna";
 import {Mesto} from "./Mesto";
 
 export class Pacient {
-  rodneCislo: string = "";
+  rodnecislo: string = "";
   meno: string = "";
   priezvisko: string = "";
   ulica: string = "";
@@ -11,6 +11,6 @@ export class Pacient {
   umrtie?: Date;
   heslo: string = "";
   rola: string = "";
-  idpoistovneNavigation?: Poistovna;
+  idpoistovneNavigation?: Poistovna[];
   idmestaNavigation?: Mesto;
 }
