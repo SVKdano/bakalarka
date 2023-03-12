@@ -41,6 +41,8 @@ public partial class Doktor
 
     public virtual ICollection<Odporucacilistok> Odporucacilistoks { get; } = new List<Odporucacilistok>();
 
+    public virtual ICollection<PacientDoktor> PacientDoktors { get; } = new List<PacientDoktor>();
+
     public virtual ICollection<SpecializaciaDoktor> SpecializaciaDoktors { get; } = new List<SpecializaciaDoktor>();
 
     public virtual ICollection<Zaznam> Zaznams { get; } = new List<Zaznam>();
@@ -48,6 +50,4 @@ public partial class Doktor
     public virtual ICollection<Zaznamyzdielanie> ZaznamyzdielanieCielovyNavigations { get; } = new List<Zaznamyzdielanie>();
 
     public virtual ICollection<Zaznamyzdielanie> ZaznamyzdielanieZdielajuciNavigations { get; } = new List<Zaznamyzdielanie>();
-
-    public virtual ICollection<Pacient> Rodnecislos { get; } = new List<Pacient>();
 }

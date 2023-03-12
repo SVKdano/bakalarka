@@ -49,6 +49,8 @@ public partial class DatabazaBcContext : DbContext
 
     public virtual DbSet<PacientAlergie> PacientAlergies { get; set; }
 
+    public virtual DbSet<PacientDoktor> PacientDoktors { get; set; }
+
     public virtual DbSet<Pacientovelieky> Pacientoveliekies { get; set; }
 
     public virtual DbSet<Pacientoveochorenium> Pacientoveochorenia { get; set; }
@@ -60,6 +62,8 @@ public partial class DatabazaBcContext : DbContext
     public virtual DbSet<Specializacium> Specializacia { get; set; }
 
     public virtual DbSet<Vysetrenie> Vysetrenies { get; set; }
+
+    public virtual DbSet<VysetrenieZaznam> VysetrenieZaznams { get; set; }
 
     public virtual DbSet<Zaznam> Zaznams { get; set; }
 
@@ -544,23 +548,6 @@ public partial class DatabazaBcContext : DbContext
             entity.HasOne(d => d.IdpoistovneNavigation).WithMany(p => p.Pacients)
                 .HasForeignKey(d => d.Idpoistovne)
                 .HasConstraintName("r_3");
-
-            entity.HasMany(d => d.Osobnecislos).WithMany(p => p.Rodnecislos)
-                .UsingEntity<Dictionary<string, object>>(
-                    "PacientDoktor",
-                    r => r.HasOne<Doktor>().WithMany()
-                        .HasForeignKey("Osobnecislo")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("r_20"),
-                    l => l.HasOne<Pacient>().WithMany()
-                        .HasForeignKey("Rodnecislo")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("r_19"),
-                    j =>
-                    {
-                        j.HasKey("Rodnecislo", "Osobnecislo").HasName("xpkpacient_doktor");
-                        j.ToTable("pacient_doktor", "bakalarka");
-                    });
         });
 
         modelBuilder.Entity<PacientAlergie>(entity =>
@@ -590,6 +577,32 @@ public partial class DatabazaBcContext : DbContext
                 .HasForeignKey(d => d.Rodnecislo)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("r_8");
+        });
+
+        modelBuilder.Entity<PacientDoktor>(entity =>
+        {
+            entity.HasKey(e => new { e.Rodnecislo, e.Osobnecislo }).HasName("xpkpacient_doktor");
+
+            entity.ToTable("pacient_doktor", "bakalarka");
+
+            entity.Property(e => e.Rodnecislo)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("rodnecislo");
+            entity.Property(e => e.Osobnecislo)
+                .HasMaxLength(10)
+                .HasColumnName("osobnecislo");
+            entity.Property(e => e.Datumod).HasColumnName("datumod");
+
+            entity.HasOne(d => d.OsobnecisloNavigation).WithMany(p => p.PacientDoktors)
+                .HasForeignKey(d => d.Osobnecislo)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("r_20");
+
+            entity.HasOne(d => d.RodnecisloNavigation).WithMany(p => p.PacientDoktors)
+                .HasForeignKey(d => d.Rodnecislo)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("r_19");
         });
 
         modelBuilder.Entity<Pacientovelieky>(entity =>
@@ -715,23 +728,29 @@ public partial class DatabazaBcContext : DbContext
                 .HasMaxLength(11)
                 .HasColumnName("kod");
             entity.Property(e => e.Nazov).HasColumnName("nazov");
+        });
 
-            entity.HasMany(d => d.Idzaznams).WithMany(p => p.Kods)
-                .UsingEntity<Dictionary<string, object>>(
-                    "VysetrenieZaznam",
-                    r => r.HasOne<Zaznam>().WithMany()
-                        .HasForeignKey("Idzaznam")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("vysetrenie_zaznam_fk"),
-                    l => l.HasOne<Vysetrenie>().WithMany()
-                        .HasForeignKey("Kod")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("vysetrenie_zaznam_fk_1"),
-                    j =>
-                    {
-                        j.HasKey("Kod", "Idzaznam").HasName("vysetrenie_zaznam_pk");
-                        j.ToTable("vysetrenie_zaznam", "bakalarka");
-                    });
+        modelBuilder.Entity<VysetrenieZaznam>(entity =>
+        {
+            entity.HasKey(e => new { e.Kod, e.Idzaznam }).HasName("vysetrenie_zaznam_pk");
+
+            entity.ToTable("vysetrenie_zaznam", "bakalarka");
+
+            entity.Property(e => e.Kod)
+                .HasMaxLength(11)
+                .HasColumnName("kod");
+            entity.Property(e => e.Idzaznam).HasColumnName("idzaznam");
+            entity.Property(e => e.Datum).HasColumnName("datum");
+
+            entity.HasOne(d => d.IdzaznamNavigation).WithMany(p => p.VysetrenieZaznams)
+                .HasForeignKey(d => d.Idzaznam)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("vysetrenie_zaznam_fk");
+
+            entity.HasOne(d => d.KodNavigation).WithMany(p => p.VysetrenieZaznams)
+                .HasForeignKey(d => d.Kod)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("vysetrenie_zaznam_fk_1");
         });
 
         modelBuilder.Entity<Zaznam>(entity =>

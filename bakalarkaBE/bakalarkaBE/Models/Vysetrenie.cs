@@ -9,5 +9,5 @@ public partial class Vysetrenie
 
     public string Nazov { get; set; } = null!;
 
-    public virtual ICollection<Zaznam> Idzaznams { get; } = new List<Zaznam>();
+    public virtual ICollection<VysetrenieZaznam> VysetrenieZaznams { get; } = new List<VysetrenieZaznam>();
 }

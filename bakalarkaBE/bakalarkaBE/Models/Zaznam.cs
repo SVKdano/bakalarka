@@ -29,7 +29,7 @@ public partial class Zaznam
 
     public virtual Pacient RodnecisloNavigation { get; set; } = null!;
 
-    public virtual ICollection<Zaznamyzdielanie> Zaznamyzdielanies { get; } = new List<Zaznamyzdielanie>();
+    public virtual ICollection<VysetrenieZaznam> VysetrenieZaznams { get; } = new List<VysetrenieZaznam>();
 
-    public virtual ICollection<Vysetrenie> Kods { get; } = new List<Vysetrenie>();
+    public virtual ICollection<Zaznamyzdielanie> Zaznamyzdielanies { get; } = new List<Zaznamyzdielanie>();
 }
