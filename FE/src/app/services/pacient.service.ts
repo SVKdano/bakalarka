@@ -7,6 +7,8 @@ import {PacientAlergie} from "../models/PacientAlergie";
 import {PacientOchorenie} from "../models/PacientOchorenie";
 import {PacientLieky} from "../models/PacientLieky";
 import {PacientDoktori} from "../models/PacientDoktori";
+import {Zaznam} from "../models/Zaznam";
+import {VysetrenieZaznam} from "../models/VysetrenieZaznam";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +35,17 @@ export class PacientService {
 
   public getPacientDoktori(rodneCislo: string) : Observable<PacientDoktori[]> {
     return this.http.get<PacientDoktori[]>(`${environment.apiUrl}/doktori/${rodneCislo}`);
+  }
+
+  public getPacientZaznamy(rodneCislo:string) : Observable<Zaznam[]> {
+    return this.http.get<Zaznam[]>(`${environment.apiUrl}/zaznamy/${rodneCislo}`);
+  }
+
+  public getVysetreniaVZazname(idZaznam: number) : Observable<VysetrenieZaznam[]> {
+    return this.http.get<VysetrenieZaznam[]>(`${environment.apiUrl}/vysetreniaVZazname/${idZaznam}`);
+  }
+
+  public getZaznam(idZaznam: number) : Observable<Zaznam[]> {
+    return this.http.get<Zaznam[]>(`${environment.apiUrl}/zaznam/${idZaznam}`);
   }
 }

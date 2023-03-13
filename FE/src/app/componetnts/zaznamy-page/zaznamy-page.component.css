@@ -1,0 +1,24 @@
+mat-card {
+  min-width: 85%;
+  max-width: 90%;
+  margin: 2% auto;
+  flex-direction: row;
+  font-size: large;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 0;
+  align-self: center;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+mat-card-content {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}

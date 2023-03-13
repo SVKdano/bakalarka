@@ -21,6 +21,9 @@ import { AlergiePageComponent } from './componetnts/alergie-page/alergie-page.co
 import { OchoreniaPageComponent } from './componetnts/ochorenia-page/ochorenia-page.component';
 import { LiekyPageComponent } from './componetnts/lieky-page/lieky-page.component';
 import { DoktoriPageComponent } from './componetnts/doktori-page/doktori-page.component';
+import { ZaznamyPageComponent } from './componetnts/zaznamy-page/zaznamy-page.component';
+import { OrderPipe } from './pipe/order.pipe';
+import { ZaznamDetailComponent } from './componetnts/zaznam-detail/zaznam-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { DoktoriPageComponent } from './componetnts/doktori-page/doktori-page.co
     AlergiePageComponent,
     OchoreniaPageComponent,
     LiekyPageComponent,
-    DoktoriPageComponent
+    DoktoriPageComponent,
+    ZaznamyPageComponent,
+    OrderPipe,
+    ZaznamDetailComponent
   ],
   imports: [
     BrowserModule,

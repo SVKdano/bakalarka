@@ -1,0 +1,23 @@
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+mat-card {
+  max-width: 45%;
+  min-width: 40%;
+  font-size: larger;
+  margin-top: 3%;
+  background-color: #e8e8e8;
+}
+
+mat-card-header {
+  align-self: center;
+}
+
+mat-card-content {
+  align-self: center;
+  margin-top: 1%;
+  margin-left: 1%;
+}

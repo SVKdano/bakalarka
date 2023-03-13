@@ -1,0 +1,19 @@
+<app-panel></app-panel>
+<app-navbar></app-navbar>
+
+<div class="cards">
+  <mat-card *ngFor="let pacZaznam of (zaznamy | order)" routerLink="{{pacZaznam.idzaznam}}">
+    <mat-card-content>
+      {{pacZaznam.idzaznam}}
+    </mat-card-content>
+
+    <mat-card-content>
+      Dátum a čas: <br>
+      {{pacZaznam.datum | date : "dd.MM.yyyy"}} {{pacZaznam.cas}}
+    </mat-card-content>
+
+    <mat-card-content *ngIf="pacZaznam.osobnecisloNavigation" class="last">
+      Doktor: <i><b>{{pacZaznam.osobnecisloNavigation.meno}} {{pacZaznam.osobnecisloNavigation.priezvisko}}</b></i>
+    </mat-card-content>
+  </mat-card>
+</div>

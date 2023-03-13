@@ -110,5 +110,69 @@ namespace bakalarkaBE.Controllers
 
             return Ok(pacDoktori);
         }
+
+        [HttpGet("vysetreniaVZazname/{idZaznamu}")]
+        public async Task<ActionResult<List<VysetrenieZaznam>>> GetPacientoveZaznamy(int idZaznamu)
+        {
+            var pacZaznamy = await _dbContext.VysetrenieZaznams.Join(_dbContext.Vysetrenies, 
+                    a => a.Kod ,b => b.Kod,
+                    (a,b) => new VysetrenieZaznam()
+                    {
+                        Kod = a.Kod,
+                        Idzaznam = a.Idzaznam,
+                        Datum = a.Datum,
+                        IdzaznamNavigation = a.IdzaznamNavigation,
+                        KodNavigation = b
+                    })
+                .Where(a => a.Idzaznam == idZaznamu).ToListAsync();
+
+            return Ok(pacZaznamy);
+        }
+
+        [HttpGet("zaznamy/{rodneCislo}")]
+        public async Task<ActionResult<List<Zaznam>>> GetPacientoveZaznamy(string rodneCislo)
+        {
+            var pacZaznamy = await _dbContext.Zaznams.Join(_dbContext.Doktors,
+                    a => a.Osobnecislo, b => b.Osobnecislo,
+                    (a,b) => new Zaznam()
+                    {
+                        Idzaznam = a.Idzaznam,
+                        Rodnecislo = a.Rodnecislo,
+                        Osobnecislo = a.Osobnecislo,
+                        Dovodnavstevy = a.Dovodnavstevy,
+                        Datum = a.Datum,
+                        Cas = a.Cas,
+                        Vysledokvysetrenia = a.Vysledokvysetrenia,
+                        Doplnujuceinformacie = a.Doplnujuceinformacie,
+                        Zaver = a.Zaver,
+                        OsobnecisloNavigation = b
+                    })
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
+
+            return Ok(pacZaznamy);
+        }
+        
+        [HttpGet("zaznam/{idZaznam}")]
+        public async Task<ActionResult<List<Zaznam>>> GetPacientovZaznam(int idZaznam)
+        {
+            var pacZaznamy = await _dbContext.Zaznams.Join(_dbContext.Doktors,
+                    a => a.Osobnecislo, b => b.Osobnecislo,
+                    (a,b) => new Zaznam()
+                    {
+                        Idzaznam = a.Idzaznam,
+                        Rodnecislo = a.Rodnecislo,
+                        Osobnecislo = a.Osobnecislo,
+                        Dovodnavstevy = a.Dovodnavstevy,
+                        Datum = a.Datum,
+                        Cas = a.Cas,
+                        Vysledokvysetrenia = a.Vysledokvysetrenia,
+                        Doplnujuceinformacie = a.Doplnujuceinformacie,
+                        Zaver = a.Zaver,
+                        OsobnecisloNavigation = b
+                    })
+                .Where(a => a.Idzaznam == idZaznam).ToListAsync();
+
+            return Ok(pacZaznamy);
+        }
     }
 }
