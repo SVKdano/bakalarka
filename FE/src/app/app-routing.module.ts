@@ -8,6 +8,7 @@ import {LiekyPageComponent} from "./componetnts/lieky-page/lieky-page.component"
 import {DoktoriPageComponent} from "./componetnts/doktori-page/doktori-page.component";
 import {ZaznamyPageComponent} from "./componetnts/zaznamy-page/zaznamy-page.component";
 import {ZaznamDetailComponent} from "./componetnts/zaznam-detail/zaznam-detail.component";
+import {ListkyPageComponent} from "./componetnts/listky-page/listky-page.component";
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: "doktori", component: DoktoriPageComponent},
   { path: "zaznamy", component: ZaznamyPageComponent},
   { path: "zaznamy/:idzaznam", component:ZaznamDetailComponent },
+  { path: "odporucacieLisky", component: ListkyPageComponent},
   { path:"borad", component:BoardPageComponent }
 ];
 

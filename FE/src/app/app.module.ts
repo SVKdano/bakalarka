@@ -24,6 +24,7 @@ import { DoktoriPageComponent } from './componetnts/doktori-page/doktori-page.co
 import { ZaznamyPageComponent } from './componetnts/zaznamy-page/zaznamy-page.component';
 import { OrderPipe } from './pipe/order.pipe';
 import { ZaznamDetailComponent } from './componetnts/zaznam-detail/zaznam-detail.component';
+import { ListkyPageComponent } from './componetnts/listky-page/listky-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ZaznamDetailComponent } from './componetnts/zaznam-detail/zaznam-detail
     DoktoriPageComponent,
     ZaznamyPageComponent,
     OrderPipe,
-    ZaznamDetailComponent
+    ZaznamDetailComponent,
+    ListkyPageComponent
   ],
   imports: [
     BrowserModule,

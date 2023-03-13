@@ -1,0 +1,27 @@
+<app-panel></app-panel>
+<app-navbar></app-navbar>
+
+<div class="card">
+  <mat-card *ngFor="let pacListok of listky">
+
+    <mat-card-header>
+      <mat-card-title *ngIf="pacListok.rodnecisloNavigation">
+        Odporúčací lístok pacienta
+        <i>{{pacListok.rodnecisloNavigation.meno}} {{pacListok.rodnecisloNavigation.priezvisko}}</i>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <b><i>Dátum odporučenia:</i></b> {{pacListok.datumodporucenia | date : "dd.MM.yyyy"}}
+    </mat-card-content>
+
+    <mat-card-content *ngIf="pacListok.osobnecisloNavigation">
+      <b><i>Odporúčací doktor:</i></b> {{pacListok.osobnecisloNavigation.meno}} {{pacListok.osobnecisloNavigation.priezvisko}}
+    </mat-card-content>
+
+    <mat-card-content *ngIf="pacListok.oddelenie">
+      <b><i>Na oddelenie:</i></b> {{pacListok.oddelenie.nazovoddelenia}}
+    </mat-card-content>
+
+  </mat-card>
+</div>
