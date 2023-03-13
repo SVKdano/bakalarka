@@ -76,7 +76,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("lieky/{rodneCislo}")]
-        public async Task<ActionResult<List<Pacientoveochorenium>>> GetPacientoveLieky(string rodneCislo)
+        public async Task<ActionResult<List<Pacientovelieky>>> GetPacientoveLieky(string rodneCislo)
         {
             var pacLieky = await _dbContext.Pacientoveliekies.Join(_dbContext.Liekies, 
                     a => a.Registracnecislo, b => b.Registracnecislo,
@@ -173,6 +173,48 @@ namespace bakalarkaBE.Controllers
                 .Where(a => a.Idzaznam == idZaznam).ToListAsync();
 
             return Ok(pacZaznamy);
+        }
+
+        [HttpGet("listky/{rodneCislo}")]
+        public async Task<ActionResult<List<Zaznam>>> GetPacientoeListky(string rodneCislo)
+        {
+            var pacLisky = await _dbContext.Odporucacilistoks.Join( _dbContext.Oddelenies,
+                a => new { a.Kododdelenia, a.Idnemocnice}, b => new { b.Kododdelenia, b.Idnemocnice},
+                (a,b) => new Odporucacilistok()
+                {
+                    Datumodporucenia = a.Datumodporucenia,
+                    Kododdelenia = a.Kododdelenia,
+                    Idnemocnice = a.Idnemocnice,
+                    Osobnecislo = a.Osobnecislo,
+                    Rodnecislo = a.Rodnecislo,
+                    Oddelenie = b
+                }).Join(_dbContext.Doktors,
+                    a => a.Osobnecislo, b => b.Osobnecislo,
+                    (a,b) => new Odporucacilistok()
+                    {
+                        Datumodporucenia = a.Datumodporucenia,
+                        Kododdelenia = a.Kododdelenia,
+                        Idnemocnice = a.Idnemocnice,
+                        Osobnecislo = a.Osobnecislo,
+                        Rodnecislo = a.Rodnecislo,
+                        Oddelenie = a.Oddelenie,
+                        OsobnecisloNavigation = b
+                    }).Join(_dbContext.Pacients,
+                    a => a.Rodnecislo, b => b.Rodnecislo,
+                    (a,b) => new Odporucacilistok()
+                    {
+                        Datumodporucenia = a.Datumodporucenia,
+                        Kododdelenia = a.Kododdelenia,
+                        Idnemocnice = a.Idnemocnice,
+                        Osobnecislo = a.Osobnecislo,
+                        Rodnecislo = a.Rodnecislo,
+                        Oddelenie = a.Oddelenie,
+                        OsobnecisloNavigation = a.OsobnecisloNavigation,
+                        RodnecisloNavigation = b
+                    })
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
+
+            return Ok(pacLisky);
         }
     }
 }
