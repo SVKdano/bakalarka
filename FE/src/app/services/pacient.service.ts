@@ -51,6 +51,6 @@ export class PacientService {
   }
 
   public getPacientListky(rodneCislo: string) : Observable<OdporucaciListok[]> {
-    return this.http.get<OdporucaciListok[]>(`${environment.apiUrl}/listky/${rodneCislo}`);
+    return this.http.get<OdporucaciListok[]>(`${environment.apiUrl}/listkyv2/${rodneCislo}`);
   }
 }

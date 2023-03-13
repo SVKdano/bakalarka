@@ -23,5 +23,9 @@
       <b><i>Na oddelenie:</i></b> {{pacListok.oddelenie.nazovoddelenia}}
     </mat-card-content>
 
+    <mat-card-content *ngIf="pacListok.oddelenie && pacListok.oddelenie.idnemocniceNavigation">
+      <b><i>V nemocnici:</i></b> {{pacListok.oddelenie.idnemocniceNavigation.nazov}}
+    </mat-card-content>
+
   </mat-card>
 </div>

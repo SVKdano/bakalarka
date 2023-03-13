@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace bakalarkaBE.Models;
 
@@ -39,6 +40,7 @@ public partial class Doktor
 
     public virtual Oddelenie? Oddelenie { get; set; }
 
+    [JsonIgnore]
     public virtual ICollection<Odporucacilistok> Odporucacilistoks { get; } = new List<Odporucacilistok>();
 
     public virtual ICollection<PacientDoktor> PacientDoktors { get; } = new List<PacientDoktor>();

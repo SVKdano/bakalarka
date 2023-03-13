@@ -176,7 +176,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("listky/{rodneCislo}")]
-        public async Task<ActionResult<List<Zaznam>>> GetPacientoeListky(string rodneCislo)
+        public async Task<ActionResult<List<Odporucacilistok>>> GetPacientoveListky(string rodneCislo)
         {
             var pacLisky = await _dbContext.Odporucacilistoks.Join( _dbContext.Oddelenies,
                 a => new { a.Kododdelenia, a.Idnemocnice}, b => new { b.Kododdelenia, b.Idnemocnice},
@@ -215,6 +215,18 @@ namespace bakalarkaBE.Controllers
                 .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
 
             return Ok(pacLisky);
+        }
+
+        [HttpGet("listkyv2/{rodneCislo}")]
+        public async Task<ActionResult<List<Odporucacilistok>>> test(string rodneCislo)
+        {
+            var lisok = await _dbContext.Odporucacilistoks
+                .Include(a => a.Oddelenie)
+                .ThenInclude(b => b.IdnemocniceNavigation)
+                .Include(c => c.OsobnecisloNavigation)
+                .Include(d => d.RodnecisloNavigation)
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
+            return Ok(lisok);
         }
     }
 }
