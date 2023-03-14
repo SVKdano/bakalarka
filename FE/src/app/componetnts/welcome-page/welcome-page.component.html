@@ -14,7 +14,7 @@
         <br>
         <form class="example-form" [formGroup]="loginForm">
           <mat-form-field>
-            <input type="email" matInput placeholder="Rodné čislo" formControlName="rodneCislo">
+            <input type="email" matInput placeholder="Rodné čislo" formControlName="rodneCislo" [(ngModel)]="this.user.rodneCislo">
             <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('required')">
               Zadaj rodné číslo!</mat-error>
             <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('pattern')">
@@ -23,16 +23,16 @@
           </mat-form-field>
           <br>
           <mat-form-field>
-            <input type="password" matInput placeholder="Heslo" formControlName="password">
+            <input type="password" matInput placeholder="Heslo" formControlName="password" [(ngModel)]="this.user.heslo">
             <mat-error
               *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
-              Password is required</mat-error>
+              Zadaj heslo</mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>
       <div class="buttons">
         <button mat-raised-button color="warn">Registorvať</button>
-        <button mat-raised-button class="loginButton" (click)="login()">Prihlásiť</button>
+        <button mat-raised-button class="loginButton" (click)="login(this.user)">Prihlásiť</button>
       </div>
     </mat-card>
   </div>

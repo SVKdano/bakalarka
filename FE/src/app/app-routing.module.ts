@@ -9,18 +9,19 @@ import {DoktoriPageComponent} from "./componetnts/doktori-page/doktori-page.comp
 import {ZaznamyPageComponent} from "./componetnts/zaznamy-page/zaznamy-page.component";
 import {ZaznamDetailComponent} from "./componetnts/zaznam-detail/zaznam-detail.component";
 import {ListkyPageComponent} from "./componetnts/listky-page/listky-page.component";
+import {PacientGuardGuard} from "./guards/pacient-guard.guard";
 
 
 
 const routes: Routes = [
   { path:"", component: WelcomePageComponent },
-  { path:"pacient", component: AlergiePageComponent},
-  { path: "ochorenia", component: OchoreniaPageComponent},
-  { path: "lieky", component: LiekyPageComponent},
-  { path: "doktori", component: DoktoriPageComponent},
-  { path: "zaznamy", component: ZaznamyPageComponent},
-  { path: "zaznamy/:idzaznam", component:ZaznamDetailComponent },
-  { path: "odporucacieLisky", component: ListkyPageComponent},
+  { path: "pacient/:rodnecislo", component: AlergiePageComponent, canActivate: [PacientGuardGuard]},
+  { path: "ochorenia/:rodnecislo", component: OchoreniaPageComponent, canActivate: [PacientGuardGuard]},
+  { path: "lieky/:rodnecislo", component: LiekyPageComponent, canActivate: [PacientGuardGuard]},
+  { path: "doktori/:rodnecislo", component: DoktoriPageComponent, canActivate: [PacientGuardGuard]},
+  { path: "zaznamy/:rodnecislo", component: ZaznamyPageComponent, canActivate: [PacientGuardGuard]},
+  { path: "zaznamy/:rodnecislo/:idzaznam", component:ZaznamDetailComponent, canActivate: [PacientGuardGuard] },
+  { path: "odporucacieLisky/:rodnecislo", component: ListkyPageComponent, canActivate: [PacientGuardGuard]},
   { path:"borad", component:BoardPageComponent }
 ];
 

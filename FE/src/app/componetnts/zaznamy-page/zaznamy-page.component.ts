@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PacientService} from "../../services/pacient.service";
 import {Zaznam} from "../../models/Zaznam";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-zaznamy-page',
@@ -11,10 +12,11 @@ export class ZaznamyPageComponent implements OnInit {
 
   zaznamy:Zaznam[] = [];
 
-  constructor(private pacientService:PacientService) {}
+  constructor(private pacientService:PacientService, private route:ActivatedRoute) {}
 
   ngOnInit() {
-    this.pacientService.getPacientZaznamy("0003015078").subscribe(
+    const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.pacientService.getPacientZaznamy(id!).subscribe(
       (result:Zaznam[]) => {
         this.zaznamy = result;
         console.log(this.zaznamy);

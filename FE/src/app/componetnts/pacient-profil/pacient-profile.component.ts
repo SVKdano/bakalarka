@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PacientService} from "../../services/pacient.service";
 import {Pacient} from "../../models/Pacient";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-pacient-profile',
@@ -11,10 +12,11 @@ export class PacientProfileComponent implements OnInit {
 
   pacient: Pacient[] = [];
 
-  constructor(private pacientService:PacientService) {}
+  constructor(private pacientService:PacientService, private route:ActivatedRoute) {}
 
   ngOnInit() : void {
-    this.pacientService.getPacient("0003015078").subscribe(
+    const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.pacientService.getPacient(id!).subscribe(
       (result:Pacient[]) => {
         (this.pacient = result);
       }

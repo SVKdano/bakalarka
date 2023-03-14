@@ -10,7 +10,8 @@ export class PanelComponent {
   constructor(private router: Router) {}
 
   logout() {
-    this.router.navigate(["/"])
+    localStorage.clear();
+    this.router.navigate(["/"]);
   }
 
 }

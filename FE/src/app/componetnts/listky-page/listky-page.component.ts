@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PacientService} from "../../services/pacient.service";
 import {OdporucaciListok} from "../../models/OdporucaciListok";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-listky-page',
@@ -10,10 +11,11 @@ import {OdporucaciListok} from "../../models/OdporucaciListok";
 export class ListkyPageComponent implements OnInit {
   listky:OdporucaciListok[] = [];
 
-  constructor(private pacientService:PacientService) {}
+  constructor(private pacientService:PacientService, private route:ActivatedRoute) {}
 
   ngOnInit() {
-    this.pacientService.getPacientListky("0003015078").subscribe(
+    const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.pacientService.getPacientListky(id!).subscribe(
       (result:OdporucaciListok[]) => {
         this.listky = result;
         console.log(this.listky);

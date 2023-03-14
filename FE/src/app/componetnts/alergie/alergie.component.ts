@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {PacientAlergie} from "../../models/PacientAlergie";
 import {PacientService} from "../../services/pacient.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-alergie',
@@ -11,10 +12,11 @@ export class AlergieComponent {
 
   alergie: PacientAlergie[] = [];
 
-  constructor(private pacientService:PacientService) {}
+  constructor(private pacientService:PacientService, private route:ActivatedRoute) {}
 
   ngOnInit() : void {
-    this.pacientService.getPacientAlergie("7057150353").subscribe(
+    const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.pacientService.getPacientAlergie(id!).subscribe(
       (result:PacientAlergie[]) => {
         (this.alergie = result);
       }
