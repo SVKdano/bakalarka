@@ -15,6 +15,15 @@ export class LoginService {
     return this.http.post(`${environment.apiUrl}/login`, user, {responseType: "text"});
   }
 
+  public loginDoktor(user:User) : Observable<any> {
+    return this.http.post(`${environment.apiUrl}/loginDoktor`, user, {responseType: "text"});
+  }
+
+  public loggedUserOsobneCislo() : any {
+    const user = JSON.parse(localStorage.getItem("loggedUser")!);
+    return user.osobnecislo;
+  }
+
   public loggedUserRole() : any {
     const user = JSON.parse(localStorage.getItem("loggedUser")!);
     return user.rola;

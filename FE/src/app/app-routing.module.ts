@@ -10,6 +10,8 @@ import {ZaznamyPageComponent} from "./componetnts/zaznamy-page/zaznamy-page.comp
 import {ZaznamDetailComponent} from "./componetnts/zaznam-detail/zaznam-detail.component";
 import {ListkyPageComponent} from "./componetnts/listky-page/listky-page.component";
 import {PacientGuardGuard} from "./guards/pacient-guard.guard";
+import {DoktorWelcomeComponent} from "./componetnts/doktor-welcome/doktor-welcome.component";
+import {DoktorProfileComponent} from "./componetnts/doktor-profile/doktor-profile.component";
 
 
 
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: "zaznamy/:rodnecislo", component: ZaznamyPageComponent, canActivate: [PacientGuardGuard]},
   { path: "zaznamy/:rodnecislo/:idzaznam", component:ZaznamDetailComponent, canActivate: [PacientGuardGuard] },
   { path: "odporucacieLisky/:rodnecislo", component: ListkyPageComponent, canActivate: [PacientGuardGuard]},
+  { path: "doktor", component: DoktorWelcomeComponent},
+  { path: "doktor/:osobnecislo", component:DoktorProfileComponent},
   { path:"borad", component:BoardPageComponent }
 ];
 

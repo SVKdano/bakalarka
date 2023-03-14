@@ -1,4 +1,4 @@
 export class User {
-  rodneCislo: string = "";
+  Cislo: string = "";
   heslo: string = "";
 }

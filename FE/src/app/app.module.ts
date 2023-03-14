@@ -25,6 +25,9 @@ import { ZaznamyPageComponent } from './componetnts/zaznamy-page/zaznamy-page.co
 import { OrderPipe } from './pipe/order.pipe';
 import { ZaznamDetailComponent } from './componetnts/zaznam-detail/zaznam-detail.component';
 import { ListkyPageComponent } from './componetnts/listky-page/listky-page.component';
+import { DoktorWelcomeComponent } from './componetnts/doktor-welcome/doktor-welcome.component';
+import { DoktorProfileComponent } from './componetnts/doktor-profile/doktor-profile.component';
+import { DoktorPanelComponent } from './componetnts/doktor-panel/doktor-panel.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { ListkyPageComponent } from './componetnts/listky-page/listky-page.compo
     ZaznamyPageComponent,
     OrderPipe,
     ZaznamDetailComponent,
-    ListkyPageComponent
+    ListkyPageComponent,
+    DoktorWelcomeComponent,
+    DoktorProfileComponent,
+    DoktorPanelComponent
   ],
   imports: [
     BrowserModule,

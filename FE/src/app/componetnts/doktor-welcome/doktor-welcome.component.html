@@ -2,7 +2,7 @@
   <mat-toolbar>
     <img src="assets/imgs/frilogo.png" alt="FRI logo">
     <div class="logButtons">
-      <button mat-raised-button routerLink="/doktor">Doktor</button>
+      <button mat-raised-button routerLink="/">Pacient</button>
       <button mat-raised-button>Nemocnica</button>
     </div>
   </mat-toolbar>
@@ -10,18 +10,16 @@
   <div class="flex">
     <mat-card class="logincard">
       <mat-card-content>
-        Vitajte,
+        Vitajte pán doktor/pani doktorka,
         <br>
-        pre pokračovanie sa prihláste!
+        prosím prihláste sa.
         <br>
         <br>
         <form class="example-form" [formGroup]="loginForm">
           <mat-form-field>
-            <input type="email" matInput placeholder="Rodné čislo" formControlName="rodneCislo" [(ngModel)]="this.user.Cislo">
+            <input type="email" matInput placeholder="Osobné číslo" formControlName="rodneCislo" [(ngModel)]="this.user.Cislo">
             <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('required')">
-              Zadaj rodné číslo!</mat-error>
-            <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('pattern')">
-              Zadaj valídne rodné čislo!</mat-error>
+              Zadajte osobné číslo!</mat-error>
 
           </mat-form-field>
           <br>
@@ -29,7 +27,7 @@
             <input type="password" matInput placeholder="Heslo" formControlName="password" [(ngModel)]="this.user.heslo">
             <mat-error
               *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
-              Zadaj heslo</mat-error>
+              Zadajte heslo!</mat-error>
           </mat-form-field>
         </form>
       </mat-card-content>

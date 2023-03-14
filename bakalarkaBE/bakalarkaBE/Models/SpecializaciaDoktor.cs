@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace bakalarkaBE.Models;
 
@@ -12,6 +13,6 @@ public partial class SpecializaciaDoktor
     public DateOnly Datumnadobudnutia { get; set; }
 
     public virtual Specializacium KodspecializacieNavigation { get; set; } = null!;
-
+    [JsonIgnore]
     public virtual Doktor OsobnecisloNavigation { get; set; } = null!;
 }

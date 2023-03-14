@@ -13,7 +13,7 @@ public partial class Oddelenie
     public string Idnemocnice { get; set; } = null!;
 
     public string Nazovoddelenia { get; set; } = null!;
-
+    [JsonIgnore]
     public virtual ICollection<Doktor> Doktors { get; } = new List<Doktor>();
 
     public virtual ICollection<Hospitalizacium> Hospitalizacia { get; } = new List<Hospitalizacium>();
