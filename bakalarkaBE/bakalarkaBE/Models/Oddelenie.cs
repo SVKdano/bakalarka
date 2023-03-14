@@ -19,7 +19,6 @@ public partial class Oddelenie
     public virtual ICollection<Hospitalizacium> Hospitalizacia { get; } = new List<Hospitalizacium>();
 
     public virtual Nemocnica IdnemocniceNavigation { get; set; } = null!;
-
     [JsonIgnore]
     public virtual ICollection<Odporucacilistok> Odporucacilistoks { get; } = new List<Odporucacilistok>();
 }

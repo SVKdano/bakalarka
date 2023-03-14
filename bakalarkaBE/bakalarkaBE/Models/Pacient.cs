@@ -26,6 +26,8 @@ public partial class Pacient
 
     public string Rola { get; set; } = null!;
 
+    public string Email { get; set; } = null!;
+
     public virtual ICollection<Historiadoktorov> Historiadoktorovs { get; } = new List<Historiadoktorov>();
 
     public virtual ICollection<Historiapoistovni> Historiapoistovnis { get; } = new List<Historiapoistovni>();
@@ -35,7 +37,6 @@ public partial class Pacient
     public virtual Mestum? IdmestaNavigation { get; set; }
 
     public virtual Poistovna? IdpoistovneNavigation { get; set; }
-
     [JsonIgnore]
     public virtual ICollection<Odporucacilistok> Odporucacilistoks { get; } = new List<Odporucacilistok>();
 

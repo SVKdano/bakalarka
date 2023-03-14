@@ -20,6 +20,8 @@ public partial class Doktor
 
     public string Heslo { get; set; } = null!;
 
+    public string Email { get; set; } = null!;
+
     public virtual ICollection<Alergiazdielanie> AlergiazdielanieCielovyNavigations { get; } = new List<Alergiazdielanie>();
 
     public virtual ICollection<Alergiazdielanie> AlergiazdielanieZdielajuciNavigations { get; } = new List<Alergiazdielanie>();
@@ -39,7 +41,6 @@ public partial class Doktor
     public virtual ICollection<Ochoreniazdielanie> OchoreniazdielanieZdielajuciNavigations { get; } = new List<Ochoreniazdielanie>();
 
     public virtual Oddelenie? Oddelenie { get; set; }
-
     [JsonIgnore]
     public virtual ICollection<Odporucacilistok> Odporucacilistoks { get; } = new List<Odporucacilistok>();
 

@@ -137,6 +137,9 @@ public partial class DatabazaBcContext : DbContext
             entity.Property(e => e.Osobnecislo)
                 .HasMaxLength(7)
                 .HasColumnName("osobnecislo");
+            entity.Property(e => e.Email)
+                .HasColumnType("character varying")
+                .HasColumnName("email");
             entity.Property(e => e.Heslo)
                 .HasColumnType("character varying")
                 .HasColumnName("heslo");
@@ -375,6 +378,9 @@ public partial class DatabazaBcContext : DbContext
             entity.Property(e => e.Idnemocnice)
                 .HasMaxLength(7)
                 .HasColumnName("idnemocnice");
+            entity.Property(e => e.Email)
+                .HasColumnType("character varying")
+                .HasColumnName("email");
             entity.Property(e => e.Heslo)
                 .HasColumnType("character varying")
                 .HasColumnName("heslo");
@@ -521,6 +527,9 @@ public partial class DatabazaBcContext : DbContext
                 .HasMaxLength(10)
                 .IsFixedLength()
                 .HasColumnName("rodnecislo");
+            entity.Property(e => e.Email)
+                .HasColumnType("character varying")
+                .HasColumnName("email");
             entity.Property(e => e.Heslo)
                 .HasColumnType("character varying")
                 .HasColumnName("heslo");
