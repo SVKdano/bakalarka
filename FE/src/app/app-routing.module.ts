@@ -12,6 +12,7 @@ import {ListkyPageComponent} from "./componetnts/listky-page/listky-page.compone
 import {PacientGuardGuard} from "./guards/pacient-guard.guard";
 import {DoktorWelcomeComponent} from "./componetnts/doktor-welcome/doktor-welcome.component";
 import {DoktorProfileComponent} from "./componetnts/doktor-profile/doktor-profile.component";
+import {DoktorPacientiComponent} from "./componetnts/doktor-pacienti/doktor-pacienti.component";
 
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: "odporucacieLisky/:rodnecislo", component: ListkyPageComponent, canActivate: [PacientGuardGuard]},
   { path: "doktor", component: DoktorWelcomeComponent},
   { path: "doktor/:osobnecislo", component:DoktorProfileComponent},
+  { path: "doktor/:osobnecislo/pacienti", component:DoktorPacientiComponent},
   { path:"borad", component:BoardPageComponent }
 ];
 

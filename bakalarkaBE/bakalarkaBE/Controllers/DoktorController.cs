@@ -1,4 +1,5 @@
 using bakalarkaBE.Models;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -34,5 +35,29 @@ namespace bakalarkaBE.Controllers
                 .Where(a => a.Oddelenie.Kododdelenia == kododdelenia).ToListAsync();
             return Ok(doktor);
         }
+
+        [HttpGet("doktorPacienti/{osobnecislo}")]
+        public async Task<ActionResult<List<PacientDoktor>>> GetDoktorPacienti(string osobnecislo)
+        {
+            /*var docPacienti = _dbContext.PacientDoktors.Join(_dbContext.Doktors, 
+                a => a.Osobnecislo, b => b.Osobnecislo,
+                (a,b) => new PacientDoktor()
+                {
+                    Osobnecislo = a.Osobnecislo,
+                    Rodnecislo = a.Rodnecislo,
+                    Datumod = a.Datumod,
+                    OsobnecisloNavigation = b
+                });
+                */
+
+            var docPacienti = await
+                _dbContext.PacientDoktors
+                    .Include(a => a.OsobnecisloNavigation)
+                    .Include(a => a.RodnecisloNavigation)
+                    .Where(a => a.Osobnecislo == osobnecislo).ToListAsync();
+
+            return Ok(docPacienti);
+        }
+        
     }
 }

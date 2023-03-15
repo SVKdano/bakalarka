@@ -28,6 +28,7 @@ import { ListkyPageComponent } from './componetnts/listky-page/listky-page.compo
 import { DoktorWelcomeComponent } from './componetnts/doktor-welcome/doktor-welcome.component';
 import { DoktorProfileComponent } from './componetnts/doktor-profile/doktor-profile.component';
 import { DoktorPanelComponent } from './componetnts/doktor-panel/doktor-panel.component';
+import { DoktorPacientiComponent } from './componetnts/doktor-pacienti/doktor-pacienti.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DoktorPanelComponent } from './componetnts/doktor-panel/doktor-panel.co
     ListkyPageComponent,
     DoktorWelcomeComponent,
     DoktorProfileComponent,
-    DoktorPanelComponent
+    DoktorPanelComponent,
+    DoktorPacientiComponent
   ],
   imports: [
     BrowserModule,

@@ -41,7 +41,7 @@ public partial class Pacient
     public virtual ICollection<Odporucacilistok> Odporucacilistoks { get; } = new List<Odporucacilistok>();
 
     public virtual ICollection<PacientAlergie> PacientAlergies { get; } = new List<PacientAlergie>();
-
+    [JsonIgnore]
     public virtual ICollection<PacientDoktor> PacientDoktors { get; } = new List<PacientDoktor>();
 
     public virtual ICollection<Pacientovelieky> Pacientoveliekies { get; } = new List<Pacientovelieky>();

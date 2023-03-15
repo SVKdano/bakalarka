@@ -1,0 +1,31 @@
+<app-panel></app-panel>
+<app-doktor-panel></app-doktor-panel>
+
+<div class="panel">
+  <mat-toolbar>
+
+    <div class="inputs">
+    <mat-form-field>
+      <mat-label>Meno</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Priezvisko</mat-label>
+      <input matInput>
+    </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="warn">Pridať pacienta</button>
+  </mat-toolbar>
+</div>
+
+<div class="cards" *ngFor="let pac of pacienti">
+  <mat-card>
+    <mat-card-content><b><i>Pacient:</i></b></mat-card-content>
+
+    <div class="leftData" *ngIf="pac.rodnecisloNavigation">
+      <mat-card-content><b><i>{{pac.rodnecisloNavigation.meno}} {{pac.rodnecisloNavigation.priezvisko}}</i></b></mat-card-content>
+    </div>
+  </mat-card>
+</div>
