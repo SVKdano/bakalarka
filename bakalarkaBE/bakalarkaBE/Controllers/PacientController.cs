@@ -121,6 +121,7 @@ namespace bakalarkaBE.Controllers
                         Kod = a.Kod,
                         Idzaznam = a.Idzaznam,
                         Datum = a.Datum,
+                        Vysledokvysetrenia = a.Vysledokvysetrenia,
                         IdzaznamNavigation = a.IdzaznamNavigation,
                         KodNavigation = b
                     })
@@ -142,7 +143,6 @@ namespace bakalarkaBE.Controllers
                         Dovodnavstevy = a.Dovodnavstevy,
                         Datum = a.Datum,
                         Cas = a.Cas,
-                        Vysledokvysetrenia = a.Vysledokvysetrenia,
                         Doplnujuceinformacie = a.Doplnujuceinformacie,
                         Zaver = a.Zaver,
                         OsobnecisloNavigation = b
@@ -165,7 +165,6 @@ namespace bakalarkaBE.Controllers
                         Dovodnavstevy = a.Dovodnavstevy,
                         Datum = a.Datum,
                         Cas = a.Cas,
-                        Vysledokvysetrenia = a.Vysledokvysetrenia,
                         Doplnujuceinformacie = a.Doplnujuceinformacie,
                         Zaver = a.Zaver,
                         OsobnecisloNavigation = b

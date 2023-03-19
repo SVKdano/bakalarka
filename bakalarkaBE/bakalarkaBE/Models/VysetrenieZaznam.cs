@@ -11,6 +11,8 @@ public partial class VysetrenieZaznam
 
     public DateOnly? Datum { get; set; }
 
+    public string? Vysledokvysetrenia { get; set; }
+
     public virtual Zaznam IdzaznamNavigation { get; set; } = null!;
 
     public virtual Vysetrenie KodNavigation { get; set; } = null!;

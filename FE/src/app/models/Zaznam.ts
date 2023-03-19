@@ -8,7 +8,6 @@ export class Zaznam {
   dovodnavstevy:string = "";
   datum!:Date;
   cas!:Time;
-  vysledokvysetrenia:string = "";
   doplnujuceinformacie:string = "";
   zaver:string = "";
   osobnecisloNavigation?:Doktor;

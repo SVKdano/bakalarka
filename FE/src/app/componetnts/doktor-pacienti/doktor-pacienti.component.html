@@ -4,6 +4,7 @@
 <div class="panel">
   <mat-toolbar>
 
+
     <div class="inputs">
     <mat-form-field>
       <mat-label>Meno</mat-label>
@@ -25,7 +26,10 @@
     <mat-card-content><b><i>Pacient:</i></b></mat-card-content>
 
     <div class="leftData" *ngIf="pac.rodnecisloNavigation">
-      <mat-card-content><b><i>{{pac.rodnecisloNavigation.meno}} {{pac.rodnecisloNavigation.priezvisko}}</i></b></mat-card-content>
+      <mat-card-content><b><i>{{pac.rodnecisloNavigation.meno}}
+        {{pac.rodnecisloNavigation.priezvisko}}
+        -
+        {{pac.rodnecislo}}</i></b></mat-card-content>
     </div>
   </mat-card>
 </div>

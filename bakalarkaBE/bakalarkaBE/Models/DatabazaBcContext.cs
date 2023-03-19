@@ -750,6 +750,7 @@ public partial class DatabazaBcContext : DbContext
                 .HasColumnName("kod");
             entity.Property(e => e.Idzaznam).HasColumnName("idzaznam");
             entity.Property(e => e.Datum).HasColumnName("datum");
+            entity.Property(e => e.Vysledokvysetrenia).HasColumnName("vysledokvysetrenia");
 
             entity.HasOne(d => d.IdzaznamNavigation).WithMany(p => p.VysetrenieZaznams)
                 .HasForeignKey(d => d.Idzaznam)
@@ -782,12 +783,6 @@ public partial class DatabazaBcContext : DbContext
                 .HasMaxLength(10)
                 .IsFixedLength()
                 .HasColumnName("rodnecislo");
-            entity.Property(e => e.Vykonanevysetrenia)
-                .HasMaxLength(100)
-                .HasColumnName("vykonanevysetrenia");
-            entity.Property(e => e.Vysledokvysetrenia)
-                .HasMaxLength(100)
-                .HasColumnName("vysledokvysetrenia");
             entity.Property(e => e.Zaver)
                 .HasMaxLength(100)
                 .HasColumnName("zaver");

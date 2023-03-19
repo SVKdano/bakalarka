@@ -15,10 +15,6 @@ public partial class Zaznam
 
     public TimeOnly Cas { get; set; }
 
-    public string? Vykonanevysetrenia { get; set; }
-
-    public string? Vysledokvysetrenia { get; set; }
-
     public string? Doplnujuceinformacie { get; set; }
 
     public string? Zaver { get; set; }

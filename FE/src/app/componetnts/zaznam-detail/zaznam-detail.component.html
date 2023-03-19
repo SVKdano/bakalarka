@@ -23,8 +23,8 @@
       <b><i>Dátum a čas:</i></b> {{pacZaznam.datum | date : "dd.MM.yyyy"}} {{pacZaznam.cas}}
     </mat-card-content>
 
-    <mat-card-content>
-      <b><i>Výsledok vyšetrenia:</i></b> {{pacZaznam.vysledokvysetrenia}}
+    <mat-card-content *ngIf="pacZaznam.doplnujuceinformacie">
+      <b><i>Dodatočné informácie</i></b> {{pacZaznam.doplnujuceinformacie}}
     </mat-card-content>
 
     <mat-card-content>
@@ -41,6 +41,12 @@
 
     <mat-card-content *ngIf="pacVysetrenia.kodNavigation">
       {{pacVysetrenia.kodNavigation.nazov}}
+    </mat-card-content>
+
+    <mat-card-content *ngIf="pacVysetrenia.kodNavigation">
+      <br>
+      <b><i>Výsledok vyšetrenia:</i></b>  {{pacVysetrenia.vysledokvysetrenia}}
+
     </mat-card-content>
   </mat-card>
 </div>
