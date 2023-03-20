@@ -32,6 +32,33 @@ namespace bakalarkaBE.Controllers
 
             return Ok(possibleUser);
         }
+
+        [HttpPost("/registraciaPacient")]
+        public async Task<ActionResult<List<Pacient>>> RegisterPacient(Pacient pacient)
+        {
+            if (_dbContext.Pacients.Any(a => a.Rodnecislo == pacient.Rodnecislo))
+            {
+                return BadRequest(new { Message = "Už ste registrovaný, pokračujte prosím na prihlásenie!" });
+            }
+
+            var regPacient = new Pacient
+            {
+                Rodnecislo = pacient.Rodnecislo,
+                Meno = pacient.Meno,
+                Priezvisko = pacient.Priezvisko,
+                Ulica = pacient.Ulica,
+                Idpoistovne = pacient.Idpoistovne,
+                Poistenyvpoistovniod = pacient.Poistenyvpoistovniod,
+                Idmesta = pacient.Idmesta,
+                Heslo = pacient.Heslo,
+                Rola = "pacient",
+                Email = pacient.Email
+            };
+
+            _dbContext.Pacients.Add(regPacient);
+            await _dbContext.SaveChangesAsync();
+            return Ok(regPacient);
+        }
         
         [HttpPost("loginDoktor")]
         public async Task<ActionResult<List<Doktor>>> GetDoktor(LoginDTO user)
@@ -50,6 +77,18 @@ namespace bakalarkaBE.Controllers
             }
 
             return Ok(possibleUser);
+        }
+
+        [HttpGet("/allPoistovne")]
+        public async Task<ActionResult<List<Poistovna>>> GetPoistovne()
+        {
+            return Ok(await _dbContext.Poistovnas.ToListAsync());
+        }
+
+        [HttpGet("/allMesta")]
+        public async Task<ActionResult<List<Mestum>>> GetMesta()
+        {
+            return Ok(await _dbContext.Mesta.ToListAsync());
         }
     }
 }

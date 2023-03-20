@@ -1,0 +1,51 @@
+<app-panel></app-panel>
+<app-navbar></app-navbar>
+
+<div class="card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title><i>Profilové údaje</i></mat-card-title>
+    </mat-card-header>
+
+    <div *ngFor="let doc of doktor">
+
+      <mat-card-content>
+        <b><i>Meno: </i></b> &nbsp; {{doc.meno}}
+      </mat-card-content>
+
+      <mat-card-content>
+        <b><i>Priezvisko: &nbsp; </i></b> {{doc.priezvisko}}
+      </mat-card-content>
+
+      <mat-card-content *ngIf="doc.oddelenie">
+        <b><i>Oddelenie: </i></b> &nbsp; {{doc.oddelenie.nazovoddelenia}}
+      </mat-card-content>
+
+      <mat-card-content *ngIf="doc.oddelenie && doc.oddelenie.idnemocniceNavigation">
+        <b><i>Nemocnica: </i></b> &nbsp; {{doc.oddelenie.idnemocniceNavigation.nazov}}
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
+
+<div *ngFor="let doc of doktor" class="specCards">
+  <div *ngFor="let spec of doc.specializaciaDoktors">
+
+    <mat-card *ngIf="spec.kodspecializacieNavigation" class="specCard">
+      <mat-card-title>
+        <mat-card-header>Špecializácia</mat-card-header>
+      </mat-card-title>
+
+      <mat-card-content>
+        <b><i>Názov: </i></b> &nbsp; {{spec.kodspecializacieNavigation.nazovspecializacie}}
+      </mat-card-content>
+
+      <mat-card-content>
+        <b><i>Dátum nadobudnutia:</i></b> &nbsp; {{spec.datumnadobudnutia | date: "dd.MM.yyyy"}}
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+
+</div>
+

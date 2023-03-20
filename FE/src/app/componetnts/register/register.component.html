@@ -1,0 +1,123 @@
+<mat-toolbar>
+  <img src="assets/imgs/frilogo.png" alt="FRI logo">
+  <button mat-raised-button routerLink="/">Návrat</button>
+</mat-toolbar>
+
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Vitajte,
+      <br>
+      pre registráciu vyplňte nasledujúce údaje
+    </mat-card-title>
+  </mat-card-header>
+
+
+  <mat-card-content>
+    <br>
+    <br>
+    <form class="example-form" [formGroup]="loginForm">
+      <div class="popis"> <b><i>Vaše rodné číslo: </i></b> </div>
+      <div class="inputokno">
+      <mat-form-field>
+        <input type="email" matInput placeholder="0101991234" formControlName="rodneCislo" [(ngModel)]="this.user.rodnecislo">
+        <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched
+                        && this.loginForm.get('rodneCislo')?.hasError('required')">
+          Zadaj rodné číslo!</mat-error>
+        <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched
+                        && this.loginForm.get('rodneCislo')?.hasError('pattern')">
+          Zadaj rodné čislo bez znakov!</mat-error>
+
+        <mat-error *ngIf="this.loginForm.get('rodneCislo')?.hasError('minlength') ||
+                          this.loginForm.get('rodneCislo')?.hasError('maxlength')">
+          Zadaj valídne rodné číslo!
+        </mat-error>
+      </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Vaše meno: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="password" matInput placeholder="Heslo" formControlName="password" [(ngModel)]="this.user.meno">
+          <mat-error
+            *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+            Zadaj heslo</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Vaše priezvisko: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="password" matInput placeholder="Heslo" formControlName="password" [(ngModel)]="this.user.priezvisko">
+          <mat-error
+            *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+            Zadaj heslo</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Vaša poistovna: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <mat-label>Vyber poisťovňu</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let poistovna of poistovne" [value]="poistovna.nazov" (click)="setPoistovnaId(poistovna.idpoistovne)">
+              {{this.poistovna.nazov}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Bydlisko: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <mat-label>Vyber mesto</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let mesto of this.mesta" [value]="mesto.nazov" (click)="setMestoId(mesto.idmesta)">
+              {{this.mesto.nazov}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Ulica bydliska: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="password" matInput placeholder="Ulica" formControlName="password" [(ngModel)]="this.user.ulica">
+          <mat-error
+            *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+            Zadaj heslo</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Vaše heslo: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="password" matInput placeholder="Heslo" formControlName="password" [(ngModel)]="this.user.heslo">
+          <mat-error
+            *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+            Zadaj heslo</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Váš email: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="password" matInput placeholder="Heslo" formControlName="password" [(ngModel)]="this.user.email">
+          <mat-error
+            *ngIf="this.loginForm.get('password')?.touched && this.loginForm.get('password')?.hasError('required')">
+            Zadaj heslo</mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -7,8 +7,10 @@ export class Pacient {
   priezvisko: string = "";
   ulica: string = "";
   idpoistovne: number = 0;
+  idmesta: number = 0;
   poistenyvpoistovniod?: Date;
   umrtie?: Date;
+  email: string = "";
   heslo: string = "";
   rola: string = "";
   idpoistovneNavigation?: Poistovna[];

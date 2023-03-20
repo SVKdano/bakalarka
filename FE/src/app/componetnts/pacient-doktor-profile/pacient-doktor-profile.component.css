@@ -1,0 +1,40 @@
+.card {
+  font-size: larger;
+
+  max-width: 80%;
+  min-width: 75%;
+
+  margin-top: 3%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+mat-card {
+  background-color: #e8e8e8;
+}
+
+mat-card-title {
+  font-size: xx-large;
+}
+
+mat-card-header{
+  justify-content: center;
+}
+
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+.specCards {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-evenly;
+
+  margin-top: 3%;
+}
+
+.specCard mat-card-title {
+  margin-bottom: 5%;
+}

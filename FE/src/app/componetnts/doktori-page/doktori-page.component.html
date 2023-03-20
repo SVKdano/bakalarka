@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 
 <div class="cards">
-  <mat-card *ngFor="let pacDoktor of doktori" >
+  <mat-card *ngFor="let pacDoktor of doktori" routerLink="/doktori/{{this.pacDoktor.rodnecislo}}/{{this.pacDoktor.osobnecislo}}">
     <img src="assets/imgs/Person-Placeholder.png" alt="Obrazok">
     <div *ngIf="pacDoktor.osobnecisloNavigation" class="centered">
       <b><i>{{pacDoktor.osobnecisloNavigation.meno}} </i></b>
