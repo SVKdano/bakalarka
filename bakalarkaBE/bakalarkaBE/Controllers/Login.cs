@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using bakalarkaBE.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,6 +40,21 @@ namespace bakalarkaBE.Controllers
             if (_dbContext.Pacients.Any(a => a.Rodnecislo == pacient.Rodnecislo))
             {
                 return BadRequest(new { Message = "Už ste registrovaný, pokračujte prosím na prihlásenie!" });
+            }
+
+            if (string.IsNullOrEmpty(pacient.Rodnecislo) || !Regex.IsMatch(pacient.Rodnecislo, "^\\d+$"))
+            {
+                return BadRequest(new { Message = "Zadajte validne rodné číslo!" });
+            }
+
+            if (string.IsNullOrEmpty(pacient.Meno) || !Regex.IsMatch(pacient.Meno, "[A-Za-zÀ-ȕ ]+$"))
+            {
+                return BadRequest(new { Message = "Zadaj valídne meno" });
+            }
+            
+            if (string.IsNullOrEmpty(pacient.Priezvisko) || !Regex.IsMatch(pacient.Priezvisko, "[A-Za-zÀ-ȕ ]+$"))
+            {
+                return BadRequest(new { Message = "Zadaj valídne priezvisko" });
             }
 
             var regPacient = new Pacient

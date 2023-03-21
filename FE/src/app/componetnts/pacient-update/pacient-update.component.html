@@ -1,0 +1,77 @@
+<app-panel></app-panel>
+<app-navbar></app-navbar>
+
+<mat-card *ngFor="let pac of pacient">
+  <mat-card-header>
+    <mat-card-title>
+      {{pacientUpdate.rodnecislo}} - {{pac.meno}} {{pac.priezvisko}}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form>
+
+      <div class="popis"><b><i>Vaše meno: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput [(ngModel)]="pacientUpdate.meno" [name]="pacientUpdate.meno">
+        </mat-form-field>
+      </div>
+
+      <br>
+
+      <div class="popis"><b><i>Vaše priezvisko: </i></b></div>
+      <div class="inputokno">
+      <mat-form-field>
+        <input type="text" matInput [(ngModel)]="pacientUpdate.priezvisko" [name]="pacientUpdate.priezvisko">
+      </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Vaše bydlisko: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field *ngIf="pac.idmestaNavigation">
+          <mat-label>{{pac.idmestaNavigation.nazov}}</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let mesto of this.mesta" [value]="mesto.nazov" (click)="setMesto(mesto.idmesta)">
+              {{this.mesto.nazov}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Ulica bydliska: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput [(ngModel)]="pacientUpdate.ulica" [name]="pacientUpdate.ulica">
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Vaše heslo: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput [(ngModel)]="pacientUpdate.heslo" [name]="pacientUpdate.heslo">
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Váš email: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput [(ngModel)]="pacientUpdate.email" [name]="pacientUpdate.email">
+        </mat-form-field>
+      </div>
+
+      <br>
+
+      <div></div>
+      <div class="inputokno">
+        <button mat-raised-button color="warn" (click)="updatePacient()">Aktualizuj</button>
+      </div>
+    </form>
+
+
+  </mat-card-content>
+</mat-card>

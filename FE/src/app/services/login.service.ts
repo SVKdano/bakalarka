@@ -5,6 +5,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environmenst";
 import {Poistovna} from "../models/Poistovna";
 import {Mesto} from "../models/Mesto";
+import {Pacient} from "../models/Pacient";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,10 @@ export class LoginService {
 
   public loginDoktor(user:User) : Observable<any> {
     return this.http.post(`${environment.apiUrl}/loginDoktor`, user, {responseType: "text"});
+  }
+
+  public registraciaPacient(pacient:Pacient) : Observable<any> {
+    return this.http.post(`${environment.apiUrl}/registraciaPacient`, pacient);
   }
 
   public poistovne() : Observable<Poistovna[]> {

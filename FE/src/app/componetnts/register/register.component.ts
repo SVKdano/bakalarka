@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 import {LoginService} from "../../services/login.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
@@ -18,9 +18,16 @@ export class RegisterComponent implements OnInit {
   poistovne:Poistovna[] = [];
   mesta:Mesto[] = [];
 
+  @Output() createUser = new EventEmitter<Pacient[]>();
+
   loginForm: FormGroup = new FormGroup({
-    rodneCislo: new FormControl(null, [Validators.required ,Validators.pattern("[0-9]+"),
+    rodneCislo: new FormControl(null, [Validators.required ,/*Validators.pattern("[0-9]+"),*/
       Validators.minLength(10), Validators.maxLength(10)]),
+    meno: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-zÀ-ȕ ]+")]),
+    priezvisko: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-zÀ-ȕ ]+")]),
+    poistovna: new FormControl(null, [Validators.required]),
+    bydlisko: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
   });
 
@@ -39,6 +46,21 @@ export class RegisterComponent implements OnInit {
         console.log(this.mesta);
       }
     )
+  }
+
+  register() {
+    this.httpLogin.registraciaPacient(this.user).subscribe(
+      {
+        next:((result:Pacient[]) =>
+        {
+          this.createUser.emit(result);
+          this.router.navigate(["/"]);
+        }),
+        error:(err => {
+          alert(err.error.message);
+        })
+      }
+    );
   }
 
   setPoistovnaId(id:number) {

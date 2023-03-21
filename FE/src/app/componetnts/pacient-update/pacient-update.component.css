@@ -1,15 +1,3 @@
-mat-toolbar {
-  background-color: #ec6602;
-}
-
-mat-toolbar img {
-  height: 90%;
-}
-
-mat-toolbar button {
-  margin-left: auto;
-}
-
 mat-card {
   margin-top: 2%;
   margin-right: auto;
@@ -21,8 +9,8 @@ mat-card {
 }
 
 mat-card-header {
-  justify-content: center;
-  text-align: center;
+   justify-content: center;
+   text-align: center;
 }
 
 
@@ -39,9 +27,4 @@ form {
 .inputokno {
   justify-self: center;
   align-self: center;
-}
-
-.registerButton {
-  margin-right: auto;
-  margin-left: auto;
 }

@@ -1,5 +1,9 @@
 <mat-toolbar>
-  <button mat-raised-button routerLink="/pacient/{{this.rodnecislo}}">Údaje</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu">Údaje</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/pacient/{{this.rodnecislo}}">Zobraziť</button>
+    <button mat-menu-item routerLink="/udaje/{{this.rodnecislo}}">Zmeniť</button>
+  </mat-menu>
   <button mat-raised-button routerLink="/ochorenia/{{this.rodnecislo}}">Ochorenia</button>
   <button mat-raised-button routerLink="/lieky/{{this.rodnecislo}}">Lieky</button>
   <button mat-raised-button routerLink="/doktori/{{this.rodnecislo}}">Doktori</button>

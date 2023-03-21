@@ -14,6 +14,7 @@ import {DoktorProfileComponent} from "./componetnts/doktor-profile/doktor-profil
 import {DoktorPacientiComponent} from "./componetnts/doktor-pacienti/doktor-pacienti.component";
 import {PacientDoktorProfileComponent} from "./componetnts/pacient-doktor-profile/pacient-doktor-profile.component";
 import {RegisterComponent} from "./componetnts/register/register.component";
+import {PacientUpdateComponent} from "./componetnts/pacient-update/pacient-update.component";
 
 
 
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: "zaznamy/:rodnecislo", component: ZaznamyPageComponent, canActivate: [PacientGuardGuard]},
   { path: "zaznamy/:rodnecislo/:idzaznam", component:ZaznamDetailComponent, canActivate: [PacientGuardGuard] },
   { path: "odporucacieLisky/:rodnecislo", component: ListkyPageComponent, canActivate: [PacientGuardGuard]},
+  { path: "udaje/:rodnecislo", component: PacientUpdateComponent, canActivate: [PacientGuardGuard]},
   { path: "doktor", component: DoktorWelcomeComponent},
   { path: "doktor/:osobnecislo", component:DoktorProfileComponent},
   { path: "doktor/:osobnecislo/pacienti", component:DoktorPacientiComponent},

@@ -32,6 +32,7 @@ namespace bakalarkaBE.Controllers
                     Idmesta = a.Idmesta,
                     Heslo = a.Heslo,
                     Rola = a.Rola,
+                    Email = a.Email,
                     IdpoistovneNavigation = b,
                     IdmestaNavigation = a.IdmestaNavigation
                 }).Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
@@ -226,6 +227,28 @@ namespace bakalarkaBE.Controllers
                 .Include(d => d.RodnecisloNavigation)
                 .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
             return Ok(lisok);
+        }
+
+        [HttpPut("zmenaUdajov")]
+        public async Task<ActionResult<List<Pacient>>> zmenaUdajov(Pacient pacient)
+        {
+            var dbPacient = await _dbContext.Pacients.FindAsync(pacient.Rodnecislo);
+
+            if (dbPacient == null)
+            {
+                return BadRequest(new { Message = "Pacient neexistuje!" });
+            }
+
+            dbPacient.Meno = pacient.Meno;
+            dbPacient.Priezvisko = pacient.Priezvisko;
+            dbPacient.Ulica = pacient.Ulica;
+            dbPacient.Idmesta = pacient.Idmesta;
+            dbPacient.Heslo = pacient.Heslo;
+            dbPacient.Email = pacient.Email;
+
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(await _dbContext.Pacients.ToListAsync());
         }
     }
 }

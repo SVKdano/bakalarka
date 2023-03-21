@@ -32,6 +32,8 @@ import { DoktorPacientiComponent } from './componetnts/doktor-pacienti/doktor-pa
 import { PacientDoktorProfileComponent } from './componetnts/pacient-doktor-profile/pacient-doktor-profile.component';
 import { RegisterComponent } from './componetnts/register/register.component';
 import {MatSelectModule} from "@angular/material/select";
+import {MatMenuModule} from "@angular/material/menu";
+import { PacientUpdateComponent } from './componetnts/pacient-update/pacient-update.component';
 
 @NgModule({
   declarations: [
@@ -55,22 +57,24 @@ import {MatSelectModule} from "@angular/material/select";
     DoktorPanelComponent,
     DoktorPacientiComponent,
     PacientDoktorProfileComponent,
-    RegisterComponent
+    RegisterComponent,
+    PacientUpdateComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatSelectModule,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatToolbarModule,
+        MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatSelectModule,
+        FormsModule,
+        MatMenuModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
