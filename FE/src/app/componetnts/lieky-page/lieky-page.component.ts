@@ -11,6 +11,14 @@ import {ActivatedRoute} from "@angular/router";
 export class LiekyPageComponent implements OnInit {
 
   lieky:PacientLieky[] = [];
+  filteredLiekyEnd:PacientLieky[] = [];
+  filteredLiekyNoEnd:PacientLieky[] = [];
+
+  startDateEnd: Date = new Date();
+  endDateEnd: Date = new Date();
+
+  startDateNoEnd: Date = new Date();
+  endDateNoEnd:Date = new Date();
 
   constructor(private pacientService:PacientService, private route:ActivatedRoute ) {}
 
@@ -20,8 +28,44 @@ export class LiekyPageComponent implements OnInit {
       (result:PacientLieky[]) => {
         (this.lieky = result);
         console.log(this.lieky);
+        this.filteredLiekyEnd = result;
+        this.filteredLiekyNoEnd = result;
       }
     );
+  }
+
+  filterUkoncene() {
+    this.filteredLiekyEnd = [];
+    this.lieky.forEach(a => {
+      if (new Date(a.datumod) >= this.startDateEnd  && a.datumdo && new Date(a.datumdo) <= this.endDateEnd)
+      {
+        this.filteredLiekyEnd.push(a);
+      }
+    });
+
+    console.log(this.filteredLiekyEnd);
+
+  }
+
+  filterNeukoncene() {
+    this.filteredLiekyNoEnd = [];
+    this.lieky.forEach(a => {
+      if (new Date(a.datumod) >= this.startDateNoEnd  && !a.datumdo)
+      {
+        this.filteredLiekyNoEnd.push(a);
+      }
+    });
+
+    console.log(this.filteredLiekyNoEnd);
+
+  }
+
+  resetUkoncene() {
+    this.filteredLiekyEnd = this.lieky;
+  }
+
+  resetNeukoncene() {
+    this.filteredLiekyNoEnd = this.lieky;
   }
 
 }

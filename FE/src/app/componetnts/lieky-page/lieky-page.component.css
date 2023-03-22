@@ -28,3 +28,26 @@ mat-card-header {
 mat-card {
   background-color: #e8e8e8;
 }
+
+.filter {
+  margin-bottom: 2%;
+
+}
+
+.filter mat-card-content {
+  background-color: #fde3d2;
+}
+
+.filter mat-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.filterButtons {
+  margin-left: auto;
+}
+
+.filterButtons button {
+  margin-left: 2px;
+}
