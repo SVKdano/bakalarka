@@ -20,7 +20,6 @@ export class DoktoriPageComponent implements OnInit {
       (result:PacientDoktori[]) =>
       {
         this.doktori = result;
-        console.log(this.doktori);
       }
     )
   }

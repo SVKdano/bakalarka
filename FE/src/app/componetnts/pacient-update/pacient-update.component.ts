@@ -40,7 +40,6 @@ export class PacientUpdateComponent implements OnInit {
       (result:Mesto[]) =>
       {
         this.mesta = result;
-        console.log(this.mesta);
       }
     )
   }

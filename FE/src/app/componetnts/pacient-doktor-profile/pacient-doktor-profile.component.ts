@@ -18,7 +18,6 @@ export class PacientDoktorProfileComponent {
     this.doktorService.getDoktori(id!).subscribe(
       (result:Doktor[]) => {
         this.doktor = result;
-        console.log(this.doktor);
       }
     )
   }

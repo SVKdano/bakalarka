@@ -27,7 +27,6 @@ export class LiekyPageComponent implements OnInit {
     this.pacientService.getPacientLieky(id!).subscribe(
       (result:PacientLieky[]) => {
         (this.lieky = result);
-        console.log(this.lieky);
         this.filteredLiekyEnd = result;
         this.filteredLiekyNoEnd = result;
       }
