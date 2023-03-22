@@ -6,15 +6,15 @@ import { WelcomePageComponent } from './componetnts/welcome-page/welcome-page.co
 import { AppRoutingModule } from './app-routing.module';
 import { BoardPageComponent } from './componetnts/board-page/board-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from "@angular/material/button";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatCardModule} from "@angular/material/card";
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatCardModule } from "@angular/material/card";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PacientProfileComponent } from './componetnts/pacient-profil/pacient-profile.component';
 import { PanelComponent } from './componetnts/panel/panel.component';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
 import { NavbarComponent } from './componetnts/navbar/navbar.component';
 import { AlergieComponent } from './componetnts/alergie/alergie.component';
 import { AlergiePageComponent } from './componetnts/alergie-page/alergie-page.component';
@@ -31,9 +31,11 @@ import { DoktorPanelComponent } from './componetnts/doktor-panel/doktor-panel.co
 import { DoktorPacientiComponent } from './componetnts/doktor-pacienti/doktor-pacienti.component';
 import { PacientDoktorProfileComponent } from './componetnts/pacient-doktor-profile/pacient-doktor-profile.component';
 import { RegisterComponent } from './componetnts/register/register.component';
-import {MatSelectModule} from "@angular/material/select";
-import {MatMenuModule} from "@angular/material/menu";
+import { MatSelectModule } from "@angular/material/select";
+import { MatMenuModule } from "@angular/material/menu";
 import { PacientUpdateComponent } from './componetnts/pacient-update/pacient-update.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { PacientUpdateComponent } from './componetnts/pacient-update/pacient-upd
         HttpClientModule,
         MatSelectModule,
         FormsModule,
-        MatMenuModule
+        MatMenuModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
   providers: [],
   bootstrap: [AppComponent]

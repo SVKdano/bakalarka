@@ -1,8 +1,31 @@
 <app-panel></app-panel>
 <app-navbar></app-navbar>
 
+
 <div class="cards">
   <div class="ukoncene">
+
+    <div class="filter">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field appearance="fill">
+            <mat-label>Zadaj časový interval</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" [(ngModel)]="this.startDate">
+              <input matEndDate placeholder="End date" [(ngModel)]="this.endDate">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+
+          <div class="filterButtons">
+            <button mat-raised-button (click)="filterUkoncene()">Filtruj</button>
+            <button mat-raised-button (click)="resetUkoncene()">Reset</button>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -10,7 +33,7 @@
         </mat-card-title>
       </mat-card-header>
 
-      <mat-card-content *ngFor="let pacOchorenie of ochorenia">
+      <mat-card-content *ngFor="let pacOchorenie of filteredOchorenia">
         <div *ngIf="pacOchorenie.datumdo">
           <mat-card class="innerCard">
             <mat-card-content>
@@ -35,13 +58,36 @@
   </div>
 
   <div class="neukoncene">
+
+    <div class="filter">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field appearance="fill">
+            <mat-label>Zadaj časový interval</mat-label>
+            <mat-date-range-input [rangePicker]="picker2">
+              <input matStartDate placeholder="Start date" [(ngModel)]="this.startDateTwo">
+              <input matEndDate placeholder="End date" [(ngModel)]="this.endDateTwo">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker2></mat-date-range-picker>
+          </mat-form-field>
+
+          <div class="filterButtons">
+            <button mat-raised-button (click)="filterNeukoncene()">Filtruj</button>
+            <button mat-raised-button (click)="resetNeukoncene()">Reset</button>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
     <mat-card>
       <mat-card-header>
         <mat-card-title>
           Pretrvávajúce
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content *ngFor="let pacOchorenie of ochorenia">
+      <mat-card-content *ngFor="let pacOchorenie of filteredOchoreniaTwo">
         <div *ngIf="!pacOchorenie.datumdo">
           <mat-card class="innerCard">
             <mat-card-content>
