@@ -1,8 +1,30 @@
 <app-panel></app-panel>
 <app-navbar></app-navbar>
 
+<div class="filter">
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Zadaj časový interval</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" [(ngModel)]="this.start">
+          <input matEndDate placeholder="End date" [(ngModel)]="this.end">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <div class="filterButtons">
+        <button mat-raised-button (click)="filter()">Filtruj</button>
+        <button mat-raised-button (click)="reset()">Reset</button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
 <div class="card">
-  <mat-card *ngFor="let pacListok of listky">
+  <mat-card *ngFor="let pacListok of filteredListky">
 
     <mat-card-header>
       <mat-card-title *ngIf="pacListok.rodnecisloNavigation">

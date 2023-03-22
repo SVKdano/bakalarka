@@ -9,7 +9,7 @@ public partial class Pacientovelieky
 
     public DateOnly Datumod { get; set; }
 
-    public string? Datumdo { get; set; }
+    public DateOnly? Datumdo { get; set; }
 
     public string Davkovanie { get; set; } = null!;
 

@@ -10,6 +10,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class ListkyPageComponent implements OnInit {
   listky:OdporucaciListok[] = [];
+  filteredListky: OdporucaciListok[] = [];
+
+  start:Date = new Date();
+  end:Date = new Date();
 
   constructor(private pacientService:PacientService, private route:ActivatedRoute) {}
 
@@ -18,8 +22,25 @@ export class ListkyPageComponent implements OnInit {
     this.pacientService.getPacientListky(id!).subscribe(
       (result:OdporucaciListok[]) => {
         this.listky = result;
-        console.log(this.listky);
+        this.filteredListky = result;
       }
     )
+  }
+
+  filter() {
+    this.filteredListky = [];
+
+    this.listky.forEach(a => {
+      if ((new Date(a.datumodporucenia) >= this.start) && (new Date(a.datumodporucenia) <= this.end))
+      {
+        this.filteredListky.push(a);
+      }
+    });
+
+    console.log(this.filteredListky);
+  }
+
+  reset() {
+    this.filteredListky = this.listky;
   }
 }
