@@ -5,3 +5,8 @@ mat-toolbar {
 button {
   margin-left: 2%;
 }
+
+.rightsided {
+  margin-left: auto;
+  margin-right: 0;
+}

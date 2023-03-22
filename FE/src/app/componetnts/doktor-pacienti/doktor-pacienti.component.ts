@@ -11,6 +11,10 @@ import {DoktorPacient} from "../../models/DoktorPacient";
 export class DoktorPacientiComponent implements OnInit {
 
   pacienti:DoktorPacient[] = [];
+  pacientiFiltered:DoktorPacient[] = [];
+
+  menoFilter: string = "";
+  priezviskoFilter: string = "";
 
   constructor(private doktorService:DoktorService, private route:ActivatedRoute) {}
 
@@ -19,8 +23,26 @@ export class DoktorPacientiComponent implements OnInit {
     this.doktorService.getPacientiDoktora(id!).subscribe(
       (result:DoktorPacient[]) => {
         this.pacienti = result;
-        console.log(this.pacienti);
+        this.pacientiFiltered = result;
       }
     )
+  }
+
+  filter() {
+    this.pacientiFiltered = [];
+
+    this.pacienti.forEach(a => {
+      if (a.rodnecisloNavigation && a.rodnecisloNavigation.meno.toLowerCase().includes(this.menoFilter.toLowerCase()))
+      {
+        if (a.rodnecisloNavigation && a.rodnecisloNavigation.priezvisko.toLowerCase().includes(this.priezviskoFilter.toLowerCase()))
+        {
+          this.pacientiFiltered.push(a);
+        }
+      }
+    });
+  }
+
+  reset() {
+    this.pacientiFiltered = this.pacienti;
   }
 }

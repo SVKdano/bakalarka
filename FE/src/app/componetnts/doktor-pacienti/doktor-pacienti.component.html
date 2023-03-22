@@ -8,20 +8,23 @@
     <div class="inputs">
     <mat-form-field>
       <mat-label>Meno</mat-label>
-      <input matInput>
+      <input matInput type="text" [(ngModel)]="menoFilter" >
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Priezvisko</mat-label>
-      <input matInput>
+      <input matInput type="text" [(ngModel)]="priezviskoFilter">
     </mat-form-field>
     </div>
 
-    <button mat-raised-button color="warn">Pridať pacienta</button>
+    <div class="filterButtons">
+      <button mat-raised-button (click)="filter()">Filtruj</button>
+      <button mat-raised-button (click)="filter()">Reset</button>
+    </div>
   </mat-toolbar>
 </div>
 
-<div class="cards" *ngFor="let pac of pacienti">
+<div class="cards" *ngFor="let pac of pacientiFiltered">
   <mat-card>
     <mat-card-content><b><i>Pacient:</i></b></mat-card-content>
 
