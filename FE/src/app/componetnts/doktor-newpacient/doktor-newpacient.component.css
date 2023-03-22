@@ -1,0 +1,23 @@
+.cards {
+  min-width: 85%;
+  max-width: 90%;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2%;
+}
+
+mat-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.leftData {
+  font-size: large;
+}
+
+button {
+  margin-left: auto;
+  margin-right: 1%;
+  align-self: center;
+}

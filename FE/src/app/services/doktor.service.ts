@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../environments/environmenst";
 import {Doktor} from "../models/Doktor";
 import {DoktorPacient} from "../models/DoktorPacient";
+import {Pacient} from "../models/Pacient";
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,9 @@ export class DoktorService {
 
   public getPacientiDoktora(osobneCislo: string) : Observable<DoktorPacient[]> {
     return this.http.get<DoktorPacient[]>(`${environment.apiUrl}/doktorPacienti/${osobneCislo}`);
+  }
+
+  public getAllPacients() : Observable<Pacient[]> {
+    return this.http.get<Pacient[]>(`${environment.apiUrl}/allPacients`);
   }
 }

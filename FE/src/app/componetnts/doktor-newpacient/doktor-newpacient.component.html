@@ -1,0 +1,17 @@
+<app-panel></app-panel>
+<app-doktor-panel></app-doktor-panel>
+
+<div class="cards" *ngFor="let pac of filteredPacients">
+  <mat-card>
+    <mat-card-content><b><i>Pacient:</i></b></mat-card-content>
+
+    <div class="leftData">
+      <mat-card-content><b><i>{{pac.meno}}
+        {{pac.priezvisko}}
+        -
+        {{pac.rodnecislo}}</i></b></mat-card-content>
+    </div>
+
+    <button mat-raised-button>Pridať pacienta</button>
+  </mat-card>
+</div>

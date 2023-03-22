@@ -36,6 +36,7 @@ import { MatMenuModule } from "@angular/material/menu";
 import { PacientUpdateComponent } from './componetnts/pacient-update/pacient-update.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule} from "@angular/material/core";
+import { DoktorNewpacientComponent } from './componetnts/doktor-newpacient/doktor-newpacient.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { MatNativeDateModule} from "@angular/material/core";
     DoktorPacientiComponent,
     PacientDoktorProfileComponent,
     RegisterComponent,
-    PacientUpdateComponent
+    PacientUpdateComponent,
+    DoktorNewpacientComponent
   ],
     imports: [
         BrowserModule,
