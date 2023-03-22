@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {DoktorPacient} from "../../models/DoktorPacient";
 import {DoktorService} from "../../services/doktor.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {Pacient} from "../../models/Pacient";
+import {DoktorPacientUpdate} from "../../UpdateModels/DoktorPacientUpdate";
 
 @Component({
   selector: 'app-doktor-newpacient',
@@ -15,10 +16,17 @@ export class DoktorNewpacientComponent implements OnInit {
   docPacients: Pacient[] = [];
   filteredPacients: Pacient[] = [];
 
-  constructor(private doktorService:DoktorService, private route:ActivatedRoute) {}
+  @Output() update = new EventEmitter<DoktorPacient[]>();
+
+  pacToBeAdded:DoktorPacientUpdate = { rodnecislo:"", osobnecislo:"",datumod:"2000-01-01" };
+
+  constructor(private doktorService:DoktorService, private route:ActivatedRoute,private router:Router) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('osobnecislo');
+
+    this.pacToBeAdded.osobnecislo = id!;
+
     this.doktorService.getAllPacients().subscribe(
       (result:Pacient[]) =>
       {
@@ -40,5 +48,23 @@ export class DoktorNewpacientComponent implements OnInit {
           }
         )
       });
+  }
+
+  addPacient(rodneCislo:string) {
+    this.pacToBeAdded.rodnecislo = rodneCislo;
+
+    const id = this.route.snapshot.paramMap.get('osobnecislo');
+
+    this.doktorService.addPacient(this.pacToBeAdded).subscribe(
+      (result:DoktorPacient[]) =>
+      {
+        this.update.emit(result);
+        this.router.navigate(["/doktor",id,"pacienti"])
+      }
+    );
+  }
+
+  setRC(rodneCislo:string) {
+    this.pacToBeAdded.rodnecislo = rodneCislo;
   }
 }

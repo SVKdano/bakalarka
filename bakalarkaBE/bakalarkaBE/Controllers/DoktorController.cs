@@ -58,6 +58,21 @@ namespace bakalarkaBE.Controllers
 
             return Ok(docPacienti);
         }
-        
+
+        [HttpGet("/allPacients")]
+        public async Task<ActionResult<List<Pacient>>> GetAllPacients()
+        {
+            return Ok(await _dbContext.Pacients.ToListAsync());
+        }
+
+        [HttpPost("/pridajPacienta")]
+        public async Task<ActionResult<List<PacientDoktor>>> PridajPacienta(PacientDoktor pacient)
+        {
+            pacient.Datumod = DateOnly.FromDateTime(DateTime.Now);
+            _dbContext.Add(pacient);
+            await _dbContext.SaveChangesAsync();
+            return Ok();
+        }
+
     }
 }

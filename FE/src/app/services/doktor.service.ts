@@ -5,6 +5,7 @@ import {environment} from "../../environments/environmenst";
 import {Doktor} from "../models/Doktor";
 import {DoktorPacient} from "../models/DoktorPacient";
 import {Pacient} from "../models/Pacient";
+import {DoktorPacientUpdate} from "../UpdateModels/DoktorPacientUpdate";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,9 @@ export class DoktorService {
 
   public getAllPacients() : Observable<Pacient[]> {
     return this.http.get<Pacient[]>(`${environment.apiUrl}/allPacients`);
+  }
+
+  public addPacient(pacient: DoktorPacientUpdate) : Observable<DoktorPacient[]> {
+    return this.http.post<DoktorPacient[]>(`${environment.apiUrl}/pridajPacienta`, pacient);
   }
 }
