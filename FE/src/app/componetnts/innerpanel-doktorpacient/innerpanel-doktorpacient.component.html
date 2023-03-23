@@ -1,6 +1,14 @@
 <mat-toolbar>
   <button mat-raised-button routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}" class="leftsided">Údaje</button>
-  <button mat-raised-button routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergie" class="leftsided" >Alergie</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu">Alergie</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item
+            routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergie" class="leftsided" >Zobraziť
+    </button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zmeniť</button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zdielať</button>
+  </mat-menu>
+
 
   <button mat-raised-button color="warn" class="rightsided" routerLink="/doktor/{{this.osobneCislo}}/pacienti">Pacienti</button>
 </mat-toolbar>

@@ -1,0 +1,46 @@
+<app-panel></app-panel>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="data">
+  <mat-card>
+    <mat-card-content class="inputPole">
+      <b>Zadaj typ alergie:</b>
+      <form>
+        <mat-form-field>
+          <mat-label>Typ alergie</mat-label>
+          <mat-select formControlName="poistovna">
+            <mat-option *ngFor="let aleria of allAlergie" [value]="aleria.nazov" >
+              {{this.aleria.nazov}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <b>Zadaj doplňujúce informácie:</b>
+        <mat-form-field>
+          <mat-label>Doplnok</mat-label>
+          <input matInput type="text">
+        </mat-form-field>
+      </form>
+      <div class="formButtons">
+        <button  mat-raised-button color="basic" >Pridaj</button>
+        <button  mat-raised-button color="primary" >Uprav</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+<table>
+    <tr>
+      <th>Typ alergie</th>
+      <th>Doplňujúce informácie</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let alergia of alergie">
+      <td *ngIf="alergia.kodalergieNavigation">{{alergia.kodalergieNavigation.nazov}}</td>
+      <td>{{alergia.informacie}}</td>
+      <td><button mat-raised-button color="warn">Vymaž</button></td>
+      <td><button mat-raised-button color="primary">Uprav</button></td>
+    </tr>
+  </table>
+</div>
