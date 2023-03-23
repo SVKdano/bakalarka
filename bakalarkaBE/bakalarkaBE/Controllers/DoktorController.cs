@@ -65,6 +65,12 @@ namespace bakalarkaBE.Controllers
             return Ok(await _dbContext.Pacients.ToListAsync());
         }
 
+        [HttpGet("/allAlergies")]
+        public async Task<ActionResult<List<Alergie>>> GetAllAlergies()
+        {
+            return Ok(await _dbContext.Alergies.ToListAsync());
+        }
+
         [HttpPost("/pridajPacienta")]
         public async Task<ActionResult<List<PacientDoktor>>> PridajPacienta(PacientDoktor pacient)
         {

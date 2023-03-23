@@ -1,7 +1,30 @@
 <app-panel></app-panel>
 <app-doktor-panel></app-doktor-panel>
 
-<div class="cards" *ngFor="let pac of filteredPacients">
+<div class="panel">
+  <mat-toolbar>
+
+
+    <div class="inputs">
+      <mat-form-field>
+        <mat-label>Meno</mat-label>
+        <input matInput type="text" [(ngModel)]="menoFilter" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Priezvisko</mat-label>
+        <input matInput type="text" [(ngModel)]="priezviskoFilter">
+      </mat-form-field>
+    </div>
+
+    <div class="filterButtons">
+      <button mat-raised-button (click)="filter()">Filtruj</button>
+      <button mat-raised-button (click)="reset()">Reset</button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<div class="cards" *ngFor="let pac of pacientiFiltered">
   <mat-card>
     <mat-card-content><b><i>Pacient:</i></b></mat-card-content>
 

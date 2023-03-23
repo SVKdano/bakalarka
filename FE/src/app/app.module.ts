@@ -37,6 +37,9 @@ import { PacientUpdateComponent } from './componetnts/pacient-update/pacient-upd
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule} from "@angular/material/core";
 import { DoktorNewpacientComponent } from './componetnts/doktor-newpacient/doktor-newpacient.component';
+import { DoktorPacientAlergieComponent } from './componetnts/doktor-pacient-alergie/doktor-pacient-alergie.component';
+import { InnerpanelDoktorpacientComponent } from './componetnts/innerpanel-doktorpacient/innerpanel-doktorpacient.component';
+import { DoktorPacientProfileComponent } from './componetnts/doktor-pacient-profile/doktor-pacient-profile.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,10 @@ import { DoktorNewpacientComponent } from './componetnts/doktor-newpacient/dokto
     PacientDoktorProfileComponent,
     RegisterComponent,
     PacientUpdateComponent,
-    DoktorNewpacientComponent
+    DoktorNewpacientComponent,
+    DoktorPacientAlergieComponent,
+    InnerpanelDoktorpacientComponent,
+    DoktorPacientProfileComponent
   ],
     imports: [
         BrowserModule,

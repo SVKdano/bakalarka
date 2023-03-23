@@ -25,7 +25,7 @@
 </div>
 
 <div class="cards" *ngFor="let pac of pacientiFiltered">
-  <mat-card>
+  <mat-card routerLink="/doktor/{{pac.osobnecislo}}/{{pac.rodnecislo}}">
     <mat-card-content><b><i>Pacient:</i></b></mat-card-content>
 
     <div class="leftData" *ngIf="pac.rodnecisloNavigation">

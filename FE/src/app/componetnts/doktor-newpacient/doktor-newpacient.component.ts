@@ -16,6 +16,11 @@ export class DoktorNewpacientComponent implements OnInit {
   docPacients: Pacient[] = [];
   filteredPacients: Pacient[] = [];
 
+  menoFilter: string = "";
+  priezviskoFilter: string = "";
+
+  pacientiFiltered:Pacient[] = [];
+
   @Output() update = new EventEmitter<DoktorPacient[]>();
 
   pacToBeAdded:DoktorPacientUpdate = { rodnecislo:"", osobnecislo:"",datumod:"2000-01-01" };
@@ -44,7 +49,7 @@ export class DoktorNewpacientComponent implements OnInit {
             });
             this.filteredPacients = this.possiblePacients
               .filter(item => !this.docPacients.some(removed => removed.rodnecislo === item.rodnecislo));
-            console.log(this.filteredPacients);
+            this.pacientiFiltered = this.filteredPacients;
           }
         )
       });
@@ -66,5 +71,23 @@ export class DoktorNewpacientComponent implements OnInit {
 
   setRC(rodneCislo:string) {
     this.pacToBeAdded.rodnecislo = rodneCislo;
+  }
+
+  filter() {
+    this.pacientiFiltered = [];
+
+    this.filteredPacients.forEach(a => {
+      if (a.meno.toLowerCase().includes(this.menoFilter.toLowerCase()))
+      {
+        if (a.priezvisko.toLowerCase().includes(this.priezviskoFilter.toLowerCase()))
+        {
+          this.pacientiFiltered.push(a);
+        }
+      }
+    });
+  }
+
+  reset() {
+    this.pacientiFiltered = this.filteredPacients;
   }
 }
