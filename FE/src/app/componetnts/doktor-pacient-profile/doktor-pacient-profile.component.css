@@ -1,1 +1,13 @@
+.profil {
+  display: flex;
+  flex-direction: column;
+}
 
+button {
+  min-width: 40%;
+  max-width: 45%;
+
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -20,9 +20,13 @@ export class LiekyPageComponent implements OnInit {
   startDateNoEnd: Date = new Date();
   endDateNoEnd:Date = new Date();
 
+  rodneCislo: string = "";
+  datum: string = "";
+
   constructor(private pacientService:PacientService, private route:ActivatedRoute ) {}
 
   ngOnInit() {
+    this.rodneCislo = this.route.snapshot.paramMap.get('rodnecislo')!;
     const id = this.route.snapshot.paramMap.get('rodnecislo');
     this.pacientService.getPacientLieky(id!).subscribe(
       (result:PacientLieky[]) => {
@@ -31,6 +35,18 @@ export class LiekyPageComponent implements OnInit {
         this.filteredLiekyNoEnd = result;
       }
     );
+
+
+    if (this.rodneCislo.length == 10 && Number(this.rodneCislo.substring(0,2)) >= 54 ) {
+      this.datum = "19" + this.rodneCislo.substring(0,2) + "-" + Number(this.rodneCislo.substring(2,4)) % 50 + "-" + this.rodneCislo.substring(4,6);
+    } else if (this.rodneCislo.length == 9) {
+      this.datum = "19" + this.rodneCislo.substring(0,2) + "-" + Number(this.rodneCislo.substring(2,4)) % 50 + "-" + this.rodneCislo.substring(4,6);
+    } else {
+      this.datum = "20" + this.rodneCislo.substring(0,2) + "-" + Number(this.rodneCislo.substring(2,4)) % 50 + "-" + this.rodneCislo.substring(4,6);
+    }
+
+    this.startDateEnd = new Date(this.datum);
+    this.startDateNoEnd = new Date(this.datum);
   }
 
   filterUkoncene() {
@@ -60,10 +76,18 @@ export class LiekyPageComponent implements OnInit {
   }
 
   resetUkoncene() {
+
+    this.startDateEnd = new Date(this.datum);
+    this.endDateEnd = new Date();
+
     this.filteredLiekyEnd = this.lieky;
   }
 
   resetNeukoncene() {
+
+    this.startDateNoEnd = new Date(this.datum);
+    this.endDateNoEnd = new Date();
+
     this.filteredLiekyNoEnd = this.lieky;
   }
 

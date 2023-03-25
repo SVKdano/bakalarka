@@ -20,11 +20,13 @@ export class OchoreniaPageComponent implements OnInit {
   startDateTwo: Date = new Date();
   endDateTwo: Date = new Date();
 
+  rodneCislo:string = "";
+  datum:string = "";
+
   constructor(private pacientService:PacientService, private route: ActivatedRoute) {}
 
-
-
   ngOnInit() {
+    this.rodneCislo = this.route.snapshot.paramMap.get('rodnecislo')!;
     const id = this.route.snapshot.paramMap.get('rodnecislo');
     this.pacientService.getPacientOchorenia(id!).subscribe(
       (result:PacientOchorenie[]) => {
@@ -33,6 +35,18 @@ export class OchoreniaPageComponent implements OnInit {
         this.filteredOchoreniaTwo = result;
       }
     );
+
+    if (this.rodneCislo.length == 10 && Number(this.rodneCislo.substring(0,2)) >= 54 ) {
+      this.datum = "19" + this.rodneCislo.substring(0,2) + "-" + Number(this.rodneCislo.substring(2,4)) % 50 + "-" + this.rodneCislo.substring(4,6);
+    } else if (this.rodneCislo.length == 9) {
+      this.datum = "19" + this.rodneCislo.substring(0,2) + "-" + Number(this.rodneCislo.substring(2,4)) % 50 + "-" + this.rodneCislo.substring(4,6);
+    } else {
+      this.datum = "20" + this.rodneCislo.substring(0,2) + "-" + Number(this.rodneCislo.substring(2,4)) % 50 + "-" + this.rodneCislo.substring(4,6);
+    }
+
+
+    this.startDate = new Date(this.datum);
+    this.startDateTwo = new Date(this.datum);
   }
 
   filterUkoncene() {
@@ -62,10 +76,18 @@ export class OchoreniaPageComponent implements OnInit {
   }
 
   resetUkoncene() {
+
+    this.startDate = new Date(this.datum);
+    this.endDate = new Date();
+
     this.filteredOchorenia = this.ochorenia;
   }
 
   resetNeukoncene() {
+
+    this.startDateTwo = new Date(this.datum);
+    this.endDateTwo = new Date();
+
     this.filteredOchoreniaTwo = this.ochorenia;
   }
 
