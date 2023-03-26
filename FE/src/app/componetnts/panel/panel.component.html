@@ -1,4 +1,10 @@
 <mat-toolbar>
   <img src="assets/imgs/frilogo.png" alt="FRI logo">
-  <button mat-raised-button (click)="logout()">Odhlásenie</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu">{{this.menoPriezvisko}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/pacient/{{this.rodneCislo}}">Zobraziť údaje</button>
+    <button mat-menu-item routerLink="/udaje/{{this.rodneCislo}}">Zmeniť údaje</button>
+    <button mat-menu-item routerLink="/heslo/{{this.rodneCislo}}">Zmeniť heslo</button>
+    <button mat-menu-item (click)="logout()">Odhlásenie</button>
+  </mat-menu>
 </mat-toolbar>

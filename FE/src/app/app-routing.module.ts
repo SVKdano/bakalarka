@@ -21,12 +21,15 @@ import {DoktorPacientProfileComponent} from "./componetnts/doktor-pacient-profil
 import {
   DoktorPacientAlergieChangeComponent
 } from "./componetnts/doktor-pacient-alergie-change/doktor-pacient-alergie-change.component";
+import {PacientProfileComponent} from "./componetnts/pacient-profil/pacient-profile.component";
+import {PacientHesloComponent} from "./componetnts/pacient-heslo/pacient-heslo.component";
 
 
 
 const routes: Routes = [
   { path:"", component: WelcomePageComponent },
-  { path: "pacient/:rodnecislo", component: AlergiePageComponent, canActivate: [PacientGuardGuard]},
+  { path: "pacient/:rodnecislo", component: PacientProfileComponent, canActivate: [PacientGuardGuard]},
+  { path: "alergie/:rodnecislo", component: AlergiePageComponent, canActivate: [PacientGuardGuard]},
   { path: "ochorenia/:rodnecislo", component: OchoreniaPageComponent, canActivate: [PacientGuardGuard]},
   { path: "lieky/:rodnecislo", component: LiekyPageComponent, canActivate: [PacientGuardGuard]},
   { path: "doktori/:rodnecislo", component: DoktoriPageComponent, canActivate: [PacientGuardGuard]},
@@ -35,6 +38,7 @@ const routes: Routes = [
   { path: "zaznamy/:rodnecislo/:idzaznam", component:ZaznamDetailComponent, canActivate: [PacientGuardGuard] },
   { path: "odporucacieLisky/:rodnecislo", component: ListkyPageComponent, canActivate: [PacientGuardGuard]},
   { path: "udaje/:rodnecislo", component: PacientUpdateComponent, canActivate: [PacientGuardGuard]},
+  { path: "heslo/:rodnecislo", component: PacientHesloComponent, canActivate: [PacientGuardGuard]},
   { path: "doktor", component: DoktorWelcomeComponent},
   { path: "doktor/:osobnecislo", component:DoktorProfileComponent},
   { path: "doktor/:osobnecislo/pacienti", component:DoktorPacientiComponent},

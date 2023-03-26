@@ -41,6 +41,7 @@ import { DoktorPacientAlergieComponent } from './componetnts/doktor-pacient-aler
 import { InnerpanelDoktorpacientComponent } from './componetnts/innerpanel-doktorpacient/innerpanel-doktorpacient.component';
 import { DoktorPacientProfileComponent } from './componetnts/doktor-pacient-profile/doktor-pacient-profile.component';
 import { DoktorPacientAlergieChangeComponent } from './componetnts/doktor-pacient-alergie-change/doktor-pacient-alergie-change.component';
+import { PacientHesloComponent } from './componetnts/pacient-heslo/pacient-heslo.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { DoktorPacientAlergieChangeComponent } from './componetnts/doktor-pacien
     DoktorPacientAlergieComponent,
     InnerpanelDoktorpacientComponent,
     DoktorPacientProfileComponent,
-    DoktorPacientAlergieChangeComponent
+    DoktorPacientAlergieChangeComponent,
+    PacientHesloComponent
   ],
     imports: [
         BrowserModule,

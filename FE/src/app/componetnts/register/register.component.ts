@@ -22,10 +22,11 @@ export class RegisterComponent implements OnInit {
 
   loginForm: FormGroup = new FormGroup({
     rodneCislo: new FormControl(null, [Validators.required ,/*Validators.pattern("[0-9]+"),*/
-      Validators.minLength(10), Validators.maxLength(10)]),
+      Validators.minLength(9), Validators.maxLength(10)]),
     meno: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-zÀ-ȕ ]+")]),
     priezvisko: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-zÀ-ȕ ]+")]),
     poistovna: new FormControl(null, [Validators.required]),
+    ulica: new FormControl(null, [Validators.pattern("[A-Za-zÀ-ȕ 1-9]+")]),
     bydlisko: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
@@ -43,9 +44,12 @@ export class RegisterComponent implements OnInit {
       (result:Mesto[]) =>
       {
         this.mesta = result;
-        console.log(this.mesta);
       }
     )
+  }
+
+  log() {
+    console.log(this.user);
   }
 
   register() {
@@ -65,11 +69,9 @@ export class RegisterComponent implements OnInit {
 
   setPoistovnaId(id:number) {
     this.user.idpoistovne = id;
-    console.log(this.user);
   }
 
   setMestoId(id:number) {
     this.user.idmesta = id;
-    console.log(this.user);
   }
 }

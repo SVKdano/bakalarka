@@ -115,7 +115,11 @@
       <div class="popis"><b><i>Ulica bydliska: </i></b></div>
       <div class="inputokno">
         <mat-form-field>
-          <input type="password" matInput placeholder="Ulica"  [(ngModel)]="this.user.ulica">
+          <input type="text" matInput placeholder="Ulica" formControlName="ulica" [(ngModel)]="this.user.ulica">
+          <mat-error
+            *ngIf="this.loginForm.get('ulica')?.touched && this.loginForm.get('ulica')?.hasError('pattern')">
+            Len čísla a písmená!
+          </mat-error>
         </mat-form-field>
       </div>
       <br>
@@ -149,6 +153,7 @@
       </div>
       <br>
       <div></div>
+      <button mat-raised-button (click)="log()">log!</button>
       <button class="inputokno" mat-raised-button color="warn" [disabled]="!this.loginForm.valid" (click)="register()">Registrácia</button>
     </form>
 
