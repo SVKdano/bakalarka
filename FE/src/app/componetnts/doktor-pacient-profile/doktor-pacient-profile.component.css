@@ -1,7 +1,42 @@
-.profil {
+
+.cards {
   display: flex;
   flex-direction: column;
+  font-size: large;
+  justify-content: space-evenly;
 }
+
+mat-card {
+  background-color: #e8e8e8;
+}
+
+.first {
+  min-width: 40%;
+  max-width: 70%;
+  margin-top: 3%;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+mat-card-title {
+  font-size: xx-large;
+}
+
+.innerData {
+  display: flex;
+  flex-direction: row;
+}
+
+.lastOne {
+  margin-bottom: 3%;
+}
+
 
 button {
   min-width: 40%;

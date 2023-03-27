@@ -1,0 +1,11 @@
+mat-toolbar {
+  background-color: #ec6602;
+}
+
+mat-toolbar img {
+  height: 90%;
+}
+
+mat-toolbar button {
+  margin-left: auto;
+}
