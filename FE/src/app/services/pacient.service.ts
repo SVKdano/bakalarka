@@ -11,6 +11,7 @@ import {Zaznam} from "../models/Zaznam";
 import {VysetrenieZaznam} from "../models/VysetrenieZaznam";
 import {OdporucaciListok} from "../models/OdporucaciListok";
 import {PacientUpdate} from "../UpdateModels/PacientUpdate";
+import {HesloUpdate} from "../UpdateModels/HesloUpdate";
 
 @Injectable({
   providedIn: 'root'
@@ -57,5 +58,9 @@ export class PacientService {
 
   public updatePacient(pacient: PacientUpdate) : Observable<Pacient[]> {
     return this.http.put<Pacient[]>(`${environment.apiUrl}/zmenaUdajov`, pacient);
+  }
+
+  public updateHeslo(hesloUpdate: HesloUpdate) : Observable<Pacient[]> {
+    return this.http.put<Pacient[]>(`${environment.apiUrl}/zmenaHesla`,hesloUpdate);
   }
 }

@@ -239,6 +239,11 @@ namespace bakalarkaBE.Controllers
                 return BadRequest(new { Message = "Pacient neexistuje!" });
             }
 
+            if (dbPacient.Heslo != pacient.Heslo)
+            {
+                return BadRequest(new { Message = "Pôvodné heslo nie je rovnaké!" });
+            }
+
             dbPacient.Meno = pacient.Meno;
             dbPacient.Priezvisko = pacient.Priezvisko;
             dbPacient.Ulica = pacient.Ulica;
@@ -246,6 +251,28 @@ namespace bakalarkaBE.Controllers
             dbPacient.Heslo = pacient.Heslo;
             dbPacient.Email = pacient.Email;
 
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(await _dbContext.Pacients.ToListAsync());
+        }
+        
+        [HttpPut("zmenaHesla")]
+        public async Task<ActionResult<List<Pacient>>> zmenaHesla(HesloUpdate hesloUpdate)
+        {
+            var dbPacient = await _dbContext.Pacients.FindAsync(hesloUpdate.rodnecislo);
+
+            if (dbPacient == null)
+            {
+                return BadRequest(new { Message = "Pacient neexistuje!" });
+            }
+
+            if (hesloUpdate.stareheslo != dbPacient.Heslo)
+            {
+                return BadRequest(new { Message = "Pôvodné heslo nie je rovnaké!" });
+            }
+
+            dbPacient.Heslo = hesloUpdate.noveheslo;
+            
             await _dbContext.SaveChangesAsync();
 
             return Ok(await _dbContext.Pacients.ToListAsync());
