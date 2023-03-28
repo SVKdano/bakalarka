@@ -1,0 +1,42 @@
+<app-panel-doktor></app-panel-doktor>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="filter">
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Zadaj časový interval (mm-dd-yyyy)</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" [(ngModel)]="this.start">
+          <input matEndDate placeholder="End date" [(ngModel)]="this.end">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <div class="filterButtons">
+        <button mat-raised-button (click)="filter()">Filtruj</button>
+        <button mat-raised-button (click)="reset()">Reset</button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="cards">
+  <mat-card *ngFor="let pacZaznam of (filteredZaznamy | order)" routerLink="{{pacZaznam.idzaznam}}">
+    <mat-card-content>
+      {{pacZaznam.idzaznam}}
+    </mat-card-content>
+
+    <mat-card-content>
+      Dátum a čas: <br>
+      {{pacZaznam.datum | date : "dd.MM.yyyy"}} {{pacZaznam.cas}}
+    </mat-card-content>
+
+    <mat-card-content *ngIf="pacZaznam.osobnecisloNavigation" class="last">
+      Doktor: <i><b>{{pacZaznam.osobnecisloNavigation.meno}} {{pacZaznam.osobnecisloNavigation.priezvisko}}</b></i>
+    </mat-card-content>
+  </mat-card>
+</div>
+

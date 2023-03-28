@@ -23,6 +23,12 @@ import {
 } from "./componetnts/doktor-pacient-alergie-change/doktor-pacient-alergie-change.component";
 import {PacientProfileComponent} from "./componetnts/pacient-profil/pacient-profile.component";
 import {PacientHesloComponent} from "./componetnts/pacient-heslo/pacient-heslo.component";
+import {DoktorPacientLiekyComponent} from "./componetnts/doktor-pacient-lieky/doktor-pacient-lieky.component";
+import {DoktorPacientZaznamyComponent} from "./componetnts/doktor-pacient-zaznamy/doktor-pacient-zaznamy.component";
+import {
+  DoktorPacientOchoreniaComponent
+} from "./componetnts/doktor-pacient-ochorenia/doktor-pacient-ochorenia.component";
+import {DoktorPacientListkyComponent} from "./componetnts/doktor-pacient-listky/doktor-pacient-listky.component";
 
 
 
@@ -45,6 +51,10 @@ const routes: Routes = [
   { path: "doktor/:osobnecislo/pridajPacienta", component: DoktorNewpacientComponent},
   { path: "doktor/:osobnecislo/:rodnecislo", component: DoktorPacientProfileComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/alergie", component: DoktorPacientAlergieComponent},
+  { path: "doktor/:osobnecislo/:rodnecislo/lieky", component: DoktorPacientLiekyComponent},
+  { path: "doktor/:osobnecislo/:rodnecislo/zaznamy", component: DoktorPacientZaznamyComponent},
+  { path: "doktor/:osobnecislo/:rodnecislo/ochorenia", component: DoktorPacientOchoreniaComponent},
+  { path: "doktor/:osobnecislo/:rodnecislo/odporucenia", component: DoktorPacientListkyComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/alergieZmena", component: DoktorPacientAlergieChangeComponent},
   { path: "registracia", component:RegisterComponent }
 ];

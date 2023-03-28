@@ -1,0 +1,54 @@
+<app-panel-doktor></app-panel-doktor>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="filter">
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Zadaj časový interval (mm-dd-yyyy)</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" [(ngModel)]="this.start">
+          <input matEndDate placeholder="End date" [(ngModel)]="this.end">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+
+      <div class="filterButtons">
+        <button mat-raised-button (click)="filter()">Filtruj</button>
+        <button mat-raised-button (click)="reset()">Reset</button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="card">
+  <mat-card *ngFor="let pacListok of filteredListky">
+
+    <mat-card-header>
+      <mat-card-title *ngIf="pacListok.rodnecisloNavigation">
+        Odporúčací lístok pacienta
+        <i>{{pacListok.rodnecisloNavigation.meno}} {{pacListok.rodnecisloNavigation.priezvisko}}</i>
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <b><i>Dátum odporučenia:</i></b> {{pacListok.datumodporucenia | date : "dd.MM.yyyy"}}
+    </mat-card-content>
+
+    <mat-card-content *ngIf="pacListok.osobnecisloNavigation">
+      <b><i>Odporúčací doktor:</i></b> {{pacListok.osobnecisloNavigation.meno}} {{pacListok.osobnecisloNavigation.priezvisko}}
+    </mat-card-content>
+
+    <mat-card-content *ngIf="pacListok.oddelenie">
+      <b><i>Na oddelenie:</i></b> {{pacListok.oddelenie.nazovoddelenia}}
+    </mat-card-content>
+
+    <mat-card-content *ngIf="pacListok.oddelenie && pacListok.oddelenie.idnemocniceNavigation">
+      <b><i>V nemocnici:</i></b> {{pacListok.oddelenie.idnemocniceNavigation.nazov}}
+    </mat-card-content>
+
+  </mat-card>
+</div>
+

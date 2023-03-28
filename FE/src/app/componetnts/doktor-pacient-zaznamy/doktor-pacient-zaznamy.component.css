@@ -1,0 +1,60 @@
+mat-card {
+  min-width: 85%;
+  max-width: 90%;
+  margin: 2% auto;
+  flex-direction: row;
+  font-size: large;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-mdc-card-content:last-child {
+  padding-bottom: 0;
+  align-self: center;
+  margin-right: 0;
+  margin-left: auto;
+}
+
+mat-card-content {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+.filter {
+  min-width: 85%;
+  max-width: 90%;
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter mat-card {
+  background-color: #fde3d2;
+
+}
+
+.filter mat-card-content {
+  margin-top: 0%;
+  margin-bottom: 0%;
+
+  margin-left: 0%;
+
+  min-width: 96%;
+}
+
+.filter mat-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.filterButtons {
+  margin-left: auto;
+}
+
+.filterButtons button {
+  margin-left: 2px;
+}

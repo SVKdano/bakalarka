@@ -1,0 +1,113 @@
+<app-panel-doktor></app-panel-doktor>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="cards">
+  <div class="ukoncene">
+
+    <div class="filter">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field appearance="fill">
+            <mat-label>Zadaj časový interval (mm-dd-yyyy)</mat-label>
+            <mat-date-range-input [rangePicker]="picker2">
+              <input matStartDate placeholder="Start date" [(ngModel)]="this.startDateEnd">
+              <input matEndDate placeholder="End date" [(ngModel)]="this.endDateEnd">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker2></mat-date-range-picker>
+          </mat-form-field>
+
+          <div class="filterButtons">
+            <button mat-raised-button (click)="filterUkoncene()">Filtruj</button>
+            <button mat-raised-button (click)="resetUkoncene()">Reset</button>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Ukončené užívanie
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content *ngFor="let pacLieky of filteredLiekyEnd">
+        <div *ngIf="pacLieky.datumdo">
+          <mat-card class="innerCard">
+            <mat-card-content *ngIf="pacLieky.registracnecisloNavigation">
+              <b><i>Názov:</i></b> {{pacLieky.registracnecisloNavigation.nazov}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dátum od:</i></b> {{pacLieky.datumod | date: "dd.MM.yyyy"}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dátum do:</i></b> {{pacLieky.datumdo | date : "dd.MM.yyyy"}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dávkovanie:</i></b> {{pacLieky.davkovanie}}
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="neukoncene">
+
+    <div class="filter">
+      <mat-card>
+        <mat-card-content>
+          <mat-form-field appearance="fill">
+            <mat-label>Zadaj časový interval (mm-dd-yyyy)</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Start date" [(ngModel)]="this.startDateNoEnd">
+              <input matEndDate placeholder="End date" [(ngModel)]="this.endDateNoEnd">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+
+          <div class="filterButtons">
+            <button mat-raised-button (click)="filterNeukoncene()">Filtruj</button>
+            <button mat-raised-button (click)="resetNeukoncene()">Reset</button>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          Pretrvávajúce
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngFor="let pacLieky of filteredLiekyNoEnd">
+        <div *ngIf="!pacLieky.datumdo">
+          <mat-card class="innerCard">
+            <mat-card-content *ngIf="pacLieky.registracnecisloNavigation">
+              <b><i>Názov:</i></b> {{pacLieky.registracnecisloNavigation.nazov}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dátum od:</i></b> {{pacLieky.datumod | date : "dd.MM.yyyy"}}
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dátum do:</i></b> -
+            </mat-card-content>
+
+            <mat-card-content>
+              <b><i>Dávkovanie:</i></b> {{pacLieky.davkovanie}}
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+.cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin-top: 2%;
+}
+
+.innerCard {
+  margin-bottom: 2%;
+}
+
+.ukoncene {
+  min-width: 40%;
+  max-width: 45%;
+  text-align: center;
+}
+.neukoncene {
+  min-width: 40%;
+  max-width: 45%;
+  text-align: center;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+mat-card {
+  background-color: #e8e8e8;
+}
+
+.filter {
+  margin-bottom: 2%;
+
+}
+
+.filter mat-card-content {
+  background-color: #fde3d2;
+}
+
+.filter mat-card-content {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.filterButtons {
+  margin-left: auto;
+}
+
+.filterButtons button {
+  margin-left: 2px;
+}

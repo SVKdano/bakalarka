@@ -10,3 +10,7 @@
 .menu {
   margin-right: 1%;
 }
+
+mat-toolbar {
+  background-color: #f9b591;
+}
