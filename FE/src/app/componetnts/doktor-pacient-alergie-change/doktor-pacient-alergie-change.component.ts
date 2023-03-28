@@ -41,16 +41,19 @@ export class DoktorPacientAlergieChangeComponent {
     const id = this.route.snapshot.paramMap.get('rodnecislo');
     this.alergiaUpdate.rodnecislo = id!;
 
-    this.doctorService.addAlergia(this.alergiaUpdate).subscribe(
-      () =>
-      {
-        this.pacientService.getPacientAlergie(id!).subscribe(
-          (result:PacientAlergie[]) => {
-            (this.alergie = result);
-          }
-        );
-      }
-    )
+    this.doctorService.addAlergia(this.alergiaUpdate).subscribe({
+    next:(() => {
+      this.pacientService.getPacientAlergie(id!).subscribe(
+        (result: PacientAlergie[]) => {
+          (this.alergie = result);
+        }
+      );
+    }),
+    error:(
+      err => {
+      alert(err.error.message);
+    })
+  })
   }
 
   initUpdate(kod:string, doplnok:string, typAlergie:string) {
@@ -72,6 +75,9 @@ export class DoktorPacientAlergieChangeComponent {
             (this.alergie = result);
           }
         );
+      },
+      err => {
+        alert(err.error.message);
       }
     )
   }

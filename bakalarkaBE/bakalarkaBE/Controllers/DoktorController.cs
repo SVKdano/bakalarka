@@ -83,6 +83,12 @@ namespace bakalarkaBE.Controllers
         [HttpPost("/pridajAlergiu")]
         public async Task<ActionResult<List<PacientAlergie>>> PridajAlergiu(PacientAlergie alergia)
         {
+            var dbAlergia = await _dbContext.PacientAlergies.FindAsync(alergia.Rodnecislo, alergia.Kodalergie);
+
+            if (dbAlergia != null)
+            {
+                return BadRequest(new { Message = "Alergia už existuje! Upravte už existujúcu!" });
+            }
             _dbContext.Add(alergia);
             await _dbContext.SaveChangesAsync();
             return Ok(await _dbContext.PacientAlergies.ToListAsync());
