@@ -1,10 +1,7 @@
 <app-panel-doktor></app-panel-doktor>
-<app-doktor-panel></app-doktor-panel>
 
 <div class="panel">
   <mat-toolbar>
-
-
     <div class="inputs">
       <mat-form-field>
         <mat-label>Meno</mat-label>
@@ -15,6 +12,12 @@
         <mat-label>Priezvisko</mat-label>
         <input matInput type="text" [(ngModel)]="priezviskoFilter">
       </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Rodné číslo</mat-label>
+        <input matInput type="text" [(ngModel)]="this.rodnecisloFilter" >
+      </mat-form-field>
+
     </div>
 
     <div class="filterButtons">

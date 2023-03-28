@@ -3,6 +3,8 @@
   <button mat-raised-button [matMenuTriggerFor]="menu">{{this.menoPriezvisko}}</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}">Zobraziť údaje</button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/pacienti">Zobraziť pacientov</button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/pridajPacienta">Pridať pacienta</button>
     <button mat-menu-item (click)="logout()">Odhlásenie</button>
   </mat-menu>
 </mat-toolbar>

@@ -1,7 +1,17 @@
+
 <mat-toolbar>
   <button mat-raised-button routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}" class="leftsided">Údaje</button>
-  <button mat-raised-button [matMenuTriggerFor]="menu">Alergie</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu" class="menu">Alergie</button>
   <mat-menu #menu="matMenu">
+    <button mat-menu-item
+            routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergie">Zobraziť
+    </button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zmeniť</button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zdielať</button>
+  </mat-menu>
+
+  <button mat-raised-button [matMenuTriggerFor]="menu2" class="menu">Lieky</button>
+  <mat-menu #menu2="matMenu">
     <button mat-menu-item
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergie" class="leftsided" >Zobraziť
     </button>
@@ -9,6 +19,27 @@
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zdielať</button>
   </mat-menu>
 
+  <button mat-raised-button [matMenuTriggerFor]="menu3" class="menu">Záznamy</button>
+  <mat-menu #menu3="matMenu">
+    <button mat-menu-item
+            routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergie" class="leftsided" >Zobraziť
+    </button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zmeniť</button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zdielať</button>
+  </mat-menu>
 
-  <button mat-raised-button color="warn" class="rightsided" routerLink="/doktor/{{this.osobneCislo}}/pacienti">Pacienti</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu4" class="menu">Ochorenia</button>
+  <mat-menu #menu4="matMenu">
+    <button mat-menu-item
+            routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergie" class="leftsided" >Zobraziť
+    </button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zmeniť</button>
+    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zdielať</button>
+  </mat-menu>
+
+  <button mat-raised-button class="rightsided" *ngFor="let pac of pacient" routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}">
+    {{upravRC(this.rodneCislo)}}
+    - {{pac.meno}} {{pac.priezvisko}}
+  </button>
 </mat-toolbar>
+

@@ -1,6 +1,18 @@
 <app-panel-doktor></app-panel-doktor>
 <app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
 
-<div class="cards">
-  <app-alergie></app-alergie>
-</div>
+<mat-card class="first">
+  <mat-card-header>
+    <mat-card-title>Alergie</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content *ngFor="let ale of alergie">
+    <div class="innerData">
+      <i *ngIf="ale.kodalergieNavigation">
+        <b>{{ale.kodalergieNavigation.nazov}}</b> -
+        {{ale.informacie}}
+      </i>
+    </div>
+
+  </mat-card-content>
+</mat-card>

@@ -16,6 +16,8 @@ export class DoktorNewpacientComponent implements OnInit {
   docPacients: Pacient[] = [];
   filteredPacients: Pacient[] = [];
 
+  rodnecisloFilter: string = "";
+
   menoFilter: string = "";
   priezviskoFilter: string = "";
 
@@ -81,13 +83,19 @@ export class DoktorNewpacientComponent implements OnInit {
       {
         if (a.priezvisko.toLowerCase().includes(this.priezviskoFilter.toLowerCase()))
         {
-          this.pacientiFiltered.push(a);
+          if (a.rodnecislo.toLowerCase().includes(this.rodnecisloFilter.toLowerCase())) {
+            this.pacientiFiltered.push(a);
+          }
         }
       }
     });
   }
 
   reset() {
+    this.menoFilter = "";
+    this.priezviskoFilter = "";
+    this.rodnecisloFilter = "";
+
     this.pacientiFiltered = this.filteredPacients;
   }
 }

@@ -26,11 +26,6 @@ mat-toolbar {
   height: fit-content;
   align-items: center;
 
-  margin-top: 2%;
-
-  max-width: 70%;
-  min-width: 65%;
-
   margin-left: auto;
   margin-right: auto;
 }
@@ -42,4 +37,12 @@ mat-toolbar {
 
 .filterButtons button {
   margin-left: 2px;
+}
+
+.inputs {
+  margin-top: 1%;
+}
+
+.inputs mat-form-field {
+  margin-right: 1%;
 }
