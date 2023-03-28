@@ -25,8 +25,7 @@ export class DoktorPacientLiekyChangeComponent implements OnInit {
 
   nazovLieku:string = "";
 
-  constructor(private pacientService: PacientService, private route: ActivatedRoute, private doktorService: DoktorService) {
-  }
+  constructor(private pacientService: PacientService, private route: ActivatedRoute, private doktorService: DoktorService) {}
 
   ngOnInit() {
     this.rodneCislo = this.route.snapshot.paramMap.get('rodnecislo')!;
@@ -87,8 +86,6 @@ export class DoktorPacientLiekyChangeComponent implements OnInit {
 
     this.updatedLiek.davkovanie =  this.addedLiek.davkovanie;
 
-    console.log(this.updatedLiek);
-
     this.doktorService.updateLiek(this.updatedLiek).subscribe(
       {
         next:(() => {
@@ -96,7 +93,6 @@ export class DoktorPacientLiekyChangeComponent implements OnInit {
             (result: PacientLieky[]) => {
               (this.lieky = result);
               this.filterNeukoncene();
-              console.log("Prešiel");
             }
           );
         }),

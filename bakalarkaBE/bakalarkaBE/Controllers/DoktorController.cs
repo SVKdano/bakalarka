@@ -169,6 +169,50 @@ namespace bakalarkaBE.Controllers
 
             return Ok(await _dbContext.Pacientoveliekies.ToListAsync());
         }
+        
+        //--------------------OCHORENIA-----------------
+        [HttpGet("/allOchorenia")]
+        public async Task<ActionResult<List<Ochorenium>>> GetAllOchorenia()
+        {
+            return Ok(await _dbContext.Ochorenia.ToListAsync());
+        }
+
+        [HttpPost("/pridajOchorenie")]
+        public async Task<ActionResult<List<Pacientoveochorenium>>> PridajPacientoveOchorenie(
+            Pacientoveochorenium ochorenie)
+        {
+            var dbOchorenie = await _dbContext.Pacientoveochorenia
+                .FindAsync(ochorenie.Datumod, ochorenie.Rodnecislo, ochorenie.Kodochorenia);
+
+            if (dbOchorenie != null)
+            {
+                return BadRequest(new { Message = "Ochorenie už existuje! Upravte už existujúce!" });
+            }
+
+            _dbContext.Add(ochorenie);
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok(await _dbContext.Pacientoveochorenia.ToListAsync());
+        }
+        
+        [HttpPut("/ukonciOchorenie")]
+        public async Task<ActionResult<List<Pacientoveochorenium>>> UkonciOchorenie(Pacientoveochorenium ochorenie)
+        {
+            var dbOchorenie = await _dbContext.Pacientoveochorenia
+                .FindAsync(ochorenie.Datumod, ochorenie.Rodnecislo, ochorenie.Kodochorenia);
+
+            if (dbOchorenie == null)
+            {
+                return BadRequest(new { Message = "Ochorenie na zmenu neexistuje!" });
+            }
+
+            dbOchorenie.Dalsiaspecifikacia = ochorenie.Dalsiaspecifikacia;
+            dbOchorenie.Datumdo = ochorenie.Datumdo;
+            
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(await _dbContext.Pacientoveochorenia.ToListAsync());
+        }
 
     }
 }

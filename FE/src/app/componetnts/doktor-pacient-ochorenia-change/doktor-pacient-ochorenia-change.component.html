@@ -1,0 +1,60 @@
+<app-panel-doktor></app-panel-doktor>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="data">
+  <mat-card>
+    <mat-card-content class="inputPole">
+      <b>Zadaj názov lieku:</b>
+      <form>
+        <mat-form-field>
+          <mat-label>Názov ochorenia</mat-label>
+          <mat-select [(ngModel)]="this.nazovOchorenia" name="this.nazovOchorenia">
+            <mat-option *ngFor="let ochorenie of allOchorenia" [value]="ochorenie.nazov" (click)="setKodOchorenia(ochorenie.kodochorenia)">
+              {{ochorenie.nazov}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <b>Dátum začatiu ochorenia:</b>
+        <mat-form-field appearance="fill">
+          <mat-label>Dátum začatia užívania</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="this.datum" name="this.addedOchorenie.datumod">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <b>Ďalšie informacie</b>
+        <mat-form-field>
+          <mat-label>Ďalšie informácie</mat-label>
+          <input matInput type="text" [(ngModel)]="addedOchorenie.dalsiaspecifikacia" name="addedOchorenie.dalsiaspecifikacia">
+        </mat-form-field>
+      </form>
+
+      <div class="formButtons">
+        <button  mat-raised-button color="basic" (click)="pridajOchorenie()">Pridaj</button>
+        <button  mat-raised-button color="primary" (click)="updateInformacie()">Uprav</button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <table>
+    <tr>
+      <th>Názov ochorenia</th>
+      <th>Dátum začiatku</th>
+      <th>Ďalšie informácie</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let ochorenie of filteredOchoreniaTwo">
+      <td><b>{{ochorenie.kodochoreniaNavigation.nazov}}</b></td>
+      <td>{{ochorenie.datumod | date : "dd.MM.yyyy"}}</td>
+      <td>{{ochorenie.dalsiaspecifikacia}}</td>
+      <td><button mat-raised-button color="warn" (click)="ukonciOchorenie(ochorenie)">Vymaž</button></td>
+      <td><button mat-raised-button color="primary" (click)="initUpdate(ochorenie)">
+        Uprav
+      </button></td>
+    </tr>
+  </table>
+</div>

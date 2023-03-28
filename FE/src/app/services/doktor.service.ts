@@ -12,6 +12,9 @@ import {PacientAlergie} from "../models/PacientAlergie";
 import {Lieky} from "../models/Lieky";
 import {LiekUpdate} from "../UpdateModels/LiekUpdate";
 import {PacientLieky} from "../models/PacientLieky";
+import {Ochorenie} from "../models/Ochorenie";
+import {OchorenieUpdate} from "../UpdateModels/OchorenieUpdate";
+import {PacientOchorenie} from "../models/PacientOchorenie";
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +44,10 @@ export class DoktorService {
     return this.http.get<Lieky[]>(`${environment.apiUrl}/allLieky`);
   }
 
+  public getAllOchorenia() : Observable<Ochorenie[]> {
+    return this.http.get<Ochorenie[]>(`${environment.apiUrl}/allOchorenia`);
+  }
+
   //--------------------POST methods----------------------
   public addPacient(pacient: DoktorPacientUpdate) : Observable<DoktorPacient[]> {
     return this.http.post<DoktorPacient[]>(`${environment.apiUrl}/pridajPacienta`, pacient);
@@ -54,6 +61,10 @@ export class DoktorService {
     return this.http.post<PacientLieky[]>(`${environment.apiUrl}/pridajLiek`,liek);
   }
 
+  public addOchorenie(ochorenie: OchorenieUpdate) : Observable<PacientOchorenie[]> {
+    return this.http.post<PacientOchorenie[]>(`${environment.apiUrl}/pridajOchorenie`, ochorenie);
+  }
+
   //--------------------PUT methods-----------------------
   public updateAlergia(alergia: AlergiaUpdate) : Observable<PacientAlergie[]> {
     return this.http.put<PacientAlergie[]>(`${environment.apiUrl}/updateAlergiu`,alergia);
@@ -61,6 +72,10 @@ export class DoktorService {
 
   public updateLiek(liek: LiekUpdate) : Observable<PacientLieky[]> {
     return this.http.put<PacientLieky[]>(`${environment.apiUrl}/ukonciUzivanie`, liek);
+  }
+
+  public updateOchorenie(ochorenie: OchorenieUpdate) : Observable<PacientOchorenie[]> {
+    return this.http.put<PacientOchorenie[]>(`${environment.apiUrl}/ukonciOchorenie`, ochorenie);
   }
 
   //-------------------DETELE methods---------------------
