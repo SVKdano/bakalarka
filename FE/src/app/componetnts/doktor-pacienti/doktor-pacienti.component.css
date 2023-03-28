@@ -1,5 +1,5 @@
 mat-card {
-  margin-bottom: 2%;
+  margin-top: 2%;
 
   margin-left: auto;
   margin-right: auto;
@@ -28,11 +28,6 @@ mat-toolbar {
   height: fit-content;
   align-items: center;
 
-  margin-top: 2%;
-
-  max-width: 70%;
-  min-width: 65%;
-
   margin-left: auto;
   margin-right: auto;
 }
@@ -48,5 +43,9 @@ mat-form-field {
 
 .filterButtons button {
   margin-left: 2px;
+}
+
+.inputs mat-form-field {
+  margin-right: 1%;
 }
 

@@ -15,6 +15,7 @@ export class DoktorPacientiComponent implements OnInit {
 
   menoFilter: string = "";
   priezviskoFilter: string = "";
+  rodnecisloFilter: string = "";
 
   constructor(private doktorService:DoktorService, private route:ActivatedRoute) {}
 
@@ -36,13 +37,19 @@ export class DoktorPacientiComponent implements OnInit {
       {
         if (a.rodnecisloNavigation && a.rodnecisloNavigation.priezvisko.toLowerCase().includes(this.priezviskoFilter.toLowerCase()))
         {
-          this.pacientiFiltered.push(a);
+          if (a.rodnecislo.toLowerCase().includes(this.rodnecisloFilter.toLowerCase())) {
+            this.pacientiFiltered.push(a);
+          }
         }
       }
     });
   }
 
   reset() {
+    this.menoFilter = "";
+    this.priezviskoFilter = "";
+    this.rodnecisloFilter = "";
+
     this.pacientiFiltered = this.pacienti;
   }
 }
