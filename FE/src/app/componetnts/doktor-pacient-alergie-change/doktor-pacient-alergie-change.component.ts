@@ -82,6 +82,22 @@ export class DoktorPacientAlergieChangeComponent {
     )
   }
 
+  deleteAlergia(rodneCislo:string, kodAlergie:string) {
+    const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.doctorService.deleteAlergia(rodneCislo, kodAlergie).subscribe({
+      next:(() => {
+        this.pacientService.getPacientAlergie(id!).subscribe(
+          (result: PacientAlergie[]) => {
+            (this.alergie = result);
+          }
+        );
+      }),
+      error: (err => {
+        alert(err.error.message);
+      })
+    })
+  }
+
   setKodAlergie(kod:string) {
     this.alergiaUpdate.kodalergie = kod;
   }

@@ -80,6 +80,7 @@ namespace bakalarkaBE.Controllers
             return Ok();
         }
 
+        //--------------------ALERGIE-----------------------
         [HttpPost("/pridajAlergiu")]
         public async Task<ActionResult<List<PacientAlergie>>> PridajAlergiu(PacientAlergie alergia)
         {
@@ -106,6 +107,22 @@ namespace bakalarkaBE.Controllers
 
             dbAlergia.Informacie = alergia.Informacie;
             
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(await _dbContext.PacientAlergies.ToListAsync());
+        }
+
+        [HttpDelete("/zmazAlergiu/{rodneCislo}/{kodAlergie}")]
+        public async Task<ActionResult<List<PacientAlergie>>> DeleteAlergiu(string rodneCislo, string kodAlergie)
+        {
+            var dbAlergia = await _dbContext.PacientAlergies.FindAsync(rodneCislo, kodAlergie);
+
+            if (dbAlergia == null)
+            {
+                return BadRequest(new { Message = "Alergia na zmazanie neexistuje" });
+            }
+
+            _dbContext.Remove(dbAlergia);
             await _dbContext.SaveChangesAsync();
 
             return Ok(await _dbContext.PacientAlergies.ToListAsync());

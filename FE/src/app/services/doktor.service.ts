@@ -47,4 +47,9 @@ export class DoktorService {
     return this.http.put<PacientAlergie[]>(`${environment.apiUrl}/updateAlergiu`,alergia);
   }
 
+  //-------------------DETELE methods---------------------
+  public deleteAlergia(rodneCislo: string, kodAlergie:string) : Observable<PacientAlergie[]> {
+    return this.http.delete<PacientAlergie[]>(`${environment.apiUrl}/zmazAlergiu/${rodneCislo}/${kodAlergie}`);
+  }
+
 }

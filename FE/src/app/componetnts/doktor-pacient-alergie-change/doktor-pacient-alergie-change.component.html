@@ -40,7 +40,7 @@
     <tr *ngFor="let alergia of alergie">
       <td *ngIf="alergia.kodalergieNavigation">{{alergia.kodalergieNavigation.nazov}}</td>
       <td>{{alergia.informacie}}</td>
-      <td><button mat-raised-button color="warn">Vymaž</button></td>
+      <td><button mat-raised-button color="warn" (click)="deleteAlergia(alergia.rodnecislo ,alergia.kodalergie)">Vymaž</button></td>
       <td><button mat-raised-button color="primary" *ngIf="alergia.kodalergieNavigation"
                   (click)="initUpdate(alergia.kodalergie, alergia.informacie, alergia.kodalergieNavigation.nazov)">
         Uprav
