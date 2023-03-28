@@ -127,6 +127,48 @@ namespace bakalarkaBE.Controllers
 
             return Ok(await _dbContext.PacientAlergies.ToListAsync());
         }
+        
+        //-----------------------LIEKY-------------------------
+        [HttpGet("/allLieky")]
+        public async Task<ActionResult<List<Lieky>>> GetAllLieky()
+        {
+            return Ok(await _dbContext.Liekies.ToListAsync());
+        }
+
+        [HttpPost("/pridajLiek")]
+        public async Task<ActionResult<List<Pacientovelieky>>> PridajPacientovLiek(Pacientovelieky liek)
+        {
+
+            var dbLiek = await _dbContext.Pacientoveliekies.FindAsync(liek.Rodnecislo, liek.Datumod, liek.Registracnecislo);
+
+            if (dbLiek != null)
+            {
+                return BadRequest(new { Message = "Liek už existuje! Upravte už existujúci!" });
+            }
+
+            _dbContext.Add(liek);
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(await _dbContext.Pacientoveliekies.ToListAsync());
+        }
+
+        [HttpPut("/ukonciUzivanie")]
+        public async Task<ActionResult<List<Pacientovelieky>>> SkonciUzivnanie(Pacientovelieky liek)
+        {
+            var dbLiek = await _dbContext.Pacientoveliekies.FindAsync(liek.Rodnecislo, liek.Datumod, liek.Registracnecislo);
+
+            if (dbLiek == null)
+            {
+                return BadRequest(new { Message = "Liek na zmenu neexistuje!" });
+            }
+
+            dbLiek.Davkovanie = liek.Davkovanie;
+            dbLiek.Datumdo = liek.Datumdo;
+            
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(await _dbContext.Pacientoveliekies.ToListAsync());
+        }
 
     }
 }

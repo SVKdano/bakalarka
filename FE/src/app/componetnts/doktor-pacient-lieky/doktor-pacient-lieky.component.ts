@@ -71,8 +71,6 @@ export class DoktorPacientLiekyComponent {
       }
     });
 
-    console.log(this.filteredLiekyNoEnd);
-
   }
 
   resetUkoncene() {

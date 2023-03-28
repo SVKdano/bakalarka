@@ -29,6 +29,9 @@ import {
   DoktorPacientOchoreniaComponent
 } from "./componetnts/doktor-pacient-ochorenia/doktor-pacient-ochorenia.component";
 import {DoktorPacientListkyComponent} from "./componetnts/doktor-pacient-listky/doktor-pacient-listky.component";
+import {
+  DoktorPacientLiekyChangeComponent
+} from "./componetnts/doktor-pacient-lieky-change/doktor-pacient-lieky-change.component";
 
 
 
@@ -56,6 +59,7 @@ const routes: Routes = [
   { path: "doktor/:osobnecislo/:rodnecislo/ochorenia", component: DoktorPacientOchoreniaComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/odporucenia", component: DoktorPacientListkyComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/alergieZmena", component: DoktorPacientAlergieChangeComponent},
+  { path: "doktor/:osobnecislo/:rodnecislo/liekyZmena", component: DoktorPacientLiekyChangeComponent},
   { path: "registracia", component:RegisterComponent }
 ];
 

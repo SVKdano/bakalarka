@@ -1,0 +1,61 @@
+<app-panel-doktor></app-panel-doktor>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="data">
+  <mat-card>
+    <mat-card-content class="inputPole">
+      <b>Zadaj názov lieku:</b>
+      <form>
+        <mat-form-field>
+          <mat-label>Názov lieku</mat-label>
+          <mat-select [(ngModel)]="this.nazovLieku" name="this.nazovLieku">
+            <mat-option *ngFor="let liek of allLieky" [value]="liek.nazov"
+                        (click)="setKodLieku(liek.registracnecislo)">
+              {{liek.nazov}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <b>Dátum začatia uživania:</b>
+        <mat-form-field appearance="fill">
+          <mat-label>Dátum začatia užívania</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="this.datum" name="this.addedLiek.datumod">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <b>Zadaj užívanie:</b>
+        <mat-form-field>
+          <mat-label>Užívanie</mat-label>
+          <input matInput type="text" [(ngModel)]="this.addedLiek.davkovanie" name="this.addedLiek.davkovanie">
+        </mat-form-field>
+      </form>
+
+      <div class="formButtons">
+        <button  mat-raised-button color="basic" (click)="pridajLiek()">Pridaj</button>
+        <button  mat-raised-button color="primary" (click)="updateUzivanie()">Uprav</button>
+      </div>
+
+    </mat-card-content>
+  </mat-card>
+
+  <table>
+    <tr>
+      <th>Názov lieku</th>
+      <th>Dávkovanie</th>
+      <th>Začiatok užívania</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let liek of filteredLiekyNoEnd">
+      <td> {{liek.registracnecisloNavigation.nazov}}</td>
+      <td>{{liek.davkovanie}}</td>
+      <td>{{liek.datumod | date : "dd.MM.yyyy"}}</td>
+      <td><button mat-raised-button color="warn" (click)="ukonciUzivanie(liek)">Vymaž</button></td>
+      <td><button mat-raised-button color="primary" (click)="initUpdate(liek)">
+        Uprav
+      </button></td>
+    </tr>
+  </table>
+</div>
