@@ -88,5 +88,22 @@ namespace bakalarkaBE.Controllers
             return Ok(await _dbContext.PacientAlergies.ToListAsync());
         }
 
+        [HttpPut("/updateAlergiu")]
+        public async Task<ActionResult<List<PacientAlergie>>> UpdateAlergiu(PacientAlergie alergia)
+        {
+            var dbAlergia = await _dbContext.PacientAlergies.FindAsync(alergia.Rodnecislo, alergia.Kodalergie);
+
+            if (dbAlergia == null)
+            {
+                return BadRequest(new { Message = "Alergia na aktualizaciu neexistuje" });
+            }
+
+            dbAlergia.Informacie = alergia.Informacie;
+            
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(await _dbContext.PacientAlergies.ToListAsync());
+        }
+
     }
 }

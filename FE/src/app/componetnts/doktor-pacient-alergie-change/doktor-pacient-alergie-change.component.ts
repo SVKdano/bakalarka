@@ -17,6 +17,8 @@ export class DoktorPacientAlergieChangeComponent {
   allAlergie: Alergie[] = [];
   alergiaUpdate: AlergiaUpdate = new AlergiaUpdate();
 
+  typAlergie: string = "";
+
   constructor(private pacientService:PacientService, private route:ActivatedRoute, private doctorService: DoktorService) {}
 
   ngOnInit() : void {
@@ -44,6 +46,29 @@ export class DoktorPacientAlergieChangeComponent {
       {
         this.pacientService.getPacientAlergie(id!).subscribe(
           (result:PacientAlergie[]) => {
+            (this.alergie = result);
+          }
+        );
+      }
+    )
+  }
+
+  initUpdate(kod:string, doplnok:string, typAlergie:string) {
+    const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.alergiaUpdate.rodnecislo = id!;
+
+    this.alergiaUpdate.kodalergie = kod;
+    this.alergiaUpdate.informacie = doplnok;
+
+    this.typAlergie = typAlergie;
+  }
+
+  updateAlergia() {
+    const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.doctorService.updateAlergia(this.alergiaUpdate).subscribe(
+      () => {
+        this.pacientService.getPacientAlergie(id!).subscribe(
+          (result: PacientAlergie[]) => {
             (this.alergie = result);
           }
         );

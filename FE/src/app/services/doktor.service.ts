@@ -41,4 +41,10 @@ export class DoktorService {
   public addAlergia(alergia: AlergiaUpdate) : Observable<PacientAlergie[]> {
     return this.http.post<PacientAlergie[]>(`${environment.apiUrl}/pridajAlergiu`,alergia);
   }
+
+  //--------------------PUT methods-----------------------
+  public updateAlergia(alergia: AlergiaUpdate) : Observable<PacientAlergie[]> {
+    return this.http.put<PacientAlergie[]>(`${environment.apiUrl}/updateAlergiu`,alergia);
+  }
+
 }

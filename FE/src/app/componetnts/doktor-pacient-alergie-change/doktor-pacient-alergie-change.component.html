@@ -8,8 +8,9 @@
       <form>
         <mat-form-field>
           <mat-label>Typ alergie</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let aleria of allAlergie" [value]="aleria.nazov" (click)="setKodAlergie(aleria.kodalergie)">
+          <mat-select [(ngModel)]="typAlergie" name="typAlergie">
+            <mat-option *ngFor="let aleria of allAlergie"
+                        [value]="aleria.nazov" (click)="setKodAlergie(aleria.kodalergie)">
               {{this.aleria.nazov}}
             </mat-option>
           </mat-select>
@@ -23,7 +24,7 @@
       </form>
       <div class="formButtons">
         <button  mat-raised-button color="basic" (click)="addAlergia()">Pridaj</button>
-        <button  mat-raised-button color="primary" >Uprav</button>
+        <button  mat-raised-button color="primary" (click)="updateAlergia()">Uprav</button>
       </div>
     </mat-card-content>
   </mat-card>
@@ -40,7 +41,10 @@
       <td *ngIf="alergia.kodalergieNavigation">{{alergia.kodalergieNavigation.nazov}}</td>
       <td>{{alergia.informacie}}</td>
       <td><button mat-raised-button color="warn">Vymaž</button></td>
-      <td><button mat-raised-button color="primary">Uprav</button></td>
+      <td><button mat-raised-button color="primary" *ngIf="alergia.kodalergieNavigation"
+                  (click)="initUpdate(alergia.kodalergie, alergia.informacie, alergia.kodalergieNavigation.nazov)">
+        Uprav
+      </button></td>
     </tr>
   </table>
 </div>
