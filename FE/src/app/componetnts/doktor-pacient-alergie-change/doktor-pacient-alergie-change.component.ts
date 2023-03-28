@@ -4,6 +4,7 @@ import {PacientService} from "../../services/pacient.service";
 import {ActivatedRoute} from "@angular/router";
 import {Alergie} from "../../models/Alergie";
 import {DoktorService} from "../../services/doktor.service";
+import {AlergiaUpdate} from "../../UpdateModels/AlergiaUpdate";
 
 @Component({
   selector: 'app-doktor-pacient-alergie-change',
@@ -14,6 +15,7 @@ export class DoktorPacientAlergieChangeComponent {
 
   alergie: PacientAlergie[] = [];
   allAlergie: Alergie[] = [];
+  alergiaUpdate: AlergiaUpdate = new AlergiaUpdate();
 
   constructor(private pacientService:PacientService, private route:ActivatedRoute, private doctorService: DoktorService) {}
 
@@ -29,8 +31,27 @@ export class DoktorPacientAlergieChangeComponent {
       (result:Alergie[]) =>
       {
       this.allAlergie = result;
-      console.log(this.allAlergie);
     }
     );
+  }
+
+  addAlergia() {
+    const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.alergiaUpdate.rodnecislo = id!;
+
+    this.doctorService.addAlergia(this.alergiaUpdate).subscribe(
+      () =>
+      {
+        this.pacientService.getPacientAlergie(id!).subscribe(
+          (result:PacientAlergie[]) => {
+            (this.alergie = result);
+          }
+        );
+      }
+    )
+  }
+
+  setKodAlergie(kod:string) {
+    this.alergiaUpdate.kodalergie = kod;
   }
 }

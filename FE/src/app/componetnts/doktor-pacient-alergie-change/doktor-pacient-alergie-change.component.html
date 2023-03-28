@@ -8,8 +8,8 @@
       <form>
         <mat-form-field>
           <mat-label>Typ alergie</mat-label>
-          <mat-select formControlName="poistovna">
-            <mat-option *ngFor="let aleria of allAlergie" [value]="aleria.nazov" >
+          <mat-select>
+            <mat-option *ngFor="let aleria of allAlergie" [value]="aleria.nazov" (click)="setKodAlergie(aleria.kodalergie)">
               {{this.aleria.nazov}}
             </mat-option>
           </mat-select>
@@ -18,11 +18,11 @@
         <b>Zadaj doplňujúce informácie:</b>
         <mat-form-field>
           <mat-label>Doplnok</mat-label>
-          <input matInput type="text">
+          <input matInput type="text" [(ngModel)]="alergiaUpdate.informacie" name="alergiaUpdate.informacie">
         </mat-form-field>
       </form>
       <div class="formButtons">
-        <button  mat-raised-button color="basic" >Pridaj</button>
+        <button  mat-raised-button color="basic" (click)="addAlergia()">Pridaj</button>
         <button  mat-raised-button color="primary" >Uprav</button>
       </div>
     </mat-card-content>

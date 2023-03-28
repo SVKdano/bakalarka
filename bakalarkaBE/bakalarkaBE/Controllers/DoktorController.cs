@@ -80,5 +80,13 @@ namespace bakalarkaBE.Controllers
             return Ok();
         }
 
+        [HttpPost("/pridajAlergiu")]
+        public async Task<ActionResult<List<PacientAlergie>>> PridajAlergiu(PacientAlergie alergia)
+        {
+            _dbContext.Add(alergia);
+            await _dbContext.SaveChangesAsync();
+            return Ok(await _dbContext.PacientAlergies.ToListAsync());
+        }
+
     }
 }
