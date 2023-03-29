@@ -213,6 +213,27 @@ namespace bakalarkaBE.Controllers
 
             return Ok(await _dbContext.Pacientoveochorenia.ToListAsync());
         }
+        
+        //--------------------ODPORUCACIE LISTKY------------------
+        [HttpGet("/allOddelenia")]
+        public async Task<ActionResult<List<Ochorenium>>> GetAllOddelenia()
+        {
+            var retruned = await _dbContext.Oddelenies
+                .Include(a => a.IdnemocniceNavigation).ToListAsync();
+            return Ok(retruned);
+        }
+        
+        [HttpGet("listky/{rodneCislo}/{osobneCislo}")]
+        public async Task<ActionResult<List<Odporucacilistok>>> GetPacientoveListky(string rodneCislo, string osobneCislo)
+        {
+            var lisok = await _dbContext.Odporucacilistoks
+                .Include(a => a.Oddelenie)
+                .ThenInclude(b => b.IdnemocniceNavigation)
+                .Include(c => c.OsobnecisloNavigation)
+                .Include(d => d.RodnecisloNavigation)
+                .Where(a => a.Rodnecislo == rodneCislo && a.Osobnecislo == osobneCislo).ToListAsync();
+            return Ok(lisok);
+        }
 
     }
 }

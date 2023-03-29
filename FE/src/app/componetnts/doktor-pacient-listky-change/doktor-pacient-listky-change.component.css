@@ -1,0 +1,25 @@
+.data {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-evenly;
+
+  margin-top: 2%;
+}
+
+.inputPole form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+table {
+  max-width: 70%;
+  text-align: center;
+}
+
+

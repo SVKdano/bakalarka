@@ -1,0 +1,38 @@
+<app-panel-doktor></app-panel-doktor>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="data">
+  <mat-card>
+    <mat-card-content class="inputPole">
+      <b>Zadaj typ alergie:</b>
+      <form>
+        <mat-form-field>
+          <mat-label>Miesto odporučenia</mat-label>
+          <mat-select >
+            <mat-option *ngFor="let oddelenie of oddelenia"
+                        [value]="oddelenie.nazovoddelenia">
+              <b>{{oddelenie.nazovoddelenia}}</b>: <div *ngIf="oddelenie.idnemocniceNavigation">{{oddelenie.idnemocniceNavigation.nazov}}</div>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="formButtons">
+        <button  mat-raised-button color="basic">Pridaj</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+  <table>
+    <tr>
+      <th>Oddelenie</th>
+      <th>Nemocnica</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let listok of listky">
+      <td *ngIf="listok.oddelenie">{{listok.oddelenie.nazovoddelenia}}</td>
+      <td *ngIf="listok.oddelenie && listok.oddelenie.idnemocniceNavigation">{{listok.oddelenie.idnemocniceNavigation.nazov}}</td>
+      <td><button mat-raised-button color="warn" >Vymaž</button></td>
+    </tr>
+  </table>
+</div>

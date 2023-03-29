@@ -15,6 +15,8 @@ import {PacientLieky} from "../models/PacientLieky";
 import {Ochorenie} from "../models/Ochorenie";
 import {OchorenieUpdate} from "../UpdateModels/OchorenieUpdate";
 import {PacientOchorenie} from "../models/PacientOchorenie";
+import {Oddelenie} from "../models/Oddelenie";
+import {OdporucaciListok} from "../models/OdporucaciListok";
 
 @Injectable({
   providedIn: 'root'
@@ -46,6 +48,14 @@ export class DoktorService {
 
   public getAllOchorenia() : Observable<Ochorenie[]> {
     return this.http.get<Ochorenie[]>(`${environment.apiUrl}/allOchorenia`);
+  }
+
+  public getOddelenia(): Observable<Oddelenie[]> {
+    return this.http.get<Oddelenie[]>(`${environment.apiUrl}/allOddelenia`);
+  }
+
+  public getDoktoroveListky(rodneCislo:string, osobneCislo:string) : Observable<OdporucaciListok[]> {
+    return this.http.get<OdporucaciListok[]>(`${environment.apiUrl}/listky/${rodneCislo}/${osobneCislo}`);
   }
 
   //--------------------POST methods----------------------
