@@ -235,5 +235,43 @@ namespace bakalarkaBE.Controllers
             return Ok(lisok);
         }
 
+        [HttpPost("/pridajListok")]
+        public async Task<ActionResult<List<Odporucacilistok>>> PridajListok(Odporucacilistok listok)
+        {
+            var dbListok = await _dbContext.Odporucacilistoks
+                .FindAsync(listok.Datumodporucenia, listok.Kododdelenia, listok.Idnemocnice,
+                    listok.Osobnecislo, listok.Rodnecislo);
+
+            if (dbListok != null)
+            {
+                return BadRequest(new { Message = "Listok na pridanie už existuje!" });
+            }
+
+            _dbContext.Add(listok);
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok(listok);
+        }
+
+        [HttpDelete("/vymazListok/{DatumOdporucenia}/{KodOddelenia}/{IdNemocnice}/{OsobneCislo}/{RodneCislo}")]
+        public async Task<ActionResult<List<Odporucacilistok>>> 
+            VymazListok(string DatumOdporucenia, string KodOddelenia, string IdNemocnice, string OsobneCislo, string RodneCislo)
+        {
+            var datum = DateOnly.Parse(DatumOdporucenia);
+            var dbListok = await _dbContext.Odporucacilistoks
+                .FindAsync(datum, KodOddelenia, IdNemocnice,
+                    OsobneCislo, RodneCislo);
+
+            if (dbListok == null)
+            {
+                return BadRequest(new { Message = "Lístok na odstanenie neexistuje" });
+            }
+
+            _dbContext.Remove(dbListok);
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok(await _dbContext.Odporucacilistoks.ToListAsync());
+        }
+
     }
 }

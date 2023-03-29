@@ -17,6 +17,7 @@ import {OchorenieUpdate} from "../UpdateModels/OchorenieUpdate";
 import {PacientOchorenie} from "../models/PacientOchorenie";
 import {Oddelenie} from "../models/Oddelenie";
 import {OdporucaciListok} from "../models/OdporucaciListok";
+import {ListokUpdate} from "../UpdateModels/ListokUpdate";
 
 @Injectable({
   providedIn: 'root'
@@ -75,6 +76,10 @@ export class DoktorService {
     return this.http.post<PacientOchorenie[]>(`${environment.apiUrl}/pridajOchorenie`, ochorenie);
   }
 
+  public addListok(listok: ListokUpdate) : Observable<OdporucaciListok[]> {
+    return this.http.post<OdporucaciListok[]>(`${environment.apiUrl}/pridajListok`, listok);
+  }
+
   //--------------------PUT methods-----------------------
   public updateAlergia(alergia: AlergiaUpdate) : Observable<PacientAlergie[]> {
     return this.http.put<PacientAlergie[]>(`${environment.apiUrl}/updateAlergiu`,alergia);
@@ -91,6 +96,10 @@ export class DoktorService {
   //-------------------DETELE methods---------------------
   public deleteAlergia(rodneCislo: string, kodAlergie:string) : Observable<PacientAlergie[]> {
     return this.http.delete<PacientAlergie[]>(`${environment.apiUrl}/zmazAlergiu/${rodneCislo}/${kodAlergie}`);
+  }
+
+  public deleteListok(datum:string, kod:string, id:string, osobne:String, rodne:string) : Observable<OdporucaciListok[]> {
+    return this.http.delete<OdporucaciListok[]>(`${environment.apiUrl}/vymazListok/${datum}/${kod}/${id}/${osobne}/${rodne}`);
   }
 
 }

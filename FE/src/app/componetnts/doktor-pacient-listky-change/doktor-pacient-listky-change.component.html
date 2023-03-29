@@ -10,14 +10,14 @@
           <mat-label>Miesto odporučenia</mat-label>
           <mat-select >
             <mat-option *ngFor="let oddelenie of oddelenia"
-                        [value]="oddelenie.nazovoddelenia">
+                        [value]="oddelenie.nazovoddelenia" (click)="setUdaje(oddelenie.kododdelenia, oddelenie.idnemocnice)">
               <b>{{oddelenie.nazovoddelenia}}</b>: <div *ngIf="oddelenie.idnemocniceNavigation">{{oddelenie.idnemocniceNavigation.nazov}}</div>
             </mat-option>
           </mat-select>
         </mat-form-field>
       </form>
       <div class="formButtons">
-        <button  mat-raised-button color="basic">Pridaj</button>
+        <button  mat-raised-button color="basic" (click)="pridajListok()">Pridaj</button>
       </div>
     </mat-card-content>
   </mat-card>
@@ -32,7 +32,7 @@
     <tr *ngFor="let listok of listky">
       <td *ngIf="listok.oddelenie">{{listok.oddelenie.nazovoddelenia}}</td>
       <td *ngIf="listok.oddelenie && listok.oddelenie.idnemocniceNavigation">{{listok.oddelenie.idnemocniceNavigation.nazov}}</td>
-      <td><button mat-raised-button color="warn" >Vymaž</button></td>
+      <td><button mat-raised-button color="warn" (click)="vymazListok(listok)">Vymaž</button></td>
     </tr>
   </table>
 </div>
