@@ -13,6 +13,8 @@ import {AlergiaUpdate} from "../../UpdateModels/AlergiaUpdate";
 })
 export class DoktorPacientAlergieChangeComponent {
 
+  osobneCislo:string = "";
+
   alergie: PacientAlergie[] = [];
   allAlergie: Alergie[] = [];
   alergiaUpdate: AlergiaUpdate = new AlergiaUpdate();
@@ -23,6 +25,7 @@ export class DoktorPacientAlergieChangeComponent {
 
   ngOnInit() : void {
     const id = this.route.snapshot.paramMap.get('rodnecislo');
+    this.osobneCislo = this.route.snapshot.paramMap.get('osobnecislo')!;
     this.pacientService.getPacientAlergie(id!).subscribe(
       (result:PacientAlergie[]) => {
         (this.alergie = result);

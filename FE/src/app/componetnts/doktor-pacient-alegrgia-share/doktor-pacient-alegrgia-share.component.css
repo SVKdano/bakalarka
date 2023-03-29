@@ -1,0 +1,24 @@
+mat-card {
+  min-width: fit-content;
+  max-width: fit-content;
+
+  margin-right: auto;
+  margin-left: auto;
+
+  margin-top: 2%;
+
+  background-color: #e8e8e8;
+}
+
+mat-card-header {
+  justify-content: center;
+}
+
+mat-card-content {
+  text-align: center;
+}
+
+.inputPole form {
+  display: flex;
+  flex-direction: column;
+}

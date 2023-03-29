@@ -50,6 +50,7 @@ import { DoktorPacientListkyComponent } from './componetnts/doktor-pacient-listk
 import { DoktorPacientLiekyChangeComponent } from './componetnts/doktor-pacient-lieky-change/doktor-pacient-lieky-change.component';
 import { DoktorPacientOchoreniaChangeComponent } from './componetnts/doktor-pacient-ochorenia-change/doktor-pacient-ochorenia-change.component';
 import { DoktorPacientListkyChangeComponent } from './componetnts/doktor-pacient-listky-change/doktor-pacient-listky-change.component';
+import { DoktorPacientAlegrgiaShareComponent } from './componetnts/doktor-pacient-alegrgia-share/doktor-pacient-alegrgia-share.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { DoktorPacientListkyChangeComponent } from './componetnts/doktor-pacient
     DoktorPacientListkyComponent,
     DoktorPacientLiekyChangeComponent,
     DoktorPacientOchoreniaChangeComponent,
-    DoktorPacientListkyChangeComponent
+    DoktorPacientListkyChangeComponent,
+    DoktorPacientAlegrgiaShareComponent
   ],
     imports: [
         BrowserModule,
