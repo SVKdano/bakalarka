@@ -6,10 +6,10 @@
   <mat-card-content *ngFor="let ale of alergie">
     <div class="innerData">
       <i *ngIf="ale.kodalergieNavigation">
-        {{ale.kodalergieNavigation.nazov}} -
+        <b>{{ale.kodalergieNavigation.nazov}}</b> -
         {{ale.informacie}}
       </i>
     </div>
-
+    <br>
   </mat-card-content>
 </mat-card>
