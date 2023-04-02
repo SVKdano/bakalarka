@@ -61,3 +61,8 @@ mat-card-content {
 .displayVysetrenia mat-card {
   margin-bottom: 2%;
 }
+
+.deleteButton {
+  margin-top: 1%;
+  margin-bottom: 1%;
+}

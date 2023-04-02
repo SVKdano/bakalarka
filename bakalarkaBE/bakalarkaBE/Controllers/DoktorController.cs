@@ -325,5 +325,22 @@ namespace bakalarkaBE.Controllers
             return Ok(vysetrenie);
         }
 
+        [HttpDelete("/vymazVystrenie/{kod}/{idzaznam}")]
+        public async Task<ActionResult<List<VysetrenieZaznam>>> DeleteVysetrenieZaznam(string kod, int idzaznam)
+        {
+            var dbVysetrenieZaznam = await _dbContext.VysetrenieZaznams
+                .FindAsync(kod, idzaznam);
+
+            if (dbVysetrenieZaznam == null)
+            {
+                return BadRequest(new { Message = "Vysetrenie zo záznamu na odstanenie neexistuje" });
+            }
+
+            _dbContext.Remove(dbVysetrenieZaznam);
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok(await _dbContext.VysetrenieZaznams.ToListAsync());
+        }
+
     }
 }

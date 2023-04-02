@@ -1,0 +1,143 @@
+<app-panel-doktor></app-panel-doktor>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="outerCards">
+  <mat-card class="zaznam">
+    <mat-card-header>
+      <mat-card-title>
+        <b><i>Pacient:</i></b> {{this.pacient.meno}} {{this.pacient.priezvisko}}
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content *ngFor="let pacZaznam of zaznam">
+      <div class="CasDatum"><b><i>Čas a dátum:</i></b> &nbsp; &nbsp; {{pacZaznam.datum | date : "dd.MM.yyyy"}} {{pacZaznam.cas}}</div>
+
+      <form>
+        <b>Dôvod návštevy:</b>
+        <br>
+        <mat-form-field class="textField">
+          <mat-label>Dôvod návštevy</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"
+                    [(ngModel)]="this.zaznamUpdated.dovodnavstevy" name="this.zaznamUpdated.dovodnavstevy">
+          </textarea>
+        </mat-form-field>
+        <br>
+
+        <b>Doplňujúce informacie k záznamu:</b>
+        <br>
+        <mat-form-field class="textField">
+          <mat-label>Doplňujúce informacie</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"
+                    [(ngModel)]="this.zaznamUpdated.doplnujuceinformacie" name="this.zaznamUpdated.doplnujuceinformacie">
+          </textarea>
+        </mat-form-field>
+        <br>
+
+        <b>Záver:</b>
+        <br>
+        <mat-form-field class="textField">
+          <mat-label>Záver</mat-label>
+          <textarea matInput
+                    cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize"
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"
+                    [(ngModel)]="this.zaznamUpdated.zaver" name="this.zaznamUpdated.zaver">
+          </textarea>
+        </mat-form-field>
+
+        <div class="formButtons">
+          <button  mat-raised-button color="warn" (click)="update()">Ulož!</button>
+        </div>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+
+  <div class="innerCards">
+    <mat-card class="addVysetrenie">
+      <mat-card-header>
+        <mat-card-title>
+          Pridaj vyšetrenie:
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form>
+
+          <b>Vyšetrenie:</b>&nbsp;&nbsp;
+          <mat-form-field>
+            <mat-label>Názov Vyšetrenia</mat-label>
+            <mat-select [(ngModel)]="this.nazovVystrenia" name="this.nazovVystrenia">
+              <mat-option *ngFor="let vys of vysetrenia"
+                          (click)="setKod(vys)"
+                          [value]="vys.nazov">
+                {{vys.nazov}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <br>
+
+          <b>Výsledok:</b> &nbsp;
+          <mat-form-field class="textFieldTwo">
+            <mat-label>Výsledok vyšetrenia:</mat-label>
+            <textarea matInput
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="5"
+                      [(ngModel)]="this.vysetrenieAdded.vysledokvysetrenia" name="this.vysetrenieAdded.vysledokvysetrenia">
+          </textarea>
+          </mat-form-field>
+
+          <div class="formButtons">
+            <button  mat-raised-button color="warn" (click)="add()">Pridaj</button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="displayVysetrenia">
+      <mat-card-header>
+        <mat-card-title>
+          Vyšetrenia k záznamu
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content >
+        <mat-card *ngFor="let pacVysetrenia of vysetrenie">
+          <mat-card-header>
+            <mat-card-title>
+              Vyšetrenie
+            </mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content *ngIf="pacVysetrenia.kodNavigation">
+            {{pacVysetrenia.kodNavigation.nazov}}
+          </mat-card-content>
+
+          <mat-card-content *ngIf="pacVysetrenia.kodNavigation">
+            <br>
+            <b><i>Výsledok vyšetrenia:</i></b>  {{pacVysetrenia.vysledokvysetrenia}}
+
+          </mat-card-content>
+
+          <div class="deleteButton">
+            <button  mat-raised-button color="warn" (click)="delete(pacVysetrenia)">Odstráň</button>
+          </div>
+
+        </mat-card>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

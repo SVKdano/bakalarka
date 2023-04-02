@@ -13,6 +13,10 @@ export class DoktorPacientZaznamyDetailComponent {
   zaznam:Zaznam[] = [];
   vysetrenie:VysetrenieZaznam[] = [];
 
+  rodneCislo:string = "";
+  osobneCislo:string = "";
+  idzaznam:number = 0;
+
   constructor(private pacientService:PacientService,private route: ActivatedRoute) {}
 
   ngOnInit() {
@@ -29,7 +33,9 @@ export class DoktorPacientZaznamyDetailComponent {
       (result:Zaznam[]) =>
       {
         this.zaznam = result;
-        console.log(this.zaznam);
+        this.osobneCislo = result.at(0)!.osobnecislo;
+        this.rodneCislo = result.at(0)!.rodnecislo;
+        this.idzaznam = result.at(0)!.idzaznam;
       }
     )
   }

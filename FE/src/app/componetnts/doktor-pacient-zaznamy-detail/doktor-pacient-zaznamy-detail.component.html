@@ -31,6 +31,11 @@
     <mat-card-content>
       <b><i>Záver:</i></b> {{pacZaznam.zaver}}
     </mat-card-content>
+
+    <div class="upravButton">
+      <button  mat-raised-button color="primary"
+               routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/zaznamZmena/{{this.idzaznam}}">Uprav</button>
+    </div>
   </mat-card>
 
   <div class="innerCards">

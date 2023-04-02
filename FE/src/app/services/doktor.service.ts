@@ -123,4 +123,8 @@ export class DoktorService {
     return this.http.delete<OdporucaciListok[]>(`${environment.apiUrl}/vymazListok/${datum}/${kod}/${id}/${osobne}/${rodne}`);
   }
 
+  public deleteVysetrenie(kod:string, idzaznam:number) : Observable<VysetrenieZaznam[]> {
+    return this.http.delete<VysetrenieZaznam[]>(`${environment.apiUrl}/vymazVystrenie/${kod}/${idzaznam}`);
+  }
+
 }

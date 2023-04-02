@@ -32,3 +32,7 @@ mat-card-content {
 .innerCards mat-card {
   min-width: 100%;
 }
+
+.upravButton {
+  margin: 2% auto;
+}
