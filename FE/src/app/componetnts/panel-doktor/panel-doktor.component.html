@@ -5,6 +5,8 @@
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}">Zobraziť údaje</button>
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/pacienti">Zobraziť pacientov</button>
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/pridajPacienta">Pridať pacienta</button>
+    <button mat-menu-item routerLink="/zdielaneMne/{{this.osobneCislo}}/alergie">Zdieľané mne</button>
+    <button mat-menu-item routerLink="/zdielaneMnou/{{this.osobneCislo}}/alergie">Zdieľané mnou</button>
     <button mat-menu-item (click)="logout()">Odhlásenie</button>
   </mat-menu>
 </mat-toolbar>

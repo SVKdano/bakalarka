@@ -39,7 +39,7 @@ public partial class Pacient
     public virtual Poistovna? IdpoistovneNavigation { get; set; }
     [JsonIgnore]
     public virtual ICollection<Odporucacilistok> Odporucacilistoks { get; } = new List<Odporucacilistok>();
-
+    [JsonIgnore]
     public virtual ICollection<PacientAlergie> PacientAlergies { get; } = new List<PacientAlergie>();
     [JsonIgnore]
     public virtual ICollection<PacientDoktor> PacientDoktors { get; } = new List<PacientDoktor>();

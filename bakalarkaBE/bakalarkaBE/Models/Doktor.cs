@@ -22,8 +22,9 @@ public partial class Doktor
 
     public string Email { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual ICollection<Alergiazdielanie> AlergiazdielanieCielovyNavigations { get; } = new List<Alergiazdielanie>();
-
+    [JsonIgnore]
     public virtual ICollection<Alergiazdielanie> AlergiazdielanieZdielajuciNavigations { get; } = new List<Alergiazdielanie>();
 
     public virtual ICollection<Historiadoktorov> Historiadoktorovs { get; } = new List<Historiadoktorov>();

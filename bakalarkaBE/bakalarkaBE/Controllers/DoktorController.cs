@@ -340,6 +340,35 @@ namespace bakalarkaBE.Controllers
             
             return Ok(await _dbContext.VysetrenieZaznams.ToListAsync());
         }
+        
+        //------------------ALERGIE ZDIEALNIE--------------------
+        [HttpGet("/mneZdielaneAlergie/{osobneCislo}")]
+        public async Task<ActionResult<List<Alergiazdielanie>>> GetMneZdielaneAlergie(string osobneCislo)
+        {
+            var dbZdielaneAlergie = await _dbContext.Alergiazdielanies
+                .Where(a => a.Cielovy == osobneCislo)
+                .Include(b => b.PacientAlergie)
+                .ThenInclude(c => c.KodalergieNavigation)
+                .Include(b => b.PacientAlergie)
+                .ThenInclude(c => c.RodnecisloNavigation)
+                .Include(b => b.ZdielajuciNavigation)
+                .ToListAsync();
+            return Ok(dbZdielaneAlergie);
+        }
 
+
+        [HttpGet("/mnouZdielaneAlergie/{osobneCislo}")]
+        public async Task<ActionResult<List<Alergiazdielanie>>> GetMnouZdielaneAlergie(string osobneCislo)
+        {
+            var dbZdielaneAlergie = await _dbContext.Alergiazdielanies
+                .Where(a => a.Zdielajuci == osobneCislo)
+                .Include(b => b.PacientAlergie)
+                .ThenInclude(c => c.KodalergieNavigation)
+                .Include(b => b.PacientAlergie)
+                .ThenInclude(c => c.RodnecisloNavigation)
+                .Include(b => b.CielovyNavigation)
+                .ToListAsync();
+            return Ok(dbZdielaneAlergie);
+        }
     }
 }

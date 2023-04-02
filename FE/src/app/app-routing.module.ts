@@ -50,6 +50,10 @@ import {
 import {
   DoktorPacientZaznamyChangeComponent
 } from "./componetnts/doktor-pacient-zaznamy-change/doktor-pacient-zaznamy-change.component";
+import {DoktorZdielaneAlergieComponent} from "./componetnts/doktor-zdielane-alergie/doktor-zdielane-alergie.component";
+import {
+  DoktorZazdielaneAlergieComponent
+} from "./componetnts/doktor-zazdielane-alergie/doktor-zazdielane-alergie.component";
 
 
 
@@ -84,7 +88,10 @@ const routes: Routes = [
   { path: "doktor/:osobnecislo/:rodnecislo/zaznamPridaj/:idzaznam", component: DoktorPacientZaznamyPridajComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/zaznamZmena/:idzaznam", component: DoktorPacientZaznamyChangeComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/alergiaShare/:kodalergie", component: DoktorPacientAlegrgiaShareComponent},
-  { path: "registracia", component:RegisterComponent}
+  { path: "zdielaneMnou/:osobnecislo/alergie", component: DoktorZazdielaneAlergieComponent},
+  { path: "zdielaneMne/:osobnecislo/alergie", component:DoktorZdielaneAlergieComponent},
+  { path: "registracia", component:RegisterComponent},
+  { path: "**", component: WelcomePageComponent}
 ];
 
 @NgModule({
