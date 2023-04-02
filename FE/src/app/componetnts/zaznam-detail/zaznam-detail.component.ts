@@ -22,7 +22,6 @@ export class ZaznamDetailComponent {
       (result:VysetrenieZaznam[]) =>
       {
         this.vysetrenie = result;
-        console.log(this.vysetrenie);
       }
     );
 
@@ -30,7 +29,6 @@ export class ZaznamDetailComponent {
       (result:Zaznam[]) =>
       {
         this.zaznam = result;
-        console.log(this.zaznam);
       }
     )
   }

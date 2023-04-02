@@ -44,11 +44,14 @@ import {
 import {
   DoktorPacientZaznamyDetailComponent
 } from "./componetnts/doktor-pacient-zaznamy-detail/doktor-pacient-zaznamy-detail.component";
+import {
+  DoktorPacientZaznamyPridajComponent
+} from "./componetnts/doktor-pacient-zaznamy-pridaj/doktor-pacient-zaznamy-pridaj.component";
 
 
 
 const routes: Routes = [
-  { path:"", component: WelcomePageComponent },
+  { path:"", component: WelcomePageComponent},
   { path: "pacient/:rodnecislo", component: PacientProfileComponent, canActivate: [PacientGuardGuard]},
   { path: "alergie/:rodnecislo", component: AlergiePageComponent, canActivate: [PacientGuardGuard]},
   { path: "ochorenia/:rodnecislo", component: OchoreniaPageComponent, canActivate: [PacientGuardGuard]},
@@ -75,8 +78,9 @@ const routes: Routes = [
   { path: "doktor/:osobnecislo/:rodnecislo/liekyZmena", component: DoktorPacientLiekyChangeComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/listkyZmena", component: DoktorPacientListkyChangeComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/ochoreniaZmena", component: DoktorPacientOchoreniaChangeComponent},
+  { path: "doktor/:osobnecislo/:rodnecislo/zaznamPridaj/:idzaznam", component: DoktorPacientZaznamyPridajComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/alergiaShare/:kodalergie", component: DoktorPacientAlegrgiaShareComponent},
-  { path: "registracia", component:RegisterComponent }
+  { path: "registracia", component:RegisterComponent}
 ];
 
 @NgModule({

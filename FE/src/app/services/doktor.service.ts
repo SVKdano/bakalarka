@@ -18,6 +18,11 @@ import {PacientOchorenie} from "../models/PacientOchorenie";
 import {Oddelenie} from "../models/Oddelenie";
 import {OdporucaciListok} from "../models/OdporucaciListok";
 import {ListokUpdate} from "../UpdateModels/ListokUpdate";
+import {ZaznamUpdate} from "../UpdateModels/ZaznamUpdate";
+import {Zaznam} from "../models/Zaznam";
+import {Vysetrenie} from "../models/Vysetrenie";
+import {VysetrenieZaznamUpdate} from "../UpdateModels/VysetrenieZaznamUpdate";
+import {VysetrenieZaznam} from "../models/VysetrenieZaznam";
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +64,10 @@ export class DoktorService {
     return this.http.get<OdporucaciListok[]>(`${environment.apiUrl}/listky/${rodneCislo}/${osobneCislo}`);
   }
 
+  public getAllVysetrenia() : Observable<Vysetrenie[]> {
+    return this.http.get<Vysetrenie[]>(`${environment.apiUrl}/getAllVysetria`);
+  }
+
   //--------------------POST methods----------------------
   public addPacient(pacient: DoktorPacientUpdate) : Observable<DoktorPacient[]> {
     return this.http.post<DoktorPacient[]>(`${environment.apiUrl}/pridajPacienta`, pacient);
@@ -80,6 +89,14 @@ export class DoktorService {
     return this.http.post<OdporucaciListok[]>(`${environment.apiUrl}/pridajListok`, listok);
   }
 
+  public addZaznam(zaznam: ZaznamUpdate) : Observable<number> {
+    return this.http.post<number>(`${environment.apiUrl}/pridajZaznam`, zaznam);
+  }
+
+  public pridajVysetrenieKZaznamu(vystrenie: VysetrenieZaznamUpdate) : Observable<VysetrenieZaznam[]> {
+    return this.http.post<VysetrenieZaznam[]>(`${environment.apiUrl}/pridajVysetrenieZaznamu`, vystrenie);
+  }
+
   //--------------------PUT methods-----------------------
   public updateAlergia(alergia: AlergiaUpdate) : Observable<PacientAlergie[]> {
     return this.http.put<PacientAlergie[]>(`${environment.apiUrl}/updateAlergiu`,alergia);
@@ -91,6 +108,10 @@ export class DoktorService {
 
   public updateOchorenie(ochorenie: OchorenieUpdate) : Observable<PacientOchorenie[]> {
     return this.http.put<PacientOchorenie[]>(`${environment.apiUrl}/ukonciOchorenie`, ochorenie);
+  }
+
+  public updateZaznam(zaznam:ZaznamUpdate) : Observable<Zaznam[]> {
+    return this.http.put<Zaznam[]>(`${environment.apiUrl}/updateZaznam`, zaznam);
   }
 
   //-------------------DETELE methods---------------------

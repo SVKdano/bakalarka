@@ -272,6 +272,58 @@ namespace bakalarkaBE.Controllers
             
             return Ok(await _dbContext.Odporucacilistoks.ToListAsync());
         }
+        
+        //---------------------ZAZNAM a VYSETRENIE--------------------------
+        [HttpPost("/pridajZaznam")]
+        public async Task<ActionResult<int>> PridajZaznam(Zaznam zaznam)
+        {
+            _dbContext.Add(zaznam);
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(zaznam.Idzaznam);
+        }
+
+        [HttpPut("/updateZaznam")]
+        public async Task<ActionResult<List<Zaznam>>> UpdateZaznam(Zaznam zaznam)
+        {
+            var dbZaznam = await _dbContext.Zaznams.FindAsync(zaznam.Idzaznam);
+
+            if (dbZaznam == null)
+            {
+                return BadRequest(new { Message = "Záznam na aktualizaciu neexistuje" });
+            }
+
+            dbZaznam.Dovodnavstevy = zaznam.Dovodnavstevy;
+            dbZaznam.Doplnujuceinformacie = zaznam.Doplnujuceinformacie;
+            dbZaznam.Zaver = zaznam.Zaver;
+            
+            await _dbContext.SaveChangesAsync();
+
+            return Ok(await _dbContext.Zaznams.ToListAsync());
+        }
+
+        [HttpGet("/getAllVysetria")]
+        public async Task<ActionResult<List<Vysetrenie>>> GetAllVysetrenia()
+        {
+            return Ok(await _dbContext.Vysetrenies.ToListAsync());
+        }
+
+        [HttpPost("/pridajVysetrenieZaznamu")]
+        public async Task<ActionResult<List<VysetrenieZaznam>>> PridajVysetrenieZaznamu(VysetrenieZaznam vysetrenie)
+        {
+            var dbVysetrenie = await _dbContext.VysetrenieZaznams
+                .FindAsync(vysetrenie.Kod, vysetrenie.Idzaznam);
+
+            if (dbVysetrenie != null)
+            {
+                return BadRequest(new { Message = "Vysetrenie v zázname už existuje!" });
+            }
+
+            _dbContext.Add(vysetrenie);
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok(vysetrenie);
+        }
 
     }
 }

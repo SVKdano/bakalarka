@@ -1,0 +1,58 @@
+.textField {
+  min-width: 75%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.CasDatum {
+  font-size: larger;
+  margin-bottom: 2%;
+}
+
+.zaznam {
+  margin-top: 2%;
+  min-width: 45%;
+  max-width: 47%;
+}
+
+mat-card-content {
+  text-align: center;
+}
+
+.zaznam mat-card-header {
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.formButtons button {
+  min-width: 30%;
+}
+
+.outerCards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.innerCards {
+  margin-top: 2%;
+  min-width: 45%;
+  max-width: 47%;
+}
+
+.addVysetrenie mat-card-header {
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.textFieldTwo {
+  min-width: 60%;
+}
+
+.addVysetrenie {
+  margin-bottom: 2%;
+}
+
+.displayVysetrenia mat-card-header {
+  justify-content: center;
+  margin-bottom: 2%;
+}
