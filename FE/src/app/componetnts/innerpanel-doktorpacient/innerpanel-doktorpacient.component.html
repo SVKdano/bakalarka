@@ -35,7 +35,7 @@
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/ochorenia" class="leftsided" >Zobraziť
     </button>
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/ochoreniaZmena">Upraviť</button>
-    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zdielať</button>
+    <button mat-menu-item routerLink="/zdielatOchorenia/{{this.osobneCislo}}/{{this.rodneCislo}}">Zdielať</button>
   </mat-menu>
 
   <button mat-raised-button [matMenuTriggerFor]="menu5" class="menu">Odporučenia</button>

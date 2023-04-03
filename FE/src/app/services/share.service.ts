@@ -34,4 +34,9 @@ export class ShareService {
     return this.http.get<Lieky[]>
     (`${environment.apiUrl}/liekyZdielanie/${zdielajuci}/${cielovy}/${rodnecislo}/${datumdo}`);
   }
+
+  public shareOchorenia(zdielajuci:string, cielovy:string, rodnecislo:string, datumdo:string) : Observable<Lieky[]> {
+    return this.http.get<Lieky[]>
+    (`${environment.apiUrl}/ochoreniaZdielanie/${zdielajuci}/${cielovy}/${rodnecislo}/${datumdo}`);
+  }
 }

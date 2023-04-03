@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace bakalarkaBE.Models;
 
@@ -18,7 +19,7 @@ public partial class Ochoreniazdielanie
     public DateOnly DatumdoZdielanie { get; set; }
 
     public virtual Doktor CielovyNavigation { get; set; } = null!;
-
+    
     public virtual Pacientoveochorenium Pacientoveochorenium { get; set; } = null!;
 
     public virtual Doktor ZdielajuciNavigation { get; set; } = null!;

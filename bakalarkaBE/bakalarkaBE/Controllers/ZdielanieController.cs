@@ -98,12 +98,47 @@ namespace bakalarkaBE.Controllers
                 };
                 
                 _dbContext.Add(liekyZdiel);
-                Console.WriteLine(VARIABLE.Item2);
             }
 
             await _dbContext.SaveChangesAsync();
             
             return Ok(await _dbContext.Liekyzdielanies.ToListAsync());
+        }
+        
+        [HttpGet("/ochoreniaZdielanie/{zdielajuci}/{cielovy}/{rodnecislo}/{datumdo}")]
+        public async Task<ActionResult<List<Lieky>>> OchoreniaZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
+        {
+            var ochorenia = await _dbContext.Pacientoveochorenia.Where(a => a.Rodnecislo == rodnecislo).ToArrayAsync();
+
+            if (ochorenia == null)
+            {
+                return BadRequest();
+            }
+            List<Tuple<string,string>> kodADatumLieku = new List<Tuple<string,string>>();
+            
+            for (int i = 0; i < ochorenia.Length; i++)
+            {
+                kodADatumLieku.Add(Tuple.Create(ochorenia[i].Kodochorenia,ochorenia[i].Datumod.ToString("yyyy-MM-dd")));
+            }
+
+            foreach (var VARIABLE in kodADatumLieku)
+            {
+                var ochoreniaZdiel = new Ochoreniazdielanie
+                {
+                    Zdielajuci = zdielajuci,
+                    Cielovy = cielovy,
+                    Kodochorenia = VARIABLE.Item1,
+                    Rodnecislo = rodnecislo,
+                    Datumod = DateOnly.ParseExact(VARIABLE.Item2, "yyyy-MM-dd"),
+                    DatumdoZdielanie = DateOnly.ParseExact(datumdo, "yyyy-MM-dd")
+                };
+                
+                _dbContext.Add(ochoreniaZdiel);
+            }
+
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok(await _dbContext.Ochoreniazdielanies.ToListAsync());
         }
     }
 }

@@ -1,0 +1,69 @@
+<app-panel-doktor></app-panel-doktor>
+<app-doktor-zdielanie-panel></app-doktor-zdielanie-panel>
+
+<div class="panel">
+  <mat-toolbar>
+    <div class="inputs">
+      <mat-form-field>
+        <mat-label>Meno</mat-label>
+        <input matInput type="text" [(ngModel)]="this.menoFilter" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Priezvisko</mat-label>
+        <input matInput type="text" [(ngModel)]="this.priezviskoFilter">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Rodné číslo</mat-label>
+        <input matInput type="text" [(ngModel)]="this.rodnecisloFilter" >
+      </mat-form-field>
+    </div>
+
+    <div class="filterButtons">
+      <button mat-raised-button (click)="filter()">Filtruj</button>
+      <button mat-raised-button (click)="reset()">Reset</button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<mat-card *ngFor="let ochorenie of filtered">
+  <mat-card-header>
+    <mat-card-title *ngIf="ochorenie.pacientoveochorenium && ochorenie.pacientoveochorenium.rodnecisloNavigation">
+      Ochorenie pacienta:
+      <i>{{ochorenie.pacientoveochorenium.rodnecisloNavigation.meno}}
+        {{ochorenie.pacientoveochorenium.rodnecisloNavigation.priezvisko}} -
+        {{ochorenie.rodnecislo}}
+      </i>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="ochorenie.zdielajuciNavigation">
+    <div *ngIf="ochorenie.pacientoveochorenium && ochorenie.pacientoveochorenium.kodochoreniaNavigation" class="podSeba">
+      <div>
+        <b>Ochorenie:</b>
+        {{ochorenie.pacientoveochorenium.kodochoreniaNavigation.nazov}}
+      </div>
+
+      <div *ngIf="ochorenie.pacientoveochorenium">
+        <b>Trvajúce od:</b>
+        {{ochorenie.pacientoveochorenium.datumod | date : "dd.MM.yyyy"}}
+      </div>
+
+      <div *ngIf="ochorenie.pacientoveochorenium">
+        <b>Trvajúce do:</b>
+        {{ochorenie.pacientoveochorenium.datumdo | date : "dd.MM.yyyy"}}
+      </div>
+
+      <div>
+        <b>Zdielané do:</b>
+        {{ochorenie.datumdoZdielanie | date : "dd.MM.yyyy"}}
+      </div>
+    </div>
+
+    <div>
+      <b>Cieľový doktor:</b>
+      {{ochorenie.zdielajuciNavigation.meno}} {{ochorenie.zdielajuciNavigation.priezvisko}}
+    </div>
+  </mat-card-content>
+</mat-card>

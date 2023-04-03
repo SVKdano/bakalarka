@@ -371,6 +371,7 @@ namespace bakalarkaBE.Controllers
             return Ok(dbZdielaneAlergie);
         }
         
+        //----------------LISTKY ZDIELANIE---------------------
         [HttpGet("/mneZdielaneLieky/{osobneCislo}")]
         public async Task<ActionResult<List<Liekyzdielanie>>> GetMneZdielaneLieky(string osobneCislo)
         {
@@ -399,6 +400,37 @@ namespace bakalarkaBE.Controllers
                 .ToListAsync();
             
             return Ok(dbZdielaneLieky);
+        }
+        
+        //------------------OCHORENIA ZDIELANIE-------------
+        [HttpGet("/mneZdielaneOchorenia/{osobneCislo}")]
+        public async Task<ActionResult<List<Ochoreniazdielanie>>> GetMneZdielaneOchorenia(string osobneCislo)
+        {
+            var dbZdielaneOchorenia = await _dbContext.Ochoreniazdielanies
+                .Where(a => a.Cielovy == osobneCislo)
+                .Include(b => b.Pacientoveochorenium)
+                .ThenInclude(c => c.KodochoreniaNavigation).
+                Include(b => b.Pacientoveochorenium)
+                .ThenInclude(c =>c.RodnecisloNavigation)
+                .Include(b => b.ZdielajuciNavigation)
+                .ToListAsync();
+            
+            return Ok(dbZdielaneOchorenia);
+        }
+        
+        [HttpGet("/mnouZdielaneOchorenia/{osobneCislo}")]
+        public async Task<ActionResult<List<Ochoreniazdielanie>>> GetMnouZdielaneOchorenia(string osobneCislo)
+        {
+            var dbZdielaneOchorenia = await _dbContext.Ochoreniazdielanies
+                .Where(a => a.Zdielajuci == osobneCislo)
+                .Include(b => b.Pacientoveochorenium)
+                .ThenInclude(c => c.KodochoreniaNavigation).
+                Include(b => b.Pacientoveochorenium)
+                .ThenInclude(c =>c.RodnecisloNavigation)
+                .Include(b => b.CielovyNavigation)
+                .ToListAsync();
+            
+            return Ok(dbZdielaneOchorenia);
         }
     }
 }

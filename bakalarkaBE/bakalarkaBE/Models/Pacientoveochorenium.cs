@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace bakalarkaBE.Models;
 
@@ -16,7 +17,7 @@ public partial class Pacientoveochorenium
     public string? Dalsiaspecifikacia { get; set; }
 
     public virtual Ochorenium KodochoreniaNavigation { get; set; } = null!;
-
+    [JsonIgnore]
     public virtual ICollection<Ochoreniazdielanie> Ochoreniazdielanies { get; } = new List<Ochoreniazdielanie>();
 
     public virtual Pacient RodnecisloNavigation { get; set; } = null!;

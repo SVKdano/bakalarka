@@ -25,6 +25,7 @@ import {VysetrenieZaznamUpdate} from "../UpdateModels/VysetrenieZaznamUpdate";
 import {VysetrenieZaznam} from "../models/VysetrenieZaznam";
 import {AlergieZdielanie} from "../models/AlergieZdielanie";
 import {LiekyZdielanie} from "../models/LiekyZdielanie";
+import {OchoreniaZdielanie} from "../models/OchoreniaZdielanie";
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,14 @@ export class DoktorService {
 
   public getMneZazdielaneLieky(osobneCislo:string) : Observable<LiekyZdielanie[]> {
     return this.http.get<LiekyZdielanie[]>(`${environment.apiUrl}/mneZdielaneLieky/${osobneCislo}`);
+  }
+
+  public getMneZazdielaneOchorenia(osobneCislo:string) : Observable<OchoreniaZdielanie[]> {
+    return this.http.get<OchoreniaZdielanie[]>(`${environment.apiUrl}/mneZdielaneOchorenia/${osobneCislo}`);
+  }
+
+  public getMnouZazdielaneOchorenia(osobneCislo:string) : Observable<OchoreniaZdielanie[]> {
+    return this.http.get<OchoreniaZdielanie[]>(`${environment.apiUrl}/mnouZdielaneOchorenia/${osobneCislo}`);
   }
 
   //--------------------POST methods----------------------

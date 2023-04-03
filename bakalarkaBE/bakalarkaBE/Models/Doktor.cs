@@ -36,9 +36,9 @@ public partial class Doktor
     public virtual ICollection<Liekyzdielanie> LiekyzdielanieCielovyNavigations { get; } = new List<Liekyzdielanie>();
     [JsonIgnore]
     public virtual ICollection<Liekyzdielanie> LiekyzdielanieZdielajuciNavigations { get; } = new List<Liekyzdielanie>();
-
+    [JsonIgnore]
     public virtual ICollection<Ochoreniazdielanie> OchoreniazdielanieCielovyNavigations { get; } = new List<Ochoreniazdielanie>();
-
+    [JsonIgnore]
     public virtual ICollection<Ochoreniazdielanie> OchoreniazdielanieZdielajuciNavigations { get; } = new List<Ochoreniazdielanie>();
 
     public virtual Oddelenie? Oddelenie { get; set; }
