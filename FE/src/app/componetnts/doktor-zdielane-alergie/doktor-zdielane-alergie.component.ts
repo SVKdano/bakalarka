@@ -12,6 +12,11 @@ export class DoktorZdielaneAlergieComponent implements OnInit {
 
   osobneCislo:string = "";
   zazdielane:AlergieZdielanie[] = [];
+  filtered:AlergieZdielanie[] = [];
+
+  menoFilter: string = "";
+  priezviskoFilter: string = "";
+  rodnecisloFilter: string = "";
 
   constructor(private doctorService:DoktorService, private route:ActivatedRoute) {}
 
@@ -22,8 +27,36 @@ export class DoktorZdielaneAlergieComponent implements OnInit {
       (result:AlergieZdielanie[]) =>
       {
         this.zazdielane = result;
-        console.log(this.zazdielane);
+        this.filtered = result;
       }
-    )
+    );
+  }
+
+  filter() {
+    this.filtered = [];
+
+    this.zazdielane.forEach(a => {
+      if (a.rodnecislo.toLowerCase().includes(this.rodnecisloFilter.toLowerCase()))
+      {
+        if (a.pacientAlergie && a.pacientAlergie.rodnecisloNavigation
+          && a.pacientAlergie.rodnecisloNavigation.meno.toLowerCase().includes(this.menoFilter.toLowerCase()))
+        {
+          if (a.pacientAlergie && a.pacientAlergie.rodnecisloNavigation
+          && a.pacientAlergie.rodnecisloNavigation.priezvisko.toLowerCase().includes(this.priezviskoFilter.toLowerCase()))
+          {
+            this.filtered.push(a);
+          }
+        }
+      }
+    })
+  }
+
+
+  reset() {
+    this.filtered = this.zazdielane;
+
+    this.rodnecisloFilter = "";
+    this.menoFilter = "";
+    this.priezviskoFilter = "";
   }
 }

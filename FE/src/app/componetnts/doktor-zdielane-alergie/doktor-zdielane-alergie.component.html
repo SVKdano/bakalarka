@@ -1,2 +1,63 @@
 <app-panel-doktor></app-panel-doktor>
 <app-doktor-zdielanie-panel></app-doktor-zdielanie-panel>
+
+
+<div class="panel">
+  <mat-toolbar>
+    <div class="inputs">
+      <mat-form-field>
+        <mat-label>Meno</mat-label>
+        <input matInput type="text" [(ngModel)]="this.menoFilter" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Priezvisko</mat-label>
+        <input matInput type="text" [(ngModel)]="this.priezviskoFilter">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Rodné číslo</mat-label>
+        <input matInput type="text" [(ngModel)]="this.rodnecisloFilter" >
+      </mat-form-field>
+    </div>
+
+    <div class="filterButtons">
+      <button mat-raised-button (click)="filter()">Filtruj</button>
+      <button mat-raised-button (click)="reset()">Reset</button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<mat-card *ngFor="let alergia of filtered">
+  <mat-card-header>
+    <mat-card-title *ngIf="alergia.pacientAlergie && alergia.pacientAlergie.rodnecisloNavigation">
+      Alergia pacienta:
+      <i>{{alergia.pacientAlergie.rodnecisloNavigation.meno}}
+        {{alergia.pacientAlergie.rodnecisloNavigation.priezvisko}} -
+        {{alergia.rodnecislo}}
+      </i>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="alergia.zdielajuciNavigation">
+    <div>
+      <b>Cieľový doktor:</b>
+      {{alergia.zdielajuciNavigation.meno}} {{alergia.zdielajuciNavigation.priezvisko}}
+    </div>
+
+    <div *ngIf="alergia.pacientAlergie && alergia.pacientAlergie.kodalergieNavigation" class="podSeba">
+      <div>
+        <b>Alergia:</b>
+        {{alergia.pacientAlergie.kodalergieNavigation.nazov}}:
+        <br>
+        {{alergia.pacientAlergie.informacie}}
+      </div>
+
+      <div>
+        <b>Zdielané do:</b>
+        {{alergia.datumdo | date : "dd.MM.yyyy"}}
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+

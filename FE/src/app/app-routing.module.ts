@@ -87,7 +87,7 @@ const routes: Routes = [
   { path: "doktor/:osobnecislo/:rodnecislo/ochoreniaZmena", component: DoktorPacientOchoreniaChangeComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/zaznamPridaj/:idzaznam", component: DoktorPacientZaznamyPridajComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/zaznamZmena/:idzaznam", component: DoktorPacientZaznamyChangeComponent},
-  { path: "doktor/:osobnecislo/:rodnecislo/alergiaShare/:kodalergie", component: DoktorPacientAlegrgiaShareComponent},
+  { path: "zdielatAlergiu/:osobnecislo/:rodnecislo", component: DoktorPacientAlegrgiaShareComponent},
   { path: "zdielaneMnou/:osobnecislo/alergie", component: DoktorZazdielaneAlergieComponent},
   { path: "zdielaneMne/:osobnecislo/alergie", component:DoktorZdielaneAlergieComponent},
   { path: "registracia", component:RegisterComponent},
