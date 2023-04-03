@@ -370,5 +370,35 @@ namespace bakalarkaBE.Controllers
                 .ToListAsync();
             return Ok(dbZdielaneAlergie);
         }
+        
+        [HttpGet("/mneZdielaneLieky/{osobneCislo}")]
+        public async Task<ActionResult<List<Liekyzdielanie>>> GetMneZdielaneLieky(string osobneCislo)
+        {
+            var dbZdielaneLieky = await _dbContext.Liekyzdielanies
+                .Where(a => a.Cielovy == osobneCislo)
+                .Include(b => b.ZdielajuciNavigation)
+                .Include(b => b.Pacientovelieky)
+                .ThenInclude(c => c.RegistracnecisloNavigation)
+                .Include(b => b.Pacientovelieky)
+                .ThenInclude(c => c.RodnecisloNavigation)
+                .ToListAsync();
+            
+            return Ok(dbZdielaneLieky);
+        }
+        
+        [HttpGet("/mnouZdielaneLieky/{osobneCislo}")]
+        public async Task<ActionResult<List<Liekyzdielanie>>> GetMnouZdielaneLieky(string osobneCislo)
+        {
+            var dbZdielaneLieky = await _dbContext.Liekyzdielanies
+                .Where(a => a.Zdielajuci == osobneCislo)
+                .Include(b => b.CielovyNavigation)
+                .Include(b => b.Pacientovelieky)
+                .ThenInclude(c => c.RegistracnecisloNavigation)
+                .Include(b => b.Pacientovelieky)
+                .ThenInclude(c => c.RodnecisloNavigation)
+                .ToListAsync();
+            
+            return Ok(dbZdielaneLieky);
+        }
     }
 }

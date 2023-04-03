@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace bakalarkaBE.Models;
 
@@ -13,5 +14,6 @@ public partial class Lieky
 
     public string Kodlieku { get; set; } = null!;
 
+    [JsonIgnore]
     public virtual ICollection<Pacientovelieky> Pacientoveliekies { get; } = new List<Pacientovelieky>();
 }

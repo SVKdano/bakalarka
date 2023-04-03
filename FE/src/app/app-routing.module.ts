@@ -54,6 +54,11 @@ import {DoktorZdielaneAlergieComponent} from "./componetnts/doktor-zdielane-aler
 import {
   DoktorZazdielaneAlergieComponent
 } from "./componetnts/doktor-zazdielane-alergie/doktor-zazdielane-alergie.component";
+import {DoktorZazdielaneLiekyComponent} from "./componetnts/doktor-zazdielane-lieky/doktor-zazdielane-lieky.component";
+import {DoktorZdielaneLiekyComponent} from "./componetnts/doktor-zdielane-lieky/doktor-zdielane-lieky.component";
+import {
+  DoktorPacientLiekyShareComponent
+} from "./componetnts/doktor-pacient-lieky-share/doktor-pacient-lieky-share.component";
 
 
 
@@ -88,8 +93,11 @@ const routes: Routes = [
   { path: "doktor/:osobnecislo/:rodnecislo/zaznamPridaj/:idzaznam", component: DoktorPacientZaznamyPridajComponent},
   { path: "doktor/:osobnecislo/:rodnecislo/zaznamZmena/:idzaznam", component: DoktorPacientZaznamyChangeComponent},
   { path: "zdielatAlergiu/:osobnecislo/:rodnecislo", component: DoktorPacientAlegrgiaShareComponent},
+  { path: "zdielatLieky/:osobnecislo/:rodnecislo", component: DoktorPacientLiekyShareComponent},
   { path: "zdielaneMnou/:osobnecislo/alergie", component: DoktorZazdielaneAlergieComponent},
   { path: "zdielaneMne/:osobnecislo/alergie", component:DoktorZdielaneAlergieComponent},
+  { path: "zdielaneMnou/:osobnecislo/lieky", component:DoktorZazdielaneLiekyComponent},
+  { path: "zdielaneMne/:osobnecislo/lieky", component:DoktorZdielaneLiekyComponent},
   { path: "registracia", component:RegisterComponent},
   { path: "**", component: WelcomePageComponent}
 ];

@@ -1,0 +1,69 @@
+<app-panel-doktor></app-panel-doktor>
+<app-doktor-zdielanie-panel></app-doktor-zdielanie-panel>
+
+<div class="panel">
+  <mat-toolbar>
+    <div class="inputs">
+      <mat-form-field>
+        <mat-label>Meno</mat-label>
+        <input matInput type="text" [(ngModel)]="this.menoFilter" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Priezvisko</mat-label>
+        <input matInput type="text" [(ngModel)]="this.priezviskoFilter">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Rodné číslo</mat-label>
+        <input matInput type="text" [(ngModel)]="this.rodnecisloFilter" >
+      </mat-form-field>
+    </div>
+
+    <div class="filterButtons">
+      <button mat-raised-button (click)="filter()">Filtruj</button>
+      <button mat-raised-button (click)="reset()">Reset</button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<mat-card *ngFor="let liek of filtered">
+  <mat-card-header>
+    <mat-card-title *ngIf="liek.pacientovelieky && liek.pacientovelieky.rodnecisloNavigation">
+      Liek pacienta:
+      <i>{{liek.pacientovelieky.rodnecisloNavigation.meno}}
+        {{liek.pacientovelieky.rodnecisloNavigation.priezvisko}} -
+        {{liek.rodnecislo}}
+      </i>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="liek.zdielajuciNavigation">
+    <div *ngIf="liek.pacientovelieky && liek.pacientovelieky.registracnecisloNavigation" class="podSeba">
+      <div>
+        <b>Liek:</b>
+        {{liek.pacientovelieky.registracnecisloNavigation.nazov}}
+      </div>
+
+      <div *ngIf="liek.pacientovelieky">
+        <b>Užívané od:</b>
+        {{liek.pacientovelieky.datumod | date : "dd.MM.yyyy"}}
+      </div>
+
+      <div *ngIf="liek.pacientovelieky">
+        <b>Užívané do:</b>
+        {{liek.pacientovelieky.datumdo | date : "dd.MM.yyyy"}}
+      </div>
+
+      <div>
+        <b>Zdielané do:</b>
+        {{liek.datumdoZdielanie | date : "dd.MM.yyyy"}}
+      </div>
+    </div>
+
+    <div>
+      <b>Cieľový doktor:</b>
+      {{liek.zdielajuciNavigation.meno}} {{liek.zdielajuciNavigation.priezvisko}}
+    </div>
+  </mat-card-content>
+</mat-card>

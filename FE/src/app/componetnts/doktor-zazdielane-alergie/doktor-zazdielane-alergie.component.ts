@@ -10,6 +10,7 @@ import {AlergieZdielanie} from "../../models/AlergieZdielanie";
 })
 export class DoktorZazdielaneAlergieComponent implements OnInit {
   osobneCislo:string = "";
+
   zazdielane:AlergieZdielanie[] = [];
   filtered:AlergieZdielanie[] = [];
 

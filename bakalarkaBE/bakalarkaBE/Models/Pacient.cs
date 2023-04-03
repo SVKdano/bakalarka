@@ -43,7 +43,7 @@ public partial class Pacient
     public virtual ICollection<PacientAlergie> PacientAlergies { get; } = new List<PacientAlergie>();
     [JsonIgnore]
     public virtual ICollection<PacientDoktor> PacientDoktors { get; } = new List<PacientDoktor>();
-
+    [JsonIgnore]
     public virtual ICollection<Pacientovelieky> Pacientoveliekies { get; } = new List<Pacientovelieky>();
 
     public virtual ICollection<Pacientoveochorenium> Pacientoveochorenia { get; } = new List<Pacientoveochorenium>();

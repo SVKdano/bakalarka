@@ -32,9 +32,9 @@ public partial class Doktor
     public virtual ICollection<Hospitalizaciezdielanie> HospitalizaciezdielanieCielovyNavigations { get; } = new List<Hospitalizaciezdielanie>();
 
     public virtual ICollection<Hospitalizaciezdielanie> HospitalizaciezdielanieZdielajuciNavigations { get; } = new List<Hospitalizaciezdielanie>();
-
+    [JsonIgnore]
     public virtual ICollection<Liekyzdielanie> LiekyzdielanieCielovyNavigations { get; } = new List<Liekyzdielanie>();
-
+    [JsonIgnore]
     public virtual ICollection<Liekyzdielanie> LiekyzdielanieZdielajuciNavigations { get; } = new List<Liekyzdielanie>();
 
     public virtual ICollection<Ochoreniazdielanie> OchoreniazdielanieCielovyNavigations { get; } = new List<Ochoreniazdielanie>();

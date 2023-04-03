@@ -16,7 +16,7 @@
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/lieky" class="leftsided" >Zobraziť
     </button>
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/liekyZmena">Upraviť</button>
-    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/liekyZmena">Zdielať</button>
+    <button mat-menu-item routerLink="/zdielatLieky/{{this.osobneCislo}}/{{this.rodneCislo}}">Zdielať</button>
   </mat-menu>
 
   <button mat-raised-button [matMenuTriggerFor]="menu3" class="menu">Záznamy</button>
@@ -44,7 +44,6 @@
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/odporucenia" class="leftsided" >Zobraziť
     </button>
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/listkyZmena">Upraviť</button>
-    <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergieZmena">Zdielať</button>
   </mat-menu>
 
   <button mat-raised-button class="rightsided" *ngFor="let pac of pacient" routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}">

@@ -59,6 +59,10 @@ import {
   DoktorZazdielaneAlergieComponent
 } from "./componetnts/doktor-zazdielane-alergie/doktor-zazdielane-alergie.component";
 import { DoktorZdielaniePanelComponent } from './componetnts/doktor-zdielanie-panel/doktor-zdielanie-panel.component';
+import { DoktorZazdielaneLiekyComponent } from './componetnts/doktor-zazdielane-lieky/doktor-zazdielane-lieky.component';
+import { DoktorZazdielaniePanelComponent } from './componetnts/doktor-zazdielanie-panel/doktor-zazdielanie-panel.component';
+import { DoktorZdielaneLiekyComponent } from './componetnts/doktor-zdielane-lieky/doktor-zdielane-lieky.component';
+import { DoktorPacientLiekyShareComponent } from './componetnts/doktor-pacient-lieky-share/doktor-pacient-lieky-share.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +108,11 @@ import { DoktorZdielaniePanelComponent } from './componetnts/doktor-zdielanie-pa
     DoktorPacientZaznamyChangeComponent,
     DoktorZdielaneAlergieComponent,
     DoktorZazdielaneAlergieComponent,
-    DoktorZdielaniePanelComponent
+    DoktorZdielaniePanelComponent,
+    DoktorZazdielaneLiekyComponent,
+    DoktorZazdielaniePanelComponent,
+    DoktorZdielaneLiekyComponent,
+    DoktorPacientLiekyShareComponent
   ],
     imports: [
         BrowserModule,

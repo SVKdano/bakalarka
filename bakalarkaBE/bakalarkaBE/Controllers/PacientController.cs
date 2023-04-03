@@ -79,7 +79,7 @@ namespace bakalarkaBE.Controllers
         [HttpGet("lieky/{rodneCislo}")]
         public async Task<ActionResult<List<Pacientovelieky>>> GetPacientoveLieky(string rodneCislo)
         {
-            var pacLieky = await _dbContext.Pacientoveliekies.Join(_dbContext.Liekies, 
+            /*var pacLieky = await _dbContext.Pacientoveliekies.Join(_dbContext.Liekies, 
                     a => a.Registracnecislo, b => b.Registracnecislo,
                     (a,b) => new Pacientovelieky()
                     {
@@ -90,7 +90,12 @@ namespace bakalarkaBE.Controllers
                         Registracnecislo = a.Registracnecislo,
                         RegistracnecisloNavigation = b
                     })
-                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();*/
+
+            var pacLieky = await _dbContext.Pacientoveliekies
+                .Include(a => a.RegistracnecisloNavigation)
+                .Where(a => a.Rodnecislo == rodneCislo)
+                .ToListAsync();
 
             return Ok(pacLieky);
         }

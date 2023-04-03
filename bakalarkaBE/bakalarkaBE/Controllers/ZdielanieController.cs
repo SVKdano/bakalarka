@@ -68,5 +68,42 @@ namespace bakalarkaBE.Controllers
 
             return Ok(dbDoktori);
         }
+        
+        [HttpGet("/liekyZdielanie/{zdielajuci}/{cielovy}/{rodnecislo}/{datumdo}")]
+        public async Task<ActionResult<List<Lieky>>> LiekyZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
+        {
+            var lieky = await _dbContext.Pacientoveliekies.Where(a => a.Rodnecislo == rodnecislo).ToArrayAsync();
+
+            if (lieky == null)
+            {
+                return BadRequest();
+            }
+            List<Tuple<string,string>> kodADatumLieku = new List<Tuple<string,string>>();
+            
+            for (int i = 0; i < lieky.Length; i++)
+            {
+                kodADatumLieku.Add(Tuple.Create(lieky[i].Registracnecislo,lieky[i].Datumod.ToString("yyyy-MM-dd")));
+            }
+
+            foreach (var VARIABLE in kodADatumLieku)
+            {
+                var liekyZdiel = new Liekyzdielanie
+                {
+                    Zdielajuci = zdielajuci,
+                    Cielovy = cielovy,
+                    Registracnecislo = VARIABLE.Item1,
+                    Rodnecislo = rodnecislo,
+                    Datumod = DateOnly.ParseExact(VARIABLE.Item2, "yyyy-MM-dd"),
+                    DatumdoZdielanie = DateOnly.ParseExact(datumdo, "yyyy-MM-dd")
+                };
+                
+                _dbContext.Add(liekyZdiel);
+                Console.WriteLine(VARIABLE.Item2);
+            }
+
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok(await _dbContext.Liekyzdielanies.ToListAsync());
+        }
     }
 }

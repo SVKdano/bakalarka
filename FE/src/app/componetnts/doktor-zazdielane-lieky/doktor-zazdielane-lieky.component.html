@@ -27,35 +27,43 @@
   </mat-toolbar>
 </div>
 
-<mat-card *ngFor="let alergia of filtered">
+<mat-card *ngFor="let liek of filtered">
   <mat-card-header>
-    <mat-card-title *ngIf="alergia.pacientAlergie && alergia.pacientAlergie.rodnecisloNavigation">
-      Alergia pacienta:
-      <i>{{alergia.pacientAlergie.rodnecisloNavigation.meno}}
-        {{alergia.pacientAlergie.rodnecisloNavigation.priezvisko}} -
-        {{alergia.rodnecislo}}
+    <mat-card-title *ngIf="liek.pacientovelieky && liek.pacientovelieky.rodnecisloNavigation">
+      Liek pacienta:
+      <i>{{liek.pacientovelieky.rodnecisloNavigation.meno}}
+        {{liek.pacientovelieky.rodnecisloNavigation.priezvisko}} -
+        {{liek.rodnecislo}}
       </i>
     </mat-card-title>
   </mat-card-header>
 
-  <mat-card-content *ngIf="alergia.cielovyNavigation">
-    <div>
-      <b>Cieľový doktor:</b>
-      {{alergia.cielovyNavigation.meno}} {{alergia.cielovyNavigation.priezvisko}}
-    </div>
-
-    <div *ngIf="alergia.pacientAlergie && alergia.pacientAlergie.kodalergieNavigation" class="podSeba">
+  <mat-card-content *ngIf="liek.cielovyNavigation">
+    <div *ngIf="liek.pacientovelieky && liek.pacientovelieky.registracnecisloNavigation" class="podSeba">
       <div>
-        <b>Alergia:</b>
-        {{alergia.pacientAlergie.kodalergieNavigation.nazov}}:
-        <br>
-        {{alergia.pacientAlergie.informacie}}
+        <b>Liek:</b>
+        {{liek.pacientovelieky.registracnecisloNavigation.nazov}}
+      </div>
+
+      <div *ngIf="liek.pacientovelieky">
+        <b>Užívané od:</b>
+        {{liek.pacientovelieky.datumod | date : "dd.MM.yyyy"}}
+      </div>
+
+      <div *ngIf="liek.pacientovelieky">
+        <b>Užívané do:</b>
+        {{liek.pacientovelieky.datumdo | date : "dd.MM.yyyy"}}
       </div>
 
       <div>
         <b>Zdielané do:</b>
-        {{alergia.datumdo | date : "dd.MM.yyyy"}}
+        {{liek.datumdoZdielanie | date : "dd.MM.yyyy"}}
       </div>
+    </div>
+
+    <div>
+      <b>Cieľový doktor:</b>
+      {{liek.cielovyNavigation.meno}} {{liek.cielovyNavigation.priezvisko}}
     </div>
   </mat-card-content>
 </mat-card>
