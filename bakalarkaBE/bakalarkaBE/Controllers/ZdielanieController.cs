@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using bakalarkaBE.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -47,6 +48,25 @@ namespace bakalarkaBE.Controllers
             await _dbContext.SaveChangesAsync();
             
             return Ok(await _dbContext.Alergiazdielanies.ToListAsync());
+        }
+
+        [HttpGet("/allOddeleniaForShare")]
+        public async Task<ActionResult<List<Oddelenie>>> GetAllOddelenia()
+        {
+            var dbOddelenia = await _dbContext.Oddelenies
+                .Include(a => a .IdnemocniceNavigation)
+                .ToListAsync();
+
+            return Ok(dbOddelenia);
+        }
+        
+        [HttpGet("/allDoktoriForShare")]
+        public async Task<ActionResult<List<Doktor>>> GetAllDoktori()
+        {
+            var dbDoktori = await _dbContext.Doktors
+                .ToListAsync();
+
+            return Ok(dbDoktori);
         }
     }
 }

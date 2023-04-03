@@ -8,6 +8,8 @@ mat-card {
   margin-top: 2%;
 
   background-color: #e8e8e8;
+
+  min-width: 35%;
 }
 
 mat-card-header {
@@ -21,4 +23,8 @@ mat-card-content {
 .inputPole form {
   display: flex;
   flex-direction: column;
+}
+
+.formButtons button {
+  margin-left: 1%;
 }
