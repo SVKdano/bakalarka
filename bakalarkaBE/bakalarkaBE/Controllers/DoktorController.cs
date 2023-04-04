@@ -461,8 +461,8 @@ namespace bakalarkaBE.Controllers
         }
         
         //------------GRAF DATA---------------
-        [HttpGet("/graphData")]
-        public async Task<ActionResult<List<GraphDatas>>> GetDataForGraph()
+        [HttpGet("/graphData/{osobneCislo}")]
+        public async Task<ActionResult<List<GraphDatas>>> GetDataForGraph(string osobneCislo)
         {
             string tentoMesiac = DateOnly.FromDateTime(DateTime.Now).ToString("MM/dd/yyyy").Substring(0,2);
             string tentoRok = DateOnly.FromDateTime(DateTime.Now).ToString("MM/dd/yyyy").Substring(6);
@@ -486,7 +486,7 @@ namespace bakalarkaBE.Controllers
                 {
                     Mesiac = mesiac,
                     Pocet = _dbContext.Zaznams
-                        .Where(a => a.Datum.Month == mesiac && a.Datum.Year == rok)
+                        .Where(a => a.Datum.Month == mesiac && a.Datum.Year == rok && a.Osobnecislo == osobneCislo)
                         .Count()
                 };
                 

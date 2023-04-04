@@ -1,0 +1,56 @@
+<app-panel-doktor></app-panel-doktor>
+<app-innerpanel-doktorpacient></app-innerpanel-doktorpacient>
+
+<div class="nadpis">
+  <b><i>Zdielanie záznamu číslo</i></b>
+</div>
+
+<mat-card>
+  <mat-card-content class="inputPole">
+    <b>Vyber oddelenie:</b>
+    <form [formGroup]="requiredForm">
+      <mat-form-field>
+        <mat-label>Oddelenie</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let oddelenie of oddelenia" [value]="oddelenie.nazovoddelenia"
+                      (click)="setKodOddelenia(oddelenie); filter()">
+            <div *ngIf="oddelenie.idnemocniceNavigation">
+              <b><i>{{oddelenie.nazovoddelenia}}</i></b> - {{oddelenie.idnemocniceNavigation.nazov}}
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <b>Vyber doktora:</b>
+      <mat-form-field>
+        <mat-label>Doktor</mat-label>
+        <mat-select formControlName="doktor">
+          <mat-option *ngFor="let doktor of filteredDoktori" [value]="doktor.meno" (click)="setOsobneCislo(doktor)">
+            {{doktor.meno}} {{doktor.priezvisko}}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="this.requiredForm.get('doktor')?.touched && this.requiredForm.get('doktor')?.hasError('required')">
+          Zadajte cieľového doktora!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="datum" [matDatepicker]="picker1" placeholder="Dátum dokedy platí zdielanie" [(ngModel)]="datum">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <mat-error
+          *ngIf="this.requiredForm.get('datum')?.touched && this.requiredForm.get('datum')?.hasError('required')">
+          Zadajte cieľového doktora!
+        </mat-error>
+      </mat-form-field>
+
+    </form>
+    <div class="formButtons">
+      <button mat-raised-button color="primary" (click)="reset()">Reset filtra</button>
+      <button mat-raised-button color="primary" (click)=share() [disabled]="!this.requiredForm.valid">Zdielaj</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+

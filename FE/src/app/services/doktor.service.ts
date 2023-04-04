@@ -105,8 +105,8 @@ export class DoktorService {
     return this.http.get<ZaznamyZdielanie[]>(`${environment.apiUrl}/mnouZdielaneZaznamy/${osobneCislo}`);
   }
 
-  public getChartData() : Observable<GraphData[]> {
-    return this.http.get<GraphData[]>(`${environment.apiUrl}/graphData`);
+  public getChartData(osobneCislo:string) : Observable<GraphData[]> {
+    return this.http.get<GraphData[]>(`${environment.apiUrl}/graphData/${osobneCislo}`);
   }
 
   //--------------------POST methods----------------------

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Chart,registerables} from "chart.js";
 import {DoktorService} from "../../services/doktor.service";
 import {GraphData} from "../../models/GraphData";
+import {ActivatedRoute} from "@angular/router";
 Chart.register(...registerables);
 
 @Component({
@@ -15,10 +16,11 @@ export class DoktorBoardComponent implements OnInit {
   mesiace:any[] = [];
   pocty:any[] = [];
 
-  constructor(private doctorService:DoktorService) {}
+  constructor(private doctorService:DoktorService, private route:ActivatedRoute) {}
 
   ngOnInit() {
-    this.doctorService.getChartData().subscribe(
+    const id = this.route.snapshot.paramMap.get('osobnecislo');
+    this.doctorService.getChartData(id!).subscribe(
       (result:GraphData[]) => {
         this.data = result;
 

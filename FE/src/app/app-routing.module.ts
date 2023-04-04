@@ -76,6 +76,9 @@ import {
   DoktorZdielaneZaznamyDetailComponent
 } from "./componetnts/doktor-zdielane-zaznamy-detail/doktor-zdielane-zaznamy-detail.component";
 import {DoktorBoardComponent} from "./componetnts/doktor-board/doktor-board.component";
+import {
+  DoktorPacientZaznamyShareComponent
+} from "./componetnts/doktor-pacient-zaznamy-share/doktor-pacient-zaznamy-share.component";
 
 
 
@@ -113,6 +116,7 @@ const routes: Routes = [
   { path: "zdielatLieky/:osobnecislo/:rodnecislo", component: DoktorPacientLiekyShareComponent},
   { path: "zdielatOchorenia/:osobnecislo/:rodnecislo", component: DoktorPacientOchoreniaShareComponent},
   { path: "zdielaneMnou/:osobnecislo/alergie", component: DoktorZazdielaneAlergieComponent},
+  { path: "zdielatOchorenia/:osobnecislo/:rodnecislo/:idzaznam", component:DoktorPacientZaznamyShareComponent},
   { path: "zdielaneMne/:osobnecislo/alergie", component:DoktorZdielaneAlergieComponent},
   { path: "zdielaneMnou/:osobnecislo/lieky", component:DoktorZazdielaneLiekyComponent},
   { path: "zdielaneMne/:osobnecislo/lieky", component:DoktorZdielaneLiekyComponent},
