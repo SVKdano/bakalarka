@@ -49,9 +49,10 @@ public partial class Doktor
 
     public virtual ICollection<SpecializaciaDoktor> SpecializaciaDoktors { get; } = new List<SpecializaciaDoktor>();
 
+    [JsonIgnore]
     public virtual ICollection<Zaznam> Zaznams { get; } = new List<Zaznam>();
-
+    [JsonIgnore]
     public virtual ICollection<Zaznamyzdielanie> ZaznamyzdielanieCielovyNavigations { get; } = new List<Zaznamyzdielanie>();
-
+    [JsonIgnore]
     public virtual ICollection<Zaznamyzdielanie> ZaznamyzdielanieZdielajuciNavigations { get; } = new List<Zaznamyzdielanie>();
 }

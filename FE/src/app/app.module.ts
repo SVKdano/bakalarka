@@ -66,6 +66,9 @@ import { DoktorPacientLiekyShareComponent } from './componetnts/doktor-pacient-l
 import { DoktorZazdielanieOchoreniaComponent } from './componetnts/doktor-zazdielanie-ochorenia/doktor-zazdielanie-ochorenia.component';
 import { DoktorZdielanieOchoreniaComponent } from './componetnts/doktor-zdielanie-ochorenia/doktor-zdielanie-ochorenia.component';
 import { DoktorPacientOchoreniaShareComponent } from './componetnts/doktor-pacient-ochorenia-share/doktor-pacient-ochorenia-share.component';
+import { DoktorZazdielanieZaznamyComponent } from './componetnts/doktor-zazdielanie-zaznamy/doktor-zazdielanie-zaznamy.component';
+import { DoktorZdielaneZaznamyComponent } from './componetnts/doktor-zdielane-zaznamy/doktor-zdielane-zaznamy.component';
+import { DoktorZdielaneZaznamyDetailComponent } from './componetnts/doktor-zdielane-zaznamy-detail/doktor-zdielane-zaznamy-detail.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +121,10 @@ import { DoktorPacientOchoreniaShareComponent } from './componetnts/doktor-pacie
     DoktorPacientLiekyShareComponent,
     DoktorZazdielanieOchoreniaComponent,
     DoktorZdielanieOchoreniaComponent,
-    DoktorPacientOchoreniaShareComponent
+    DoktorPacientOchoreniaShareComponent,
+    DoktorZazdielanieZaznamyComponent,
+    DoktorZdielaneZaznamyComponent,
+    DoktorZdielaneZaznamyDetailComponent
   ],
     imports: [
         BrowserModule,

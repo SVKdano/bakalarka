@@ -140,5 +140,30 @@ namespace bakalarkaBE.Controllers
             
             return Ok(await _dbContext.Ochoreniazdielanies.ToListAsync());
         }
+        
+        [HttpGet("/zaznamZdielanie/{zdielajuci}/{cielovy}/{idzaznamu}/{datumdo}")]
+        public async Task<ActionResult<List<Zaznamyzdielanie>>> ZaznamZdielanie(string zdielajuci, string cielovy, int idzaznamu, string datumdo)
+        {
+            var zaznam = await _dbContext.Zaznams.FindAsync(idzaznamu);
+
+            if (zaznam == null)
+            {
+                return BadRequest();
+            }
+
+            var zaznamZdiel = new Zaznamyzdielanie()
+            {
+                Zdielajuci = zdielajuci,
+                Cielovy = cielovy,
+                Idzaznamu = zaznam.Idzaznam,
+                DatumdoZdielanie = DateOnly.ParseExact(datumdo, "yyyy-MM-dd")
+            };
+
+            _dbContext.Add(zaznamZdiel);
+
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok(await _dbContext.Zaznamyzdielanies.ToListAsync());
+        }
     }
 }

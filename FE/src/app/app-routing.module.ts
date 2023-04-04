@@ -68,6 +68,13 @@ import {
 import {
   DoktorPacientOchoreniaShareComponent
 } from "./componetnts/doktor-pacient-ochorenia-share/doktor-pacient-ochorenia-share.component";
+import {
+  DoktorZazdielanieZaznamyComponent
+} from "./componetnts/doktor-zazdielanie-zaznamy/doktor-zazdielanie-zaznamy.component";
+import {DoktorZdielaneZaznamyComponent} from "./componetnts/doktor-zdielane-zaznamy/doktor-zdielane-zaznamy.component";
+import {
+  DoktorZdielaneZaznamyDetailComponent
+} from "./componetnts/doktor-zdielane-zaznamy-detail/doktor-zdielane-zaznamy-detail.component";
 
 
 
@@ -110,6 +117,9 @@ const routes: Routes = [
   { path: "zdielaneMne/:osobnecislo/lieky", component:DoktorZdielaneLiekyComponent},
   { path: "zdielaneMnou/:osobnecislo/ochorenia", component:DoktorZazdielanieOchoreniaComponent},
   { path: "zdielaneMne/:osobnecislo/ochorenia", component:DoktorZdielanieOchoreniaComponent},
+  { path: "zdielaneMnou/:osobnecislo/zaznamy", component:DoktorZazdielanieZaznamyComponent},
+  { path: "zdielaneMne/:osobnecislo/zaznamy", component:DoktorZdielaneZaznamyComponent},
+  { path: "zazdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZdielaneZaznamyDetailComponent},
   { path: "registracia", component:RegisterComponent},
   { path: "**", component: WelcomePageComponent}
 ];

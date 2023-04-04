@@ -5,11 +5,11 @@ import {PacientService} from "../../services/pacient.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-doktor-pacient-zaznamy-detail',
-  templateUrl: './doktor-pacient-zaznamy-detail.component.html',
-  styleUrls: ['./doktor-pacient-zaznamy-detail.component.css']
+  selector: 'app-doktor-zdielane-zaznamy-detail',
+  templateUrl: './doktor-zdielane-zaznamy-detail.component.html',
+  styleUrls: ['./doktor-zdielane-zaznamy-detail.component.css']
 })
-export class DoktorPacientZaznamyDetailComponent {
+export class DoktorZdielaneZaznamyDetailComponent {
   zaznam:Zaznam[] = [];
   vysetrenie:VysetrenieZaznam[] = [];
 

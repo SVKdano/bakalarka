@@ -1,5 +1,6 @@
 import {Time} from "@angular/common";
 import {Doktor} from "./Doktor";
+import {Pacient} from "./Pacient";
 
 export class Zaznam {
   idzaznam:number = 0;
@@ -11,4 +12,5 @@ export class Zaznam {
   doplnujuceinformacie:string = "";
   zaver:string = "";
   osobnecisloNavigation?:Doktor;
+  rodnecisloNavigation?:Pacient;
 }
