@@ -27,6 +27,7 @@ import {AlergieZdielanie} from "../models/AlergieZdielanie";
 import {LiekyZdielanie} from "../models/LiekyZdielanie";
 import {OchoreniaZdielanie} from "../models/OchoreniaZdielanie";
 import {ZaznamyZdielanie} from "../models/ZaznamyZdielanie";
+import {GraphData} from "../models/GraphData";
 
 @Injectable({
   providedIn: 'root'
@@ -102,6 +103,10 @@ export class DoktorService {
 
   public getMnouZazdielaneZaznamy(osobneCislo:string) : Observable<ZaznamyZdielanie[]> {
     return this.http.get<ZaznamyZdielanie[]>(`${environment.apiUrl}/mnouZdielaneZaznamy/${osobneCislo}`);
+  }
+
+  public getChartData() : Observable<GraphData[]> {
+    return this.http.get<GraphData[]>(`${environment.apiUrl}/graphData`);
   }
 
   //--------------------POST methods----------------------

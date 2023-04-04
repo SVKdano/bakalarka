@@ -75,6 +75,7 @@ import {DoktorZdielaneZaznamyComponent} from "./componetnts/doktor-zdielane-zazn
 import {
   DoktorZdielaneZaznamyDetailComponent
 } from "./componetnts/doktor-zdielane-zaznamy-detail/doktor-zdielane-zaznamy-detail.component";
+import {DoktorBoardComponent} from "./componetnts/doktor-board/doktor-board.component";
 
 
 
@@ -120,6 +121,7 @@ const routes: Routes = [
   { path: "zdielaneMnou/:osobnecislo/zaznamy", component:DoktorZazdielanieZaznamyComponent},
   { path: "zdielaneMne/:osobnecislo/zaznamy", component:DoktorZdielaneZaznamyComponent},
   { path: "zazdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZdielaneZaznamyDetailComponent},
+  { path: "vytazenie/:osobnecislo", component:DoktorBoardComponent},
   { path: "registracia", component:RegisterComponent},
   { path: "**", component: WelcomePageComponent}
 ];

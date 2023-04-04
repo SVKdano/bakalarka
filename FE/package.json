@@ -20,6 +20,9 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+    "@swimlane/ngx-charts": "^20.1.2",
+    "@syncfusion/ej2-angular-charts": "^21.1.38",
+    "chart.js": "^4.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -28,6 +31,7 @@
     "@angular-devkit/build-angular": "^15.2.0",
     "@angular/cli": "~15.2.0",
     "@angular/compiler-cli": "^15.2.0",
+    "@types/d3": "^7.4.0",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",

@@ -459,5 +459,42 @@ namespace bakalarkaBE.Controllers
             
             return Ok(dbZdielaneZaznamy);
         }
+        
+        //------------GRAF DATA---------------
+        [HttpGet("/graphData")]
+        public async Task<ActionResult<List<GraphDatas>>> GetDataForGraph()
+        {
+            string tentoMesiac = DateOnly.FromDateTime(DateTime.Now).ToString("MM/dd/yyyy").Substring(0,2);
+            string tentoRok = DateOnly.FromDateTime(DateTime.Now).ToString("MM/dd/yyyy").Substring(6);
+            int mesiac = Int32.Parse(tentoMesiac);
+            int rok = Int32.Parse(tentoRok);
+            List<GraphDatas> data = new List<GraphDatas>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (mesiac - 1 == 0)
+                {
+                    mesiac = 12;
+                    rok--;
+                }
+                else
+                {
+                    mesiac = mesiac - 1;
+                }
+
+                GraphDatas datas = new GraphDatas
+                {
+                    Mesiac = mesiac,
+                    Pocet = _dbContext.Zaznams
+                        .Where(a => a.Datum.Month == mesiac && a.Datum.Year == rok)
+                        .Count()
+                };
+                
+                data.Add(datas);
+                //data.Add(_dbContext.Zaznams.Where(a => a.Datum.Month == mesiac && a.Datum.Year == rok).Count());
+            }
+            
+            return Ok(data);
+        }
     }
 }

@@ -1,0 +1,12 @@
+.row {
+  width: 70%;
+  height: 65%;
+
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 3%;
+}
+
+h2 {
+  text-align: center;
+}

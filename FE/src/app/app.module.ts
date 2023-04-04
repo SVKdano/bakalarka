@@ -69,6 +69,7 @@ import { DoktorPacientOchoreniaShareComponent } from './componetnts/doktor-pacie
 import { DoktorZazdielanieZaznamyComponent } from './componetnts/doktor-zazdielanie-zaznamy/doktor-zazdielanie-zaznamy.component';
 import { DoktorZdielaneZaznamyComponent } from './componetnts/doktor-zdielane-zaznamy/doktor-zdielane-zaznamy.component';
 import { DoktorZdielaneZaznamyDetailComponent } from './componetnts/doktor-zdielane-zaznamy-detail/doktor-zdielane-zaznamy-detail.component';
+import { DoktorBoardComponent } from './componetnts/doktor-board/doktor-board.component';
 
 @NgModule({
   declarations: [
@@ -124,7 +125,8 @@ import { DoktorZdielaneZaznamyDetailComponent } from './componetnts/doktor-zdiel
     DoktorPacientOchoreniaShareComponent,
     DoktorZazdielanieZaznamyComponent,
     DoktorZdielaneZaznamyComponent,
-    DoktorZdielaneZaznamyDetailComponent
+    DoktorZdielaneZaznamyDetailComponent,
+    DoktorBoardComponent
   ],
     imports: [
         BrowserModule,
@@ -141,7 +143,7 @@ import { DoktorZdielaneZaznamyDetailComponent } from './componetnts/doktor-zdiel
         FormsModule,
         MatMenuModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
