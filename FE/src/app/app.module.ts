@@ -71,6 +71,7 @@ import { DoktorZdielaneZaznamyComponent } from './componetnts/doktor-zdielane-za
 import { DoktorZdielaneZaznamyDetailComponent } from './componetnts/doktor-zdielane-zaznamy-detail/doktor-zdielane-zaznamy-detail.component';
 import { DoktorBoardComponent } from './componetnts/doktor-board/doktor-board.component';
 import { DoktorPacientZaznamyShareComponent } from './componetnts/doktor-pacient-zaznamy-share/doktor-pacient-zaznamy-share.component';
+import { DoktorZazdielanieZaznamyDetailComponent } from './componetnts/doktor-zazdielanie-zaznamy-detail/doktor-zazdielanie-zaznamy-detail.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +129,8 @@ import { DoktorPacientZaznamyShareComponent } from './componetnts/doktor-pacient
     DoktorZdielaneZaznamyComponent,
     DoktorZdielaneZaznamyDetailComponent,
     DoktorBoardComponent,
-    DoktorPacientZaznamyShareComponent
+    DoktorPacientZaznamyShareComponent,
+    DoktorZazdielanieZaznamyDetailComponent
   ],
     imports: [
         BrowserModule,

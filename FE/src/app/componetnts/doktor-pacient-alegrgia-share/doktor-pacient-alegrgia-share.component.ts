@@ -50,7 +50,11 @@ export class DoktorPacientAlegrgiaShareComponent implements OnInit {
     var zdielajuci:string = this.route.snapshot.paramMap.get('osobnecislo')!;
     var rodnecislo:string = this.route.snapshot.paramMap.get('rodnecislo')!;
 
-    this.shareService.shareAlergie(zdielajuci,this.osobneCisloSelected,rodnecislo,datumReady).subscribe();
+    this.shareService.shareAlergie(zdielajuci,this.osobneCisloSelected,rodnecislo,datumReady).subscribe(
+      () => {
+        alert("Úspešne zazdielané!");
+      }
+    );
   }
 
   setKodOddelenia(oddelenie:Oddelenie) {

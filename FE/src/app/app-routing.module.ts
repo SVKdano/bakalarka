@@ -79,6 +79,9 @@ import {DoktorBoardComponent} from "./componetnts/doktor-board/doktor-board.comp
 import {
   DoktorPacientZaznamyShareComponent
 } from "./componetnts/doktor-pacient-zaznamy-share/doktor-pacient-zaznamy-share.component";
+import {
+  DoktorZazdielanieZaznamyDetailComponent
+} from "./componetnts/doktor-zazdielanie-zaznamy-detail/doktor-zazdielanie-zaznamy-detail.component";
 
 
 
@@ -124,7 +127,8 @@ const routes: Routes = [
   { path: "zdielaneMne/:osobnecislo/ochorenia", component:DoktorZdielanieOchoreniaComponent},
   { path: "zdielaneMnou/:osobnecislo/zaznamy", component:DoktorZazdielanieZaznamyComponent},
   { path: "zdielaneMne/:osobnecislo/zaznamy", component:DoktorZdielaneZaznamyComponent},
-  { path: "zazdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZdielaneZaznamyDetailComponent},
+  { path: "zdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZdielaneZaznamyDetailComponent},
+  { path: "zazdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZazdielanieZaznamyDetailComponent},
   { path: "vytazenie/:osobnecislo", component:DoktorBoardComponent},
   { path: "registracia", component:RegisterComponent},
   { path: "**", component: WelcomePageComponent}

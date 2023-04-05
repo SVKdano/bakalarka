@@ -27,7 +27,7 @@
   </mat-toolbar>
 </div>
 
-<mat-card *ngFor="let zaznam of filtered" routerLink="/zazdielanyZaznam/{{zaznam.idzaznamu}}/{{this.osobneCislo}}">
+<mat-card *ngFor="let zaznam of filtered" routerLink="/zdielanyZaznam/{{zaznam.idzaznamu}}/{{this.osobneCislo}}">
   <mat-card-header>
     <mat-card-title *ngIf="zaznam.idzaznamuNavigation && zaznam.idzaznamuNavigation.rodnecisloNavigation">
       Záznam pacienta:
