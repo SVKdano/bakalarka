@@ -15,7 +15,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("doktor/{osobnecislo}")]
-        public async Task<ActionResult<List<Doktor>>> GetPacient(string osobnecislo)
+        public async Task<ActionResult<List<Doktor>>> GetDoktor(string osobnecislo)
         {
             var doktor = await _dbContext.Doktors
                 .Include(a => a.SpecializaciaDoktors)
@@ -371,7 +371,7 @@ namespace bakalarkaBE.Controllers
             return Ok(dbZdielaneAlergie);
         }
         
-        //----------------LISTKY ZDIELANIE---------------------
+        //----------------LIEKY ZDIELANIE---------------------
         [HttpGet("/mneZdielaneLieky/{osobneCislo}")]
         public async Task<ActionResult<List<Liekyzdielanie>>> GetMneZdielaneLieky(string osobneCislo)
         {

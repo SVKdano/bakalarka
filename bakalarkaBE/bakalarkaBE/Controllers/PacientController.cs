@@ -118,7 +118,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("vysetreniaVZazname/{idZaznamu}")]
-        public async Task<ActionResult<List<VysetrenieZaznam>>> GetPacientoveZaznamy(int idZaznamu)
+        public async Task<ActionResult<List<VysetrenieZaznam>>> GetVysetreniaZaznamu(int idZaznamu)
         {
             var pacZaznamy = await _dbContext.VysetrenieZaznams.Join(_dbContext.Vysetrenies, 
                     a => a.Kod ,b => b.Kod,

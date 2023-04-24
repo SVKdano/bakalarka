@@ -84,12 +84,31 @@ namespace bakalarkaBE.Controllers
 
             if (possibleUser == null)
             {
-                return BadRequest(new { Message = "Zlé rodné číslo alebo heslo" });
+                return BadRequest(new { Message = "Zlé osobné číslo alebo heslo" });
             }
 
             if (possibleUser.Heslo != user.heslo)
             {
-                return BadRequest(new { Message = "Zlé rodné číslo alebo heslo" });
+                return BadRequest(new { Message = "Zlé osobné číslo alebo heslo" });
+            }
+
+            return Ok(possibleUser);
+        }
+
+        [HttpPost("/loginNemocnica")]
+        public async Task<ActionResult<List<Doktor>>> GetNemocinca(LoginDTO user)
+        {
+            var possibleUser = await 
+                _dbContext.Nemocnicas.FirstOrDefaultAsync(a => a.Idnemocnice == user.Cislo);
+            
+            if (possibleUser == null)
+            {
+                return BadRequest(new { Message = "Zlé identifikačné číslo alebo heslo" });
+            }
+
+            if (possibleUser.Heslo != user.heslo)
+            {
+                return BadRequest(new { Message = "Zlé identifikačné číslo alebo heslo" });
             }
 
             return Ok(possibleUser);

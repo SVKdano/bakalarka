@@ -16,7 +16,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("/alergieZdielanie/{zdielajuci}/{cielovy}/{rodnecislo}/{datumdo}")]
-        public async Task<ActionResult<List<Alergie>>> TestController(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
+        public async Task<ActionResult<List<Alergie>>> AlergieZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
         {
             var alergie = await _dbContext.PacientAlergies.Where(a => a.Rodnecislo == rodnecislo).ToArrayAsync();
 

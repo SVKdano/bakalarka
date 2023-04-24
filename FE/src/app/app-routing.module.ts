@@ -82,6 +82,10 @@ import {
 import {
   DoktorZazdielanieZaznamyDetailComponent
 } from "./componetnts/doktor-zazdielanie-zaznamy-detail/doktor-zazdielanie-zaznamy-detail.component";
+import {NemocnicaWelcomeComponent} from "./componetnts/nemocnica-welcome/nemocnica-welcome.component";
+import {NemocnicaProfileComponent} from "./componetnts/nemocnica-profile/nemocnica-profile.component";
+import {AdminProfileComponent} from "./componetnts/admin-profile/admin-profile.component";
+import {AdminGuardGuard} from "./guards/admin-guard.guard";
 
 
 
@@ -130,6 +134,9 @@ const routes: Routes = [
   { path: "zdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZdielaneZaznamyDetailComponent},
   { path: "zazdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZazdielanieZaznamyDetailComponent},
   { path: "vytazenie/:osobnecislo", component:DoktorBoardComponent},
+  { path: "nemocnica", component: NemocnicaWelcomeComponent},
+  { path: "nemocnica/:idnemocnice", component:NemocnicaProfileComponent},
+  { path: "admin", component:AdminProfileComponent, canActivate:[AdminGuardGuard]},
   { path: "registracia", component:RegisterComponent},
   { path: "**", component: WelcomePageComponent}
 ];

@@ -22,6 +22,10 @@ export class LoginService {
     return this.http.post(`${environment.apiUrl}/loginDoktor`, user, {responseType: "text"});
   }
 
+  public loginNemocnica(user:User) : Observable<any> {
+    return this.http.post(`${environment.apiUrl}/loginNemocnica`, user, {responseType: "text"});
+  }
+
   public registraciaPacient(pacient:Pacient) : Observable<any> {
     return this.http.post(`${environment.apiUrl}/registraciaPacient`, pacient);
   }
@@ -47,5 +51,10 @@ export class LoginService {
   public loggedUserRodneCislo() : any {
     const user = JSON.parse(localStorage.getItem("loggedUser")!);
     return user.rodnecislo;
+  }
+
+  public loggedUserNemocnicaId() : any {
+    const user = JSON.parse(localStorage.getItem("loggedUser")!);
+    return user.idnemocnice;
   }
 }

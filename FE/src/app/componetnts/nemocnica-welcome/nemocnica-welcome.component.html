@@ -3,21 +3,21 @@
     <img src="assets/imgs/frilogo.png" alt="FRI logo">
     <div class="logButtons">
       <button mat-raised-button routerLink="/">Pacient</button>
-      <button mat-raised-button routerLink="/nemocnica">Nemocnica</button>
+      <button mat-raised-button routerLink="/doktor">Doktor</button>
     </div>
   </mat-toolbar>
 
   <div class="flex">
     <mat-card class="logincard">
       <mat-card-content>
-        Vitajte pán doktor/pani doktorka,
+        Vitajte,
         <br>
-        prosím prihláste sa.
+        prosím, pre prístup ku kontu nemocnice, sa prihláste.
         <br>
         <br>
         <form class="example-form" [formGroup]="loginForm">
           <mat-form-field>
-            <input type="email" matInput placeholder="Osobné číslo" formControlName="rodneCislo" [(ngModel)]="this.user.Cislo">
+            <input type="email" matInput placeholder="Id nemocnice" formControlName="rodneCislo" [(ngModel)]="this.user.Cislo">
             <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('required')">
               Zadajte osobné číslo!</mat-error>
 

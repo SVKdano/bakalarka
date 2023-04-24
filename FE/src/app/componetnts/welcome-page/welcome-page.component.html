@@ -3,7 +3,7 @@
     <img src="assets/imgs/frilogo.png" alt="FRI logo">
     <div class="logButtons">
       <button mat-raised-button routerLink="/doktor">Doktor</button>
-      <button mat-raised-button>Nemocnica</button>
+      <button mat-raised-button routerLink="/nemocnica">Nemocnica</button>
     </div>
   </mat-toolbar>
 
@@ -37,6 +37,7 @@
         <button mat-raised-button color="warn" routerLink="/registracia">Registorvať</button>
         <button mat-raised-button class="loginButton" (click)="login(this.user)">Prihlásiť</button>
       </div>
+      <div><h3><i>Zabudnuté heslo</i></h3></div>
     </mat-card>
   </div>
 </div>

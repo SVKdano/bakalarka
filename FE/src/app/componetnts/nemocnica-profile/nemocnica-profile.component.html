@@ -1,0 +1,36 @@
+<mat-toolbar>
+  <img src="assets/imgs/frilogo.png" alt="FRI logo">
+  <button mat-raised-button [matMenuTriggerFor]="menu">{{this.nemocnica.nazov}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">Odhlásenie</button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-toolbar class="nemocnicaButtons">
+  <button mat-raised-button>Prehľad oddelení</button>
+  <button mat-raised-button>Pridaj oddelenie</button>
+  <button mat-raised-button>Prehľad doktorov</button>
+  <button mat-raised-button>Zmena oddelenia doktora</button>
+  <button mat-raised-button>Pridaj doktora</button>
+</mat-toolbar>
+
+<div class="card">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title><i>Údaje o nemocnici</i></mat-card-title>
+    </mat-card-header>
+
+      <mat-card-content>
+        <b><i>Názov: </i></b> &nbsp; {{nemocnica.nazov}}
+      </mat-card-content>
+
+    <mat-card-content *ngIf="nemocnica.idmestaNavigation">
+      <b><i>Mesto: &nbsp; </i></b> {{nemocnica.idmestaNavigation.nazov}}
+    </mat-card-content>
+
+      <mat-card-content>
+        <b><i>Ulica: &nbsp; </i></b> {{nemocnica.ulica}}
+      </mat-card-content>
+
+  </mat-card>
+</div>

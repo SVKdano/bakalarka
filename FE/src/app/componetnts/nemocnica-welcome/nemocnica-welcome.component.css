@@ -1,0 +1,59 @@
+.component {
+  height: 100vh;
+  background-color: #fdddcb;
+
+  background-image: url("../../../assets/imgs/palica.png");
+  background-repeat: no-repeat;
+  background-size: 43.5%;
+  background-position: left center;
+}
+
+mat-toolbar {
+  background-color: #ec6602;
+}
+
+.logButtons button {
+  margin-right: 3%;
+}
+
+.logButtons {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+mat-toolbar img {
+  height: 90%;
+}
+
+.flex {
+  display: flex;
+  margin-top: 15%;
+  text-align: center;
+  font-size: larger;
+}
+
+.logincard {
+  margin-right: 15%;
+  margin-left: auto;
+}
+
+.loginButton {
+  background-color: #ec6602 !important;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 4%;
+}
+
+@media only screen and (max-width: 650px) {
+  .component {
+    background-position: center 20%;
+    background-size: 100%;
+  }
+
+  .flex {
+    margin-right: 10%;
+  }
+}

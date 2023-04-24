@@ -1,0 +1,50 @@
+mat-toolbar {
+  background-color: #ec6602;
+}
+
+mat-toolbar img {
+  height: 90%;
+}
+
+mat-toolbar button {
+  margin-left: auto;
+}
+
+.nemocnicaButtons {
+  background-color: #f9b591;
+  display: flex;
+  flex-direction: row;
+}
+
+.nemocnicaButtons button {
+  margin-left: 1%;
+}
+
+.card {
+  font-size: larger;
+
+  max-width: 80%;
+  min-width: 75%;
+
+  margin-top: 3%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+mat-card {
+  background-color: #e8e8e8;
+}
+
+mat-card-title {
+  font-size: xx-large;
+}
+
+mat-card-header{
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}

@@ -72,6 +72,9 @@ import { DoktorZdielaneZaznamyDetailComponent } from './componetnts/doktor-zdiel
 import { DoktorBoardComponent } from './componetnts/doktor-board/doktor-board.component';
 import { DoktorPacientZaznamyShareComponent } from './componetnts/doktor-pacient-zaznamy-share/doktor-pacient-zaznamy-share.component';
 import { DoktorZazdielanieZaznamyDetailComponent } from './componetnts/doktor-zazdielanie-zaznamy-detail/doktor-zazdielanie-zaznamy-detail.component';
+import { NemocnicaWelcomeComponent } from './componetnts/nemocnica-welcome/nemocnica-welcome.component';
+import { NemocnicaProfileComponent } from './componetnts/nemocnica-profile/nemocnica-profile.component';
+import { AdminProfileComponent } from './componetnts/admin-profile/admin-profile.component';
 
 @NgModule({
   declarations: [
@@ -130,7 +133,10 @@ import { DoktorZazdielanieZaznamyDetailComponent } from './componetnts/doktor-za
     DoktorZdielaneZaznamyDetailComponent,
     DoktorBoardComponent,
     DoktorPacientZaznamyShareComponent,
-    DoktorZazdielanieZaznamyDetailComponent
+    DoktorZazdielanieZaznamyDetailComponent,
+    NemocnicaWelcomeComponent,
+    NemocnicaProfileComponent,
+    AdminProfileComponent
   ],
     imports: [
         BrowserModule,
