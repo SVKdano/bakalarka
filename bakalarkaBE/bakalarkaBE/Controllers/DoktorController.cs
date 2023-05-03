@@ -15,7 +15,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("doktor/{osobnecislo}")]
-        public async Task<ActionResult<List<Doktor>>> GetDoktor(string osobnecislo)
+        public async Task<ActionResult<List<Doktor>>> GetDoktoroveUdajeDoktor(string osobnecislo)
         {
             var doktor = await _dbContext.Doktors
                 .Include(a => a.SpecializaciaDoktors)
@@ -27,7 +27,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpGet("doktoriOddelenia/{kododdelenia}")]
-        public async Task<ActionResult<List<Doktor>>> GetDoktoriOddelenia(string kododdelenia)
+        public async Task<ActionResult<List<Doktor>>> GetDoktoriNaOddeleníDoktor(string kododdelenia)
         {
             var doktor = await _dbContext.Doktors
                 .Include(a => a.Oddelenie)
@@ -36,7 +36,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("doktorPacienti/{osobnecislo}")]
-        public async Task<ActionResult<List<PacientDoktor>>> GetDoktorPacienti(string osobnecislo)
+        public async Task<ActionResult<List<PacientDoktor>>> GetDoktoroviPacientiDoktor(string osobnecislo)
         {
             /*var docPacienti = _dbContext.PacientDoktors.Join(_dbContext.Doktors, 
                 a => a.Osobnecislo, b => b.Osobnecislo,
@@ -59,19 +59,19 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("/allPacients")]
-        public async Task<ActionResult<List<Pacient>>> GetAllPacients()
+        public async Task<ActionResult<List<Pacient>>> GetPacientiDoktor()
         {
             return Ok(await _dbContext.Pacients.ToListAsync());
         }
 
         [HttpGet("/allAlergies")]
-        public async Task<ActionResult<List<Alergie>>> GetAllAlergies()
+        public async Task<ActionResult<List<Alergie>>> GetAlergieDoktor()
         {
             return Ok(await _dbContext.Alergies.ToListAsync());
         }
 
         [HttpPost("/pridajPacienta")]
-        public async Task<ActionResult<List<PacientDoktor>>> PridajPacienta(PacientDoktor pacient)
+        public async Task<ActionResult<List<PacientDoktor>>> PostNovyPacientDoktor(PacientDoktor pacient)
         {
             pacient.Datumod = DateOnly.FromDateTime(DateTime.Now);
             _dbContext.Add(pacient);
@@ -81,7 +81,7 @@ namespace bakalarkaBE.Controllers
 
         //--------------------ALERGIE-----------------------
         [HttpPost("/pridajAlergiu")]
-        public async Task<ActionResult<List<PacientAlergie>>> PridajAlergiu(PacientAlergie alergia)
+        public async Task<ActionResult<List<PacientAlergie>>> PostPacientovuAlergiuDoktor(PacientAlergie alergia)
         {
             var dbAlergia = await _dbContext.PacientAlergies.FindAsync(alergia.Rodnecislo, alergia.Kodalergie);
 
@@ -95,7 +95,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpPut("/updateAlergiu")]
-        public async Task<ActionResult<List<PacientAlergie>>> UpdateAlergiu(PacientAlergie alergia)
+        public async Task<ActionResult<List<PacientAlergie>>> PutPacientovuAlergiuDoktor(PacientAlergie alergia)
         {
             var dbAlergia = await _dbContext.PacientAlergies.FindAsync(alergia.Rodnecislo, alergia.Kodalergie);
 
@@ -112,7 +112,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpDelete("/zmazAlergiu/{rodneCislo}/{kodAlergie}")]
-        public async Task<ActionResult<List<PacientAlergie>>> DeleteAlergiu(string rodneCislo, string kodAlergie)
+        public async Task<ActionResult<List<PacientAlergie>>> DeletePacientovuAlergiuDoktor(string rodneCislo, string kodAlergie)
         {
             var dbAlergia = await _dbContext.PacientAlergies.FindAsync(rodneCislo, kodAlergie);
 
@@ -129,13 +129,13 @@ namespace bakalarkaBE.Controllers
         
         //-----------------------LIEKY-------------------------
         [HttpGet("/allLieky")]
-        public async Task<ActionResult<List<Lieky>>> GetAllLieky()
+        public async Task<ActionResult<List<Lieky>>> GetLiekyDoktor()
         {
             return Ok(await _dbContext.Liekies.ToListAsync());
         }
 
         [HttpPost("/pridajLiek")]
-        public async Task<ActionResult<List<Pacientovelieky>>> PridajPacientovLiek(Pacientovelieky liek)
+        public async Task<ActionResult<List<Pacientovelieky>>> PostPacientovLiekDoktor(Pacientovelieky liek)
         {
 
             var dbLiek = await _dbContext.Pacientoveliekies.FindAsync(liek.Rodnecislo, liek.Datumod, liek.Registracnecislo);
@@ -152,7 +152,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpPut("/ukonciUzivanie")]
-        public async Task<ActionResult<List<Pacientovelieky>>> SkonciUzivnanie(Pacientovelieky liek)
+        public async Task<ActionResult<List<Pacientovelieky>>> PutUzivnanieDoLiekuDoktor(Pacientovelieky liek)
         {
             var dbLiek = await _dbContext.Pacientoveliekies.FindAsync(liek.Rodnecislo, liek.Datumod, liek.Registracnecislo);
 
@@ -171,13 +171,13 @@ namespace bakalarkaBE.Controllers
         
         //--------------------OCHORENIA-----------------
         [HttpGet("/allOchorenia")]
-        public async Task<ActionResult<List<Ochorenium>>> GetAllOchorenia()
+        public async Task<ActionResult<List<Ochorenium>>> GetOchoreniaDoktor()
         {
             return Ok(await _dbContext.Ochorenia.ToListAsync());
         }
 
         [HttpPost("/pridajOchorenie")]
-        public async Task<ActionResult<List<Pacientoveochorenium>>> PridajPacientoveOchorenie(
+        public async Task<ActionResult<List<Pacientoveochorenium>>> PostPacientoveOchorenieDoktor(
             Pacientoveochorenium ochorenie)
         {
             var dbOchorenie = await _dbContext.Pacientoveochorenia
@@ -195,7 +195,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpPut("/ukonciOchorenie")]
-        public async Task<ActionResult<List<Pacientoveochorenium>>> UkonciOchorenie(Pacientoveochorenium ochorenie)
+        public async Task<ActionResult<List<Pacientoveochorenium>>> PutOchorenieDoDoktor(Pacientoveochorenium ochorenie)
         {
             var dbOchorenie = await _dbContext.Pacientoveochorenia
                 .FindAsync(ochorenie.Datumod, ochorenie.Rodnecislo, ochorenie.Kodochorenia);
@@ -215,7 +215,7 @@ namespace bakalarkaBE.Controllers
         
         //--------------------ODPORUCACIE LISTKY------------------
         [HttpGet("/allOddelenia")]
-        public async Task<ActionResult<List<Ochorenium>>> GetAllOddelenia()
+        public async Task<ActionResult<List<Ochorenium>>> GetOddeleniaDoktor()
         {
             var retruned = await _dbContext.Oddelenies
                 .Include(a => a.IdnemocniceNavigation).ToListAsync();
@@ -223,19 +223,19 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpGet("listky/{rodneCislo}/{osobneCislo}")]
-        public async Task<ActionResult<List<Odporucacilistok>>> GetPacientoveListky(string rodneCislo, string osobneCislo)
+        public async Task<ActionResult<List<Odporucacilistok>>> GetPacientoveListkyDoktor(string rodneCislo)
         {
             var lisok = await _dbContext.Odporucacilistoks
                 .Include(a => a.Oddelenie)
                 .ThenInclude(b => b.IdnemocniceNavigation)
                 .Include(c => c.OsobnecisloNavigation)
                 .Include(d => d.RodnecisloNavigation)
-                .Where(a => a.Rodnecislo == rodneCislo && a.Osobnecislo == osobneCislo).ToListAsync();
+                .Where(a => a.Rodnecislo == rodneCislo).ToListAsync();
             return Ok(lisok);
         }
 
         [HttpPost("/pridajListok")]
-        public async Task<ActionResult<List<Odporucacilistok>>> PridajListok(Odporucacilistok listok)
+        public async Task<ActionResult<List<Odporucacilistok>>> PostPacientovListokDoktor(Odporucacilistok listok)
         {
             var dbListok = await _dbContext.Odporucacilistoks
                 .FindAsync(listok.Datumodporucenia, listok.Kododdelenia, listok.Idnemocnice,
@@ -254,7 +254,7 @@ namespace bakalarkaBE.Controllers
 
         [HttpDelete("/vymazListok/{DatumOdporucenia}/{KodOddelenia}/{IdNemocnice}/{OsobneCislo}/{RodneCislo}")]
         public async Task<ActionResult<List<Odporucacilistok>>> 
-            VymazListok(string DatumOdporucenia, string KodOddelenia, string IdNemocnice, string OsobneCislo, string RodneCislo)
+            DeletePacientovListokDoktor(string DatumOdporucenia, string KodOddelenia, string IdNemocnice, string OsobneCislo, string RodneCislo)
         {
             var datum = DateOnly.Parse(DatumOdporucenia);
             var dbListok = await _dbContext.Odporucacilistoks
@@ -274,7 +274,7 @@ namespace bakalarkaBE.Controllers
         
         //---------------------ZAZNAM a VYSETRENIE--------------------------
         [HttpPost("/pridajZaznam")]
-        public async Task<ActionResult<int>> PridajZaznam(Zaznam zaznam)
+        public async Task<ActionResult<int>> PostPacientovZaznamDoktor(Zaznam zaznam)
         {
             _dbContext.Add(zaznam);
             await _dbContext.SaveChangesAsync();
@@ -283,7 +283,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpPut("/updateZaznam")]
-        public async Task<ActionResult<List<Zaznam>>> UpdateZaznam(Zaznam zaznam)
+        public async Task<ActionResult<List<Zaznam>>> PutPacientovZaznamDoktor(Zaznam zaznam)
         {
             var dbZaznam = await _dbContext.Zaznams.FindAsync(zaznam.Idzaznam);
 
@@ -302,13 +302,13 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("/getAllVysetria")]
-        public async Task<ActionResult<List<Vysetrenie>>> GetAllVysetrenia()
+        public async Task<ActionResult<List<Vysetrenie>>> GetVysetreniaDoktor()
         {
             return Ok(await _dbContext.Vysetrenies.ToListAsync());
         }
 
         [HttpPost("/pridajVysetrenieZaznamu")]
-        public async Task<ActionResult<List<VysetrenieZaznam>>> PridajVysetrenieZaznamu(VysetrenieZaznam vysetrenie)
+        public async Task<ActionResult<List<VysetrenieZaznam>>> PostVysetrenieZaznamuDoktor(VysetrenieZaznam vysetrenie)
         {
             var dbVysetrenie = await _dbContext.VysetrenieZaznams
                 .FindAsync(vysetrenie.Kod, vysetrenie.Idzaznam);
@@ -325,7 +325,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpDelete("/vymazVystrenie/{kod}/{idzaznam}")]
-        public async Task<ActionResult<List<VysetrenieZaznam>>> DeleteVysetrenieZaznam(string kod, int idzaznam)
+        public async Task<ActionResult<List<VysetrenieZaznam>>> DeleteVysetrenieZaznamuDoktor(string kod, int idzaznam)
         {
             var dbVysetrenieZaznam = await _dbContext.VysetrenieZaznams
                 .FindAsync(kod, idzaznam);

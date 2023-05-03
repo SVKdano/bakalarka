@@ -16,7 +16,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<List<Pacient>>> GetPacient(LoginDTO user)
+        public async Task<ActionResult<List<Pacient>>> PostPrihlaseniePacientLogin(LoginDTO user)
         {
             var possibleUser = await 
                 _dbContext.Pacients.FirstOrDefaultAsync(a => a.Rodnecislo == user.Cislo);
@@ -35,7 +35,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpPost("/registraciaPacient")]
-        public async Task<ActionResult<List<Pacient>>> RegisterPacient(Pacient pacient)
+        public async Task<ActionResult<List<Pacient>>> PostRegistrujPacientaLogin(Pacient pacient)
         {
             if (_dbContext.Pacients.Any(a => a.Rodnecislo == pacient.Rodnecislo))
             {
@@ -77,7 +77,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpPost("loginDoktor")]
-        public async Task<ActionResult<List<Doktor>>> GetDoktor(LoginDTO user)
+        public async Task<ActionResult<List<Doktor>>> PostDoktorLogin(LoginDTO user)
         {
             var possibleUser = await 
                 _dbContext.Doktors.FirstOrDefaultAsync(a => a.Osobnecislo == user.Cislo);
@@ -96,7 +96,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpPost("/loginNemocnica")]
-        public async Task<ActionResult<List<Doktor>>> GetNemocinca(LoginDTO user)
+        public async Task<ActionResult<List<Doktor>>> PostNemocincaLogin(LoginDTO user)
         {
             var possibleUser = await 
                 _dbContext.Nemocnicas.FirstOrDefaultAsync(a => a.Idnemocnice == user.Cislo);
@@ -115,13 +115,13 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("/allPoistovne")]
-        public async Task<ActionResult<List<Poistovna>>> GetPoistovne()
+        public async Task<ActionResult<List<Poistovna>>> GetPoistovneLogin()
         {
             return Ok(await _dbContext.Poistovnas.ToListAsync());
         }
 
         [HttpGet("/allMesta")]
-        public async Task<ActionResult<List<Mestum>>> GetMesta()
+        public async Task<ActionResult<List<Mestum>>> GetMestaLogin()
         {
             return Ok(await _dbContext.Mesta.ToListAsync());
         }

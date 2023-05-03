@@ -86,6 +86,8 @@ import {NemocnicaWelcomeComponent} from "./componetnts/nemocnica-welcome/nemocni
 import {NemocnicaProfileComponent} from "./componetnts/nemocnica-profile/nemocnica-profile.component";
 import {AdminProfileComponent} from "./componetnts/admin-profile/admin-profile.component";
 import {AdminGuardGuard} from "./guards/admin-guard.guard";
+import {NemocnicaOddeleniaComponent} from "./componetnts/nemocnica-oddelenia/nemocnica-oddelenia.component";
+import {NemocnicaDoktoriComponent} from "./componetnts/nemocnica-doktori/nemocnica-doktori.component";
 
 
 
@@ -136,6 +138,8 @@ const routes: Routes = [
   { path: "vytazenie/:osobnecislo", component:DoktorBoardComponent},
   { path: "nemocnica", component: NemocnicaWelcomeComponent},
   { path: "nemocnica/:idnemocnice", component:NemocnicaProfileComponent},
+  { path: "nemocnica/:idnemocnice/oddelenia", component:NemocnicaOddeleniaComponent},
+  { path: "nemocnica/:idnemocnice/doktori", component:NemocnicaDoktoriComponent},
   { path: "admin", component:AdminProfileComponent, canActivate:[AdminGuardGuard]},
   { path: "registracia", component:RegisterComponent},
   { path: "**", component: WelcomePageComponent}

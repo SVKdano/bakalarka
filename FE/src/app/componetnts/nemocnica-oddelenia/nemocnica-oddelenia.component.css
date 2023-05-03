@@ -1,0 +1,15 @@
+mat-card {
+  background-color: #e8e8e8;
+  min-width: 40%;
+  max-width: 50%;
+
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1%;
+
+  text-align: center;
+}
+
+mat-card-header {
+  justify-content: center;
+}

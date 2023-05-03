@@ -16,7 +16,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("/alergieZdielanie/{zdielajuci}/{cielovy}/{rodnecislo}/{datumdo}")]
-        public async Task<ActionResult<List<Alergie>>> AlergieZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
+        public async Task<ActionResult<List<Alergie>>> GetAlergieZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
         {
             var alergie = await _dbContext.PacientAlergies.Where(a => a.Rodnecislo == rodnecislo).ToArrayAsync();
 
@@ -51,7 +51,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("/allOddeleniaForShare")]
-        public async Task<ActionResult<List<Oddelenie>>> GetAllOddelenia()
+        public async Task<ActionResult<List<Oddelenie>>> GetOddeleniaZdielanie()
         {
             var dbOddelenia = await _dbContext.Oddelenies
                 .Include(a => a .IdnemocniceNavigation)
@@ -61,7 +61,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpGet("/allDoktoriForShare")]
-        public async Task<ActionResult<List<Doktor>>> GetAllDoktori()
+        public async Task<ActionResult<List<Doktor>>> GetDoktoriZdielanie()
         {
             var dbDoktori = await _dbContext.Doktors
                 .ToListAsync();
@@ -70,7 +70,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpGet("/liekyZdielanie/{zdielajuci}/{cielovy}/{rodnecislo}/{datumdo}")]
-        public async Task<ActionResult<List<Lieky>>> LiekyZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
+        public async Task<ActionResult<List<Lieky>>> GetLiekyZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
         {
             var lieky = await _dbContext.Pacientoveliekies.Where(a => a.Rodnecislo == rodnecislo).ToArrayAsync();
 
@@ -106,7 +106,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpGet("/ochoreniaZdielanie/{zdielajuci}/{cielovy}/{rodnecislo}/{datumdo}")]
-        public async Task<ActionResult<List<Lieky>>> OchoreniaZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
+        public async Task<ActionResult<List<Lieky>>> GetOchoreniaZdielanie(string zdielajuci, string cielovy, string rodnecislo, string datumdo)
         {
             var ochorenia = await _dbContext.Pacientoveochorenia.Where(a => a.Rodnecislo == rodnecislo).ToArrayAsync();
 
@@ -142,7 +142,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpGet("/zaznamZdielanie/{zdielajuci}/{cielovy}/{idzaznamu}/{datumdo}")]
-        public async Task<ActionResult<List<Zaznamyzdielanie>>> ZaznamZdielanie(string zdielajuci, string cielovy, int idzaznamu, string datumdo)
+        public async Task<ActionResult<List<Zaznamyzdielanie>>> GetZaznamZdielanie(string zdielajuci, string cielovy, int idzaznamu, string datumdo)
         {
             var zaznam = await _dbContext.Zaznams.FindAsync(idzaznamu);
 

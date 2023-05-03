@@ -75,6 +75,9 @@ import { DoktorZazdielanieZaznamyDetailComponent } from './componetnts/doktor-za
 import { NemocnicaWelcomeComponent } from './componetnts/nemocnica-welcome/nemocnica-welcome.component';
 import { NemocnicaProfileComponent } from './componetnts/nemocnica-profile/nemocnica-profile.component';
 import { AdminProfileComponent } from './componetnts/admin-profile/admin-profile.component';
+import { NemocnicaOddeleniaComponent } from './componetnts/nemocnica-oddelenia/nemocnica-oddelenia.component';
+import { NemocnicaPanelComponent } from './componetnts/nemocnica-panel/nemocnica-panel.component';
+import { NemocnicaDoktoriComponent } from './componetnts/nemocnica-doktori/nemocnica-doktori.component';
 
 @NgModule({
   declarations: [
@@ -136,7 +139,10 @@ import { AdminProfileComponent } from './componetnts/admin-profile/admin-profile
     DoktorZazdielanieZaznamyDetailComponent,
     NemocnicaWelcomeComponent,
     NemocnicaProfileComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
+    NemocnicaOddeleniaComponent,
+    NemocnicaPanelComponent,
+    NemocnicaDoktoriComponent
   ],
     imports: [
         BrowserModule,

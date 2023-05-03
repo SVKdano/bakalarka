@@ -1,0 +1,13 @@
+<app-nemocnica-panel></app-nemocnica-panel>
+
+<mat-card *ngFor="let oddelenie of oddelenia">
+  <mat-card-header>
+    <mat-card-title>
+      {{oddelenie.nazovoddelenia}}
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    Kapacita: {{oddelenie.kapacita}}
+  </mat-card-content>
+</mat-card>

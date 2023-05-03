@@ -1,18 +1,4 @@
-<mat-toolbar>
-  <img src="assets/imgs/frilogo.png" alt="FRI logo">
-  <button mat-raised-button [matMenuTriggerFor]="menu">{{this.nemocnica.nazov}}</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="logout()">Odhlásenie</button>
-  </mat-menu>
-</mat-toolbar>
-
-<mat-toolbar class="nemocnicaButtons">
-  <button mat-raised-button>Prehľad oddelení</button>
-  <button mat-raised-button>Pridaj oddelenie</button>
-  <button mat-raised-button>Prehľad doktorov</button>
-  <button mat-raised-button>Zmena oddelenia doktora</button>
-  <button mat-raised-button>Pridaj doktora</button>
-</mat-toolbar>
+<app-nemocnica-panel></app-nemocnica-panel>
 
 <div class="card">
   <mat-card>

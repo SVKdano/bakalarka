@@ -16,7 +16,7 @@ namespace bakalarkaBE.Controllers
         
         //get pacient (funguje aj ked nema poistovnu alebo bydlisko)
         [HttpGet("pacient/{rodneCislo}")]
-        public async Task<ActionResult<List<Pacient>>> GetPacient(string rodneCislo)
+        public async Task<ActionResult<List<Pacient>>> GetOsobneUdajePacientaPacient(string rodneCislo)
         {
             var pacient = await _dbContext.Pacients.GroupJoin(_dbContext.Poistovnas,
                 a => a.Idpoistovne, b => b.Idpoistovne,
@@ -41,7 +41,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("alergie/{rodneCislo}")]
-        public async Task<ActionResult<List<PacientAlergie>>> GetPacientoveAlergie(string rodneCislo)
+        public async Task<ActionResult<List<PacientAlergie>>> GetPacientoveAlergiePacient(string rodneCislo)
         {
             var pacAlergie = await _dbContext.PacientAlergies.Join(_dbContext.Alergies,
                     a => a.Kodalergie, b => b.Kodalergie,
@@ -58,7 +58,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("ochorenia/{rodneCislo}")]
-        public async Task<ActionResult<List<Pacientoveochorenium>>> GetPacientoveOchorenia(string rodneCislo)
+        public async Task<ActionResult<List<Pacientoveochorenium>>> GetPacientoveOchoreniaPacient(string rodneCislo)
         {
             var pacOchorenia = await _dbContext.Pacientoveochorenia.Join(_dbContext.Ochorenia,
                 a => a.Kodochorenia, b => b.Kodochorenia,
@@ -77,7 +77,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("lieky/{rodneCislo}")]
-        public async Task<ActionResult<List<Pacientovelieky>>> GetPacientoveLieky(string rodneCislo)
+        public async Task<ActionResult<List<Pacientovelieky>>> GetPacientoveLiekyPacient(string rodneCislo)
         {
             /*var pacLieky = await _dbContext.Pacientoveliekies.Join(_dbContext.Liekies, 
                     a => a.Registracnecislo, b => b.Registracnecislo,
@@ -101,7 +101,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("doktori/{rodneCislo}")]
-        public async Task<ActionResult<List<PacientDoktor>>> GetPacientovyDoktori(string rodneCislo)
+        public async Task<ActionResult<List<PacientDoktor>>> GetPacientoviDoktoriPacient(string rodneCislo)
         {
             var pacDoktori = await _dbContext.PacientDoktors.Join(_dbContext.Doktors,
                 a => a.Osobnecislo, b => b.Osobnecislo,
@@ -118,7 +118,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("vysetreniaVZazname/{idZaznamu}")]
-        public async Task<ActionResult<List<VysetrenieZaznam>>> GetVysetreniaZaznamu(int idZaznamu)
+        public async Task<ActionResult<List<VysetrenieZaznam>>> GetVysetreniaZaznamuPacient(int idZaznamu)
         {
             var pacZaznamy = await _dbContext.VysetrenieZaznams.Join(_dbContext.Vysetrenies, 
                     a => a.Kod ,b => b.Kod,
@@ -137,7 +137,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("zaznamy/{rodneCislo}")]
-        public async Task<ActionResult<List<Zaznam>>> GetPacientoveZaznamy(string rodneCislo)
+        public async Task<ActionResult<List<Zaznam>>> GetPacientoveZaznamyPacient(string rodneCislo)
         {
             var pacZaznamy = await _dbContext.Zaznams.Join(_dbContext.Doktors,
                     a => a.Osobnecislo, b => b.Osobnecislo,
@@ -159,7 +159,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpGet("zaznam/{idZaznam}")]
-        public async Task<ActionResult<List<Zaznam>>> GetPacientovZaznam(int idZaznam)
+        public async Task<ActionResult<List<Zaznam>>> GetPacientovZaznamPacient(int idZaznam)
         {
             var pacZaznamy = await _dbContext.Zaznams.Join(_dbContext.Doktors,
                     a => a.Osobnecislo, b => b.Osobnecislo,
@@ -181,7 +181,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("listky/{rodneCislo}")]
-        public async Task<ActionResult<List<Odporucacilistok>>> GetPacientoveListky(string rodneCislo)
+        public async Task<ActionResult<List<Odporucacilistok>>> GetPacientoveListkyPacient(string rodneCislo)
         {
             var pacLisky = await _dbContext.Odporucacilistoks.Join( _dbContext.Oddelenies,
                 a => new { a.Kododdelenia, a.Idnemocnice}, b => new { b.Kododdelenia, b.Idnemocnice},
@@ -223,7 +223,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpGet("listkyv2/{rodneCislo}")]
-        public async Task<ActionResult<List<Odporucacilistok>>> test(string rodneCislo)
+        public async Task<ActionResult<List<Odporucacilistok>>> GetPacientoveOdporucacieLiskyPacient(string rodneCislo)
         {
             var lisok = await _dbContext.Odporucacilistoks
                 .Include(a => a.Oddelenie)
@@ -235,7 +235,7 @@ namespace bakalarkaBE.Controllers
         }
 
         [HttpPut("zmenaUdajov")]
-        public async Task<ActionResult<List<Pacient>>> zmenaUdajov(Pacient pacient)
+        public async Task<ActionResult<List<Pacient>>> PutZmenaUdajovPacient(Pacient pacient)
         {
             var dbPacient = await _dbContext.Pacients.FindAsync(pacient.Rodnecislo);
 
@@ -262,7 +262,7 @@ namespace bakalarkaBE.Controllers
         }
         
         [HttpPut("zmenaHesla")]
-        public async Task<ActionResult<List<Pacient>>> zmenaHesla(HesloUpdate hesloUpdate)
+        public async Task<ActionResult<List<Pacient>>> PutZmenaHeslaPacient(HesloUpdate hesloUpdate)
         {
             var dbPacient = await _dbContext.Pacients.FindAsync(hesloUpdate.rodnecislo);
 
