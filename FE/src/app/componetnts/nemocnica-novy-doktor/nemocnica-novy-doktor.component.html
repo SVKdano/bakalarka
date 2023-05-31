@@ -1,0 +1,49 @@
+<app-nemocnica-panel></app-nemocnica-panel>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Pridanie nového doktora
+    </mat-card-title>
+  </mat-card-header>
+
+  <br>
+
+  <form [formGroup]="novyDoktorCheck">
+    <mat-form-field>
+      <input type="text" matInput placeholder="Osobné číslo" formControlName="osobneCislo" [(ngModel)]="this.novyDoktor.osobnecislo">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <input type="text" matInput placeholder="Meno" formControlName="meno" [(ngModel)]="this.novyDoktor.meno">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <input type="text" matInput placeholder="Priezvisko" formControlName="priezvisko" [(ngModel)]="this.novyDoktor.priezvisko">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field>
+      <mat-label>Oddelenie</mat-label>
+      <mat-select >
+        <mat-option *ngFor="let oddelenie of oddelenia"
+                    [value]="oddelenie.nazovoddelenia" (click)="setUdaje(oddelenie.kododdelenia, oddelenie.idnemocnice)">
+          <b>{{oddelenie.nazovoddelenia}}</b>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="text" matInput placeholder="Email" formControlName="email" [(ngModel)]="this.novyDoktor.email">
+    </mat-form-field>
+
+    <br>
+  </form>
+
+  <button mat-raised-button color="primary" [disabled]="!this.novyDoktorCheck.valid">Pridaj doktora</button>
+</mat-card>

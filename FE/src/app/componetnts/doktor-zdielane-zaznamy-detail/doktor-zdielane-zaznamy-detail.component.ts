@@ -38,4 +38,8 @@ export class DoktorZdielaneZaznamyDetailComponent {
       }
     )
   }
+
+  printPage() {
+    window.print();
+  }
 }

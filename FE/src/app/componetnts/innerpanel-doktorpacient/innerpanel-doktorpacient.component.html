@@ -1,7 +1,8 @@
 
 <mat-toolbar>
-  <button mat-raised-button routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}" class="leftsided">Údaje</button>
-  <button mat-raised-button [matMenuTriggerFor]="menu" class="menu">Alergie</button>
+  <button mat-raised-button routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}" class="leftsided" id="udaje">Údaje</button>
+
+  <button mat-raised-button [matMenuTriggerFor]="menu" class="menu" id="alergie">Alergie</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/alergie">Zobraziť
@@ -10,7 +11,7 @@
     <button mat-menu-item routerLink="/zdielatAlergiu/{{this.osobneCislo}}/{{this.rodneCislo}}">Zdielať</button>
   </mat-menu>
 
-  <button mat-raised-button [matMenuTriggerFor]="menu2" class="menu">Lieky</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu2" class="menu" id="lieky">Lieky</button>
   <mat-menu #menu2="matMenu">
     <button mat-menu-item
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/lieky" class="leftsided" >Zobraziť
@@ -19,7 +20,7 @@
     <button mat-menu-item routerLink="/zdielatLieky/{{this.osobneCislo}}/{{this.rodneCislo}}">Zdielať</button>
   </mat-menu>
 
-  <button mat-raised-button [matMenuTriggerFor]="menu3" class="menu">Záznamy</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu3" class="menu" id="zaznamy">Záznamy</button>
   <mat-menu #menu3="matMenu">
     <button mat-menu-item
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/zaznamy" class="leftsided" >Zobraziť
@@ -27,7 +28,7 @@
     <button mat-menu-item (click)="pridajZaznam()">Pridať</button>
   </mat-menu>
 
-  <button mat-raised-button [matMenuTriggerFor]="menu4" class="menu">Ochorenia</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu4" class="menu" id="ochorenia">Ochorenia</button>
   <mat-menu #menu4="matMenu">
     <button mat-menu-item
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/ochorenia" class="leftsided" >Zobraziť
@@ -36,7 +37,7 @@
     <button mat-menu-item routerLink="/zdielatOchorenia/{{this.osobneCislo}}/{{this.rodneCislo}}">Zdielať</button>
   </mat-menu>
 
-  <button mat-raised-button [matMenuTriggerFor]="menu5" class="menu">Odporučenia</button>
+  <button mat-raised-button [matMenuTriggerFor]="menu5" class="menu" id="odporucenia">Odporučenia</button>
   <mat-menu #menu5="matMenu">
     <button mat-menu-item
             routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/odporucenia" class="leftsided" >Zobraziť
@@ -44,7 +45,7 @@
     <button mat-menu-item routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}/listkyZmena">Upraviť</button>
   </mat-menu>
 
-  <button mat-raised-button class="rightsided" *ngFor="let pac of pacient" routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}">
+  <button mat-raised-button class="rightsided" *ngFor="let pac of pacient" routerLink="/doktor/{{this.osobneCislo}}/{{this.rodneCislo}}" id="pacient">
     {{upravRC(this.rodneCislo)}}
     - {{pac.meno}} {{pac.priezvisko}}
   </button>

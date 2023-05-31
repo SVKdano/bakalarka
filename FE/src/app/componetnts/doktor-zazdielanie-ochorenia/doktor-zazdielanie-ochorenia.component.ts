@@ -57,4 +57,7 @@ export class DoktorZazdielanieOchoreniaComponent implements OnInit {
     this.priezviskoFilter = "";
   }
 
+  printPage() {
+    window.print();
+  }
 }

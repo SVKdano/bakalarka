@@ -52,4 +52,8 @@ export class DoktorPacientiComponent implements OnInit {
 
     this.pacientiFiltered = this.pacienti;
   }
+
+  printPage() {
+    window.print();
+  }
 }

@@ -6,7 +6,7 @@ import { WelcomePageComponent } from './componetnts/welcome-page/welcome-page.co
 import { AppRoutingModule } from './app-routing.module';
 import { BoardPageComponent } from './componetnts/board-page/board-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from "@angular/material/button";
+import {MatButtonModule} from "@angular/material/button";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatCardModule } from "@angular/material/card";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -78,6 +78,17 @@ import { AdminProfileComponent } from './componetnts/admin-profile/admin-profile
 import { NemocnicaOddeleniaComponent } from './componetnts/nemocnica-oddelenia/nemocnica-oddelenia.component';
 import { NemocnicaPanelComponent } from './componetnts/nemocnica-panel/nemocnica-panel.component';
 import { NemocnicaDoktoriComponent } from './componetnts/nemocnica-doktori/nemocnica-doktori.component';
+import { PacientResetHeslaComponent } from './componetnts/pacient-reset-hesla/pacient-reset-hesla.component';
+import { NemocnicaNoveOddelenieComponent } from './componetnts/nemocnica-nove-oddelenie/nemocnica-nove-oddelenie.component';
+import { ZmenaHeslaDoktorComponent } from './componetnts/zmena-hesla-doktor/zmena-hesla-doktor.component';
+import { ZmenaHeslaNemocnicaComponent } from './componetnts/zmena-hesla-nemocnica/zmena-hesla-nemocnica.component';
+import { NemocnicaDoktorOddelenieComponent } from './componetnts/nemocnica-doktor-oddelenie/nemocnica-doktor-oddelenie.component';
+import { NemocnicaDoktorOddelenieZmenaComponent } from './componetnts/nemocnica-doktor-oddelenie-zmena/nemocnica-doktor-oddelenie-zmena.component';
+import { NemocnicaNovyDoktorComponent } from './componetnts/nemocnica-novy-doktor/nemocnica-novy-doktor.component';
+import { NemocnicaResetHeslaComponent } from './componetnts/nemocnica-reset-hesla/nemocnica-reset-hesla.component';
+import { DoktorResetHeslaComponent } from './componetnts/doktor-reset-hesla/doktor-reset-hesla.component';
+import { AdminNovaNemocnicaComponent } from './componetnts/admin-nova-nemocnica/admin-nova-nemocnica.component';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -142,7 +153,17 @@ import { NemocnicaDoktoriComponent } from './componetnts/nemocnica-doktori/nemoc
     AdminProfileComponent,
     NemocnicaOddeleniaComponent,
     NemocnicaPanelComponent,
-    NemocnicaDoktoriComponent
+    NemocnicaDoktoriComponent,
+    PacientResetHeslaComponent,
+    NemocnicaNoveOddelenieComponent,
+    ZmenaHeslaDoktorComponent,
+    ZmenaHeslaNemocnicaComponent,
+    NemocnicaDoktorOddelenieComponent,
+    NemocnicaDoktorOddelenieZmenaComponent,
+    NemocnicaNovyDoktorComponent,
+    NemocnicaResetHeslaComponent,
+    DoktorResetHeslaComponent,
+    AdminNovaNemocnicaComponent
   ],
     imports: [
         BrowserModule,
@@ -160,6 +181,7 @@ import { NemocnicaDoktoriComponent } from './componetnts/nemocnica-doktori/nemoc
         MatMenuModule,
         MatDatepickerModule,
         MatNativeDateModule,
+        MatIconModule
     ],
   providers: [],
   bootstrap: [AppComponent]

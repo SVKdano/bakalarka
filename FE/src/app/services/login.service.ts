@@ -30,6 +30,10 @@ export class LoginService {
     return this.http.post(`${environment.apiUrl}/registraciaPacient`, pacient);
   }
 
+  public resetHeslaPacient(user: User) : Observable<any> {
+    return this.http.post(`${environment.apiUrl}/resetHeslaPacient`, user, {responseType: "text"});
+  }
+
   public poistovne() : Observable<Poistovna[]> {
     return this.http.get<Poistovna[]>(`${environment.apiUrl}/allPoistovne`);
   }

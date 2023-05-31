@@ -55,4 +55,8 @@ export class DoktorZdielaneLiekyComponent {
     this.menoFilter = "";
     this.priezviskoFilter = "";
   }
+
+  printPage() {
+    window.print();
+  }
 }

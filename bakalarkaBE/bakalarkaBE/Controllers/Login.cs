@@ -1,7 +1,11 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 using bakalarkaBE.Models;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MimeKit;
+using MimeKit.Text;
 
 namespace bakalarkaBE.Controllers
 {
@@ -124,6 +128,118 @@ namespace bakalarkaBE.Controllers
         public async Task<ActionResult<List<Mestum>>> GetMestaLogin()
         {
             return Ok(await _dbContext.Mesta.ToListAsync());
+        }
+
+        [HttpPost("/resetHeslaPacient")]
+        public async Task<ActionResult<Pacient>> PostResetHesloPacientLogin(LoginDTO login)
+        {
+            var possibleUser = await _dbContext.Pacients.FindAsync(login.Cislo);
+
+            if (possibleUser == null || possibleUser.Email != login.heslo)
+            {
+                return BadRequest("Nesprávny email užívateľa");
+            }
+            
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var noveHeslo = new String(stringChars);
+            
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse("bakalarka.dokumentacia@gmail.com"));
+            email.To.Add(MailboxAddress.Parse("bakalarka.ucet@gmail.com"));
+            email.Subject = "Nove heslo";
+            email.Body = new TextPart(TextFormat.Text) { Text = "Vaše nové heslo je: " + noveHeslo};
+
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, false);
+            smtp.Authenticate("bakalarka.dokumentacia@gmail.com", "uwgsxxzabbyggwml");
+            smtp.Send(email);
+            smtp.Disconnect(true);
+
+            possibleUser.Heslo = noveHeslo;
+            
+            await _dbContext.SaveChangesAsync();
+            
+            return Ok("Heslo " + possibleUser.Meno + " " + possibleUser.Priezvisko +" resetované!");
+        }
+        
+        [HttpGet("/resetHeslaDoktor/{cislo}/{mail}")]
+        public async Task<ActionResult<Pacient>> PostResetHesloDoktorLogin(string cislo, string mail)
+        {
+            var possibleUser = await _dbContext.Doktors.FindAsync(cislo);
+
+            if (possibleUser == null || possibleUser.Email != mail)
+            {
+                return BadRequest("Nesprávny email užívateľa");
+            }
+            
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var noveHeslo = new String(stringChars);
+            
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse("bakalarka.dokumentacia@gmail.com"));
+            email.To.Add(MailboxAddress.Parse("bakalarka.ucet@gmail.com"));
+            email.Subject = "Nove heslo";
+            email.Body = new TextPart(TextFormat.Text) { Text = "Vaše nové heslo je: " + noveHeslo};
+
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, false);
+            smtp.Authenticate("bakalarka.dokumentacia@gmail.com", "uwgsxxzabbyggwml");
+            smtp.Send(email);
+            smtp.Disconnect(true);
+            
+            return Ok(await _dbContext.Doktors.FindAsync(cislo));
+        }
+        
+        [HttpGet("/resetHeslaNemocnica/{cislo}/{mail}")]
+        public async Task<ActionResult<Pacient>> PostResetHesloNemocnicaLogin(string cislo, string mail)
+        {
+            var possibleUser = await _dbContext.Nemocnicas.FindAsync(cislo);
+
+            if (possibleUser == null || possibleUser.Email != mail)
+            {
+                return BadRequest("Nesprávny email užívateľa");
+            }
+            
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var noveHeslo = new String(stringChars);
+            
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse("bakalarka.dokumentacia@gmail.com"));
+            email.To.Add(MailboxAddress.Parse("bakalarka.ucet@gmail.com"));
+            email.Subject = "Nove heslo";
+            email.Body = new TextPart(TextFormat.Text) { Text = "Vaše nové heslo je: " + noveHeslo};
+
+            using var smtp = new SmtpClient();
+            smtp.Connect("smtp.gmail.com", 587, false);
+            smtp.Authenticate("bakalarka.dokumentacia@gmail.com", "uwgsxxzabbyggwml");
+            smtp.Send(email);
+            smtp.Disconnect(true);
+            
+            return Ok("Heslo resetované!");
         }
     }
 }

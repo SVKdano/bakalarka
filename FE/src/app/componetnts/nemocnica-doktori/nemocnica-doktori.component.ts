@@ -70,7 +70,7 @@ export class NemocnicaDoktoriComponent implements OnInit {
   }
 
   reset() {
-    this.kodOddelenia = "";
+    this.kodOddelenia = '';
     this.menoFilter = "";
     this.priezviskoFilter = "";
 

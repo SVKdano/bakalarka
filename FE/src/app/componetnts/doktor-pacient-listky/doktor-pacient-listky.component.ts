@@ -60,4 +60,8 @@ export class DoktorPacientListkyComponent {
 
     this.filteredListky = this.listky;
   }
+
+  printPage() {
+    window.print();
+  }
 }

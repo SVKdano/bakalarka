@@ -91,4 +91,8 @@ export class OchoreniaPageComponent implements OnInit {
     this.filteredOchoreniaTwo = this.ochorenia;
   }
 
+  printPage() {
+    window.print();
+  }
+
 }

@@ -55,4 +55,8 @@ export class DoktorZdielanieOchoreniaComponent implements OnInit {
     this.menoFilter = "";
     this.priezviskoFilter = "";
   }
+
+  printPage() {
+    window.print();
+  }
 }

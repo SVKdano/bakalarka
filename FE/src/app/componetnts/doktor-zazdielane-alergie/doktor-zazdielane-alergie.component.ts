@@ -59,4 +59,8 @@ export class DoktorZazdielaneAlergieComponent implements OnInit {
     this.menoFilter = "";
     this.priezviskoFilter = "";
   }
+
+  printPage() {
+    window.print();
+  }
 }

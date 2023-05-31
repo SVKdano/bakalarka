@@ -47,3 +47,8 @@
 /Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bin/Debug/net6.0/System.Text.Encodings.Web.dll
 /Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bin/Debug/net6.0/System.Text.Json.dll
 /Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bin/Debug/net6.0/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll
+/Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bin/Debug/net6.0/BouncyCastle.Cryptography.dll
+/Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bin/Debug/net6.0/MailKit.dll
+/Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bin/Debug/net6.0/MimeKit.dll
+/Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bin/Debug/net6.0/System.Security.Cryptography.Pkcs.dll
+/Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bin/Debug/net6.0/runtimes/win/lib/net6.0/System.Security.Cryptography.Pkcs.dll

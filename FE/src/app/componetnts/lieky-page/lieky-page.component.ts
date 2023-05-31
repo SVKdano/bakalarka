@@ -91,4 +91,8 @@ export class LiekyPageComponent implements OnInit {
     this.filteredLiekyNoEnd = this.lieky;
   }
 
+  printPage() {
+    window.print();
+  }
+
 }

@@ -58,3 +58,29 @@ mat-card-content {
 .filterButtons button {
   margin-left: 2px;
 }
+
+
+@media only screen and (max-width: 650px) {
+
+  .filter mat-card mat-card-content {
+    flex-direction: column;
+  }
+
+  .filterButtons {
+    margin-right: 27%;
+    margin-bottom: 3% !important;
+  }
+
+  .mat-mdc-card-content:last-child{
+    padding-bottom: unset;
+    align-self: unset;
+    margin-right: unset;
+    margin-left: unset;
+  }
+
+  .cards mat-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}

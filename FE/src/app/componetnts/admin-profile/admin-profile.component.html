@@ -7,8 +7,8 @@
 </mat-toolbar>
 
 <mat-toolbar class="adminButtons">
-  <button mat-raised-button>Prehľad nemocníc</button>
-  <button mat-raised-button>Pridaj nemocnicu</button>
+  <button mat-raised-button routerLink="/admin">Prehľad nemocníc</button>
+  <button mat-raised-button routerLink="/admin/novaNemocnica">Pridaj nemocnicu</button>
 </mat-toolbar>
 
 <div class="cards" *ngFor="let nemocnica of nemocnice">

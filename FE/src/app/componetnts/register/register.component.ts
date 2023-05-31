@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
     meno: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-zÀ-ȕ ]+")]),
     priezvisko: new FormControl(null, [Validators.required, Validators.pattern("[A-Za-zÀ-ȕ ]+")]),
     poistovna: new FormControl(null, [Validators.required]),
-    ulica: new FormControl(null, [Validators.pattern("[A-Za-zÀ-ȕ 1-9]+")]),
+    ulica: new FormControl(null, [Validators.pattern("[A-Za-zÀ-ȕ 0-9]+")]),
     bydlisko: new FormControl(null, [Validators.required]),
     email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),

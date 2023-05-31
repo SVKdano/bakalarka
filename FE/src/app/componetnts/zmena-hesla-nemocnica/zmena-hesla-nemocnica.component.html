@@ -1,0 +1,58 @@
+
+<app-nemocnica-panel></app-nemocnica-panel>
+<br>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      Zmena hesla
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <form class="example-form" [formGroup]="loginForm">
+      <div class="popis"><b><i>Vaše staré heslo: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput formControlName="hesloStare" [(ngModel)]="this.stareHeslo">
+          <mat-error *ngIf="this.loginForm.get('hesloStare')?.touched
+                        && this.loginForm.get('hesloStare')?.hasError('required')">
+            Zadaj pôvodné heslo!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Vaše nové heslo: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput formControlName="hesloNove" [(ngModel)]="this.noveHeslo">
+          <mat-error *ngIf="this.loginForm.get('hesloNove')?.touched
+                        && this.loginForm.get('hesloNove')?.hasError('required')">
+            Zadaj pôvodné heslo!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Zopakujte nové heslo: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput formControlName="hesloNoveZnova" [(ngModel)]="this.noveHesloZnova">
+          <mat-error *ngIf="this.loginForm.get('hesloNoveZnova')?.touched
+                        && this.loginForm.get('hesloNoveZnova')?.hasError('required')">
+            Potvrďte nové heslo!
+          </mat-error>
+
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div></div>
+
+      <button mat-raised-button> Aktualizuj heslo</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+

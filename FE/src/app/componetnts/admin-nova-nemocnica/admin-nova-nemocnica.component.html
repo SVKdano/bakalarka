@@ -1,0 +1,104 @@
+<mat-toolbar>
+  <img src="assets/imgs/frilogo.png" alt="FRI logo">
+  <button mat-raised-button [matMenuTriggerFor]="menu">Administrátor</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="logout()">Odhlásenie</button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-toolbar class="adminButtons">
+  <button mat-raised-button routerLink="/admin">Prehľad nemocníc</button>
+  <button mat-raised-button routerLink="/admin/novaNemocnica">Pridaj nemocnicu</button>
+</mat-toolbar>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <b>Pridanie novej nemocnice do systému</b>
+    </mat-card-title>
+  </mat-card-header>
+
+
+  <mat-card-content>
+    <br>
+    <br>
+    <form class="example-form" [formGroup]="loginForm">
+      <div class="popis"> <b><i>Id nemocnice: </i></b> </div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Id nemocnice" formControlName="idNemocnice" [(ngModel)]="this.user.rodnecislo">
+          <mat-error *ngIf="this.loginForm.get('idNemocnice')?.touched
+                        && this.loginForm.get('idNemocnice')?.hasError('required')">
+            Zadaj id nemocnice!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Názov nemocnice: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Názov" formControlName="meno" [(ngModel)]="this.user.meno">
+          <mat-error
+            *ngIf="this.loginForm.get('meno')?.touched && this.loginForm.get('meno')?.hasError('required')">
+            Zadajte názov nemocnice!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+
+      <div class="popis"><b><i>Mesto, kde nemocnica sídli: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <mat-label>Vyber mesto</mat-label>
+          <mat-select formControlName="mesto">
+            <mat-option *ngFor="let mesto of this.mesta" [value]="mesto.nazov" (click)="setMestoId(mesto.idmesta)">
+              {{this.mesto.nazov}}
+            </mat-option>
+          </mat-select>
+
+          <mat-error
+            *ngIf="this.loginForm.get('mesto')?.touched && this.loginForm.get('mesto')?.hasError('required')">
+            Zadaj bydlisko!
+          </mat-error>
+
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Ulica: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Ulica" formControlName="ulica" [(ngModel)]="this.user.ulica">
+          <mat-error
+            *ngIf="this.loginForm.get('ulica')?.touched && this.loginForm.get('ulica')?.hasError('pattern')">
+            Len čísla a písmená!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+
+      <div class="popis"><b><i>Email nemocnice: </i></b></div>
+      <div class="inputokno">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Email" formControlName="email" [(ngModel)]="this.user.email">
+          <mat-error
+            *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('required')">
+            Zadajte Váš email!
+          </mat-error>
+
+          <mat-error
+            *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('email')">
+            Zadajte email!
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <br>
+      <div></div>
+      <button class="inputokno" mat-raised-button color="warn" [disabled]="!this.loginForm.valid">Registrácia</button>
+    </form>
+
+
+  </mat-card-content>
+</mat-card>

@@ -14,3 +14,56 @@
 mat-toolbar {
   background-color: #f9b591;
 }
+
+@media only screen and (max-width: 650px) {
+  mat-toolbar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+
+    height: fit-content;
+  }
+
+  #pacient {
+    grid-column-start: 1;
+    grid-column-end: 3;
+
+    margin-bottom: 2%;
+    width: 100%;
+  }
+}
+
+
+@media print {
+  #udaje {
+    visibility: hidden;
+    width: 0;
+  }
+
+  #lieky {
+    visibility: hidden;
+    width: 0;
+  }
+
+  #zaznamy {
+    visibility: hidden;
+    width: 0;
+  }
+
+  #ochorenia {
+    visibility: hidden;
+    width: 0;
+  }
+
+  #odporucenia {
+    visibility: hidden;
+    width: 0;
+  }
+
+  #alergie {
+    visibility: hidden;
+    width: 0;
+  }
+}

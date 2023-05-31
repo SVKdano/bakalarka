@@ -32,4 +32,8 @@ export class ZaznamDetailComponent {
       }
     )
   }
+
+  printPage() {
+    window.print();
+  }
 }

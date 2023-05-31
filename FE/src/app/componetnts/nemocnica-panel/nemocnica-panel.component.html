@@ -3,15 +3,15 @@
   <button mat-raised-button [matMenuTriggerFor]="menu">{{this.nemocnica.nazov}}</button>
   <mat-menu #menu="matMenu">
     <button mat-menu-item routerLink="/nemocnica/{{this.nemocnica.idnemocnice}}">Údaje nemocnice</button>
-    <button mat-menu-item>Zmena hesla</button>
+    <button mat-menu-item routerLink="/nemocnica/{{this.nemocnica.idnemocnice}}/zmenaHesla">Zmena hesla</button>
     <button mat-menu-item (click)="logout()">Odhlásenie</button>
   </mat-menu>
 </mat-toolbar>
 
 <mat-toolbar class="nemocnicaButtons">
   <button mat-raised-button routerLink="/nemocnica/{{this.nemocnica.idnemocnice}}/oddelenia">Prehľad oddelení</button>
-  <button mat-raised-button>Pridaj oddelenie</button>
+  <button mat-raised-button routerLink="/nemocnica/{{this.nemocnica.idnemocnice}}/pridajOddelenie">Pridaj oddelenie</button>
   <button mat-raised-button routerLink="/nemocnica/{{this.nemocnica.idnemocnice}}/doktori">Prehľad doktorov</button>
-  <button mat-raised-button>Zmena oddelenia doktora</button>
-  <button mat-raised-button>Pridaj doktora</button>
+  <button mat-raised-button routerLink="/nemocnica/{{this.nemocnica.idnemocnice}}/doktorOddelenie" >Zmena oddelenia doktora</button>
+  <button mat-raised-button routerLink="/nemocnica/{{this.nemocnica.idnemocnice}}/novyDoktor">Pridaj doktora</button>
 </mat-toolbar>

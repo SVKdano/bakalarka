@@ -23,4 +23,8 @@ export class DoktoriPageComponent implements OnInit {
       }
     )
   }
+
+  printPage() {
+    window.print();
+  }
 }

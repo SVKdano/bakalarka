@@ -1,0 +1,50 @@
+<app-nemocnica-panel></app-nemocnica-panel>
+
+<div class="panel">
+  <mat-toolbar>
+    <div class="inputs">
+      <mat-form-field>
+        <mat-label>Meno</mat-label>
+        <input matInput type="text" [(ngModel)]="menoFilter" >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Priezvisko</mat-label>
+        <input matInput type="text" [(ngModel)]="priezviskoFilter">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Oddelenie</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let oddelenie of oddelenia" [value]="oddelenie.nazovoddelenia"
+                      (click)="setKodOddelenia(oddelenie); filterOddelenie()">
+            <div>
+              <b><i>{{oddelenie.nazovoddelenia}}</i></b>
+            </div>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+
+    <div class="filterButtons">
+      <button mat-raised-button (click)="filter()">Filtruj</button>
+      <button mat-raised-button (click)="reset()">Reset</button>
+    </div>
+  </mat-toolbar>
+</div>
+
+<mat-card *ngFor="let doktor of filteredDoktori">
+
+  <mat-card-content class="menoDoktora">
+    {{doktor.meno}} {{doktor.priezvisko}}
+  </mat-card-content>
+
+  <div class="zmenaInner">
+    <mat-card-content class="oddelnie" *ngIf="doktor.oddelenie">
+      {{doktor.oddelenie.nazovoddelenia}}
+      <button mat-raised-button color="warn" routerLink="/nemocnica/{{this.idNemocnice}}/zmenaOddelenia/{{doktor.osobnecislo}}">Zmena</button>
+    </mat-card-content>
+  </div>
+</mat-card>
+

@@ -1,0 +1,30 @@
+<app-nemocnica-panel></app-nemocnica-panel>
+
+<mat-card *ngFor="let doc of doktor">
+  <mat-card-header>
+    <mat-card-title>
+      {{doc.meno}} {{doc.priezvisko}}
+    </mat-card-title>
+  </mat-card-header>
+
+  <br>
+
+  <mat-card-content *ngIf="doc.oddelenie" class="aktualOddelenie">
+    <b>Aktuálne oddelenie:</b>
+    {{doc.oddelenie.nazovoddelenia}}
+  </mat-card-content>
+
+  <form>
+    <mat-form-field>
+      <mat-label>Cieľové oddelenie</mat-label>
+      <mat-select >
+        <mat-option *ngFor="let oddelenie of oddelenia"
+                    [value]="oddelenie.nazovoddelenia" (click)="setUdaje(oddelenie.kododdelenia, oddelenie.idnemocnice)">
+          <b>{{oddelenie.nazovoddelenia}}</b>
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button color="warn"> Zmeň oddelenie</button>
+</mat-card>

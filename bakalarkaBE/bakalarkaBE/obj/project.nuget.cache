@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ecbQ4Nc+bJc7xnECWqsAg7/GzQ6CYjZpvq6y6KkKggfMf0zfirS/pteXLGYt+HXcenLQtMeAHYpy9vMwdb3B4g==",
+  "dgSpecHash": "+0SnkClf60irIPuoq8ncK0C/ZNgZQaD3i6c043sCXEuz3bgonGKasmTWT/jn6N/mdhpROoQBYUAWblarjfuibg==",
   "success": true,
   "projectFilePath": "/Users/daniellieskovsky/Desktop/InteliJ_Projects/bakalarka/bakalarkaBE/bakalarkaBE/bakalarkaBE.csproj",
   "expectedPackageFiles": [
+    "/Users/daniellieskovsky/.nuget/packages/bouncycastle.cryptography/2.1.1/bouncycastle.cryptography.2.1.1.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/daniellieskovsky/.nuget/packages/mailkit/4.0.0/mailkit.4.0.0.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/microsoft.entityframeworkcore/7.0.1/microsoft.entityframeworkcore.7.0.1.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.1/microsoft.entityframeworkcore.abstractions.7.0.1.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/microsoft.entityframeworkcore.analyzers/7.0.1/microsoft.entityframeworkcore.analyzers.7.0.1.nupkg.sha512",
@@ -23,6 +25,7 @@
     "/Users/daniellieskovsky/.nuget/packages/microsoft.extensions.options/7.0.0/microsoft.extensions.options.7.0.0.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/microsoft.extensions.primitives/7.0.0/microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/daniellieskovsky/.nuget/packages/mimekit/4.0.0/mimekit.4.0.0.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/npgsql/7.0.1/npgsql.7.0.1.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/npgsql.entityframeworkcore.postgresql/7.0.1/npgsql.entityframeworkcore.postgresql.7.0.1.nupkg.sha512",
@@ -31,7 +34,10 @@
     "/Users/daniellieskovsky/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
+    "/Users/daniellieskovsky/.nuget/packages/system.formats.asn1/6.0.0/system.formats.asn1.6.0.0.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0/system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "/Users/daniellieskovsky/.nuget/packages/system.security.cryptography.pkcs/6.0.2/system.security.cryptography.pkcs.6.0.2.nupkg.sha512",
+    "/Users/daniellieskovsky/.nuget/packages/system.text.encoding.codepages/6.0.0/system.text.encoding.codepages.6.0.0.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
     "/Users/daniellieskovsky/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
   ],

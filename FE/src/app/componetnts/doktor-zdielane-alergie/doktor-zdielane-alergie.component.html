@@ -41,7 +41,7 @@
 
   <mat-card-content *ngIf="alergia.zdielajuciNavigation">
     <div>
-      <b>Cieľový doktor:</b>
+      <b>Zdielajúci doktor:</b>
       {{alergia.zdielajuciNavigation.meno}} {{alergia.zdielajuciNavigation.priezvisko}}
     </div>
 
@@ -61,3 +61,6 @@
   </mat-card-content>
 </mat-card>
 
+<button id="printButton" mat-mini-fab matTooltip="Primary" color="primary" aria-label="Print button" (click)="printPage()">
+  <mat-icon>print</mat-icon>
+</button>

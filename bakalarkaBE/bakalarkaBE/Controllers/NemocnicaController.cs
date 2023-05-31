@@ -1,6 +1,7 @@
 using bakalarkaBE.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Asn1.X509;
 
 namespace bakalarkaBE.Controllers
 {
@@ -37,6 +38,29 @@ namespace bakalarkaBE.Controllers
         [HttpPost("pridajDoktora")]
         public async Task<ActionResult<List<Doktor>>> PostPridajDoktoraNemocica(Doktor doktor)
         {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
+
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var noveHeslo = new String(stringChars);
+            doktor.Heslo = noveHeslo;
+            doktor.Rola = "doktor";
+
+            var possibleDuplicity = await _dbContext.Doktors.FindAsync(doktor.Osobnecislo);
+
+            if (possibleDuplicity != null)
+            {
+                return BadRequest(new { Message = "Doktor s týmto osobným číslom už existuje" });
+            }
+
+            _dbContext.Add(doktor);
+            await _dbContext.SaveChangesAsync();
+            
             return Ok(await _dbContext.Doktors.ToListAsync());
         }
 
@@ -53,6 +77,16 @@ namespace bakalarkaBE.Controllers
         [HttpPost("pridajOddelenie")]
         public async Task<ActionResult<List<Doktor>>> PostPridajOddelenieNemocica(Oddelenie oddelenie)
         {
+            var dbOddelenie = await _dbContext.Oddelenies.FindAsync(oddelenie.Kododdelenia, oddelenie.Idnemocnice);
+
+            if (dbOddelenie != null)
+            {
+                return BadRequest(new { Message = "Oddelenie na pridanie už existuje!" });
+            }
+
+            _dbContext.Add(oddelenie);
+            await _dbContext.SaveChangesAsync();
+            
             return Ok(await _dbContext.Oddelenies.ToListAsync());
         }
 

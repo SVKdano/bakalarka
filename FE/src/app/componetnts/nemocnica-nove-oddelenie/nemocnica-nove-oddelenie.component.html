@@ -1,0 +1,49 @@
+<app-nemocnica-panel></app-nemocnica-panel>
+
+<mat-card>
+  <mat-card-content class="inputPole">
+    <b>Zadaj informácie o novom oddelení:</b>
+    <br>
+    <br>
+    <form [formGroup]="formularCheck">
+      <b><i>Kód oddelenia:</i></b>
+      <mat-form-field>
+        <mat-label>Kód</mat-label>
+        <input matInput type="text" [(ngModel)]="noveOddelenie.kododdelenia" formControlName="kodOddeleniaCheck" name="noveOddelenie.kododdelenia">
+        <mat-error *ngIf="this.formularCheck.get('kodOddeleniaCheck')?.touched
+                        && this.formularCheck.get('kodOddeleniaCheck')?.hasError('required')">
+          Zadaj kód oddelenia!
+        </mat-error>
+      </mat-form-field>
+
+      <b><i>Názov oddelenia:</i></b>
+      <mat-form-field>
+        <mat-label>Názov</mat-label>
+        <input matInput type="text" [(ngModel)]="noveOddelenie.nazovoddelenia" formControlName="nazovOddeleniaCheck" name="noveOddelenie.nazovoddelenia">
+        <mat-error *ngIf="this.formularCheck.get('nazovOddeleniaCheck')?.touched
+                        && this.formularCheck.get('nazovOddeleniaCheck')?.hasError('required')">
+          Zadaj názov oddelenia!
+        </mat-error>
+      </mat-form-field>
+
+      <b><i>Kapacita oddelenia:</i></b>
+      <mat-form-field>
+        <mat-label>Kapacita</mat-label>
+        <input matInput type="number" [(ngModel)]="noveOddelenie.kapacita" formControlName="kapacitaCheck" name="noveOddelenie.kapacita">
+        <mat-error *ngIf="this.formularCheck.get('kapacitaCheck')?.touched
+                        && this.formularCheck.get('kapacitaCheck')?.hasError('required')">
+          Zadaj kapacitu oddelenia!
+        </mat-error>
+        <mat-error *ngIf="this.formularCheck.get('kapacitaCheck')?.touched
+                        && this.formularCheck.get('kapacitaCheck')?.hasError('pattern')">
+          Zadaj kapacitu oddelenia!
+        </mat-error>
+      </mat-form-field>
+    </form>
+
+    <div class="formButtons">
+      <button mat-raised-button color="primary" [disabled]="!formularCheck.valid" (click)="pridajOddelenie()">Pridaj</button>
+    </div>
+
+  </mat-card-content>
+</mat-card>

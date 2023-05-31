@@ -88,4 +88,8 @@ export class DoktorPacientLiekyComponent {
 
     this.filteredLiekyNoEnd = this.lieky;
   }
+
+  printPage() {
+    window.print();
+  }
 }

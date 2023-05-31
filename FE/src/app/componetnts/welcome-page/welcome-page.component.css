@@ -54,6 +54,10 @@ mat-toolbar img {
   }
 
   .flex {
-    margin-right: 10%;
+    height: 80%;
+  }
+
+  .logincard {
+    margin: auto;
   }
 }

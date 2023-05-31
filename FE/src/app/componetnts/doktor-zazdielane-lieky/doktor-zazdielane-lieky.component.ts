@@ -56,4 +56,8 @@ export class DoktorZazdielaneLiekyComponent implements OnInit {
     this.menoFilter = "";
     this.priezviskoFilter = "";
   }
+
+  printPage() {
+    window.print();
+  }
 }

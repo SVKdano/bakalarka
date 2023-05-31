@@ -21,4 +21,8 @@ export class DoktorPacientAlergieComponent {
       }
     )
   }
+
+  printPage() {
+    window.print();
+  }
 }

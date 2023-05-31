@@ -60,4 +60,8 @@ export class ListkyPageComponent implements OnInit {
 
     this.filteredListky = this.listky;
   }
+
+  printPage() {
+    window.print();
+  }
 }

@@ -5,3 +5,21 @@ mat-toolbar {
 button {
   margin-left: 2%;
 }
+
+@media only screen and (max-width: 650px) {
+
+  mat-toolbar {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto;
+    grid-column-gap: 2%;
+
+    height: fit-content;
+  }
+
+  button {
+    margin-left: 0;
+    margin-top: 2%;
+    margin-bottom: 3%;
+  }
+}

@@ -29,7 +29,7 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          Ukončené užívanie
+          Lieky s ukončeným užívaním
         </mat-card-title>
       </mat-card-header>
 
@@ -84,7 +84,7 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          Pretrvávajúce
+          Lieky s neukončeným užívaním
         </mat-card-title>
       </mat-card-header>
       <mat-card-content *ngFor="let pacLieky of filteredLiekyNoEnd">
@@ -111,3 +111,7 @@
     </mat-card>
   </div>
 </div>
+
+<button id="printButton" mat-mini-fab matTooltip="Primary" color="primary" aria-label="Print button" (click)="printPage()">
+  <mat-icon>print</mat-icon>
+</button>

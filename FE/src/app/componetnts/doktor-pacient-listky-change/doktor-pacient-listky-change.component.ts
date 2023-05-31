@@ -83,6 +83,5 @@ export class DoktorPacientListkyChangeComponent implements OnInit {
     this.kodOddelenia = kod;
     this.idNemocnice = id;
 
-    console.log(this.idNemocnice, this.kodOddelenia);
   }
 }

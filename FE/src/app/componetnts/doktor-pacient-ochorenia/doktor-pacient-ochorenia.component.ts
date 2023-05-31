@@ -89,4 +89,8 @@ export class DoktorPacientOchoreniaComponent {
 
     this.filteredOchoreniaTwo = this.ochorenia;
   }
+
+  printPage() {
+    window.print();
+  }
 }

@@ -43,3 +43,31 @@ mat-form-field {
   display: flex;
   flex-direction: column;
 }
+
+#printButton {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+
+  width: 50px;
+  height: 50px;
+
+  background-color: #ec6602;
+}
+
+@media print {
+  .panel {
+    visibility: hidden;
+    height: 0;
+  }
+
+  app-doktor-zazdielanie-panel {
+    visibility: hidden;
+    height: 0;
+  }
+
+  #printButton {
+    visibility: hidden;
+    width: 0;
+  }
+}

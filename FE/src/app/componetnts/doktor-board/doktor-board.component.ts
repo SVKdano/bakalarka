@@ -16,6 +16,8 @@ export class DoktorBoardComponent implements OnInit {
   mesiace:any[] = [];
   pocty:any[] = [];
 
+  idDoktor: string = this.route.snapshot.paramMap.get('osobnecislo')!;
+
   constructor(private doctorService:DoktorService, private route:ActivatedRoute) {}
 
   ngOnInit() {
@@ -74,5 +76,9 @@ export class DoktorBoardComponent implements OnInit {
         }
       }
     });
+  }
+
+  printPage() {
+    window.print();
   }
 }

@@ -1,0 +1,43 @@
+<mat-toolbar>
+  <img src="assets/imgs/frilogo.png" alt="FRI logo">
+  <div class="logButtons">
+    <button mat-raised-button routerLink="">Návrat</button>
+  </div>
+</mat-toolbar>
+
+<div class="flex">
+  <mat-card class="logincard">
+    <mat-card-content>
+      <b>Pre resetovanie zabudnutého hesla zadajte rodné číslo a email.</b>
+      <br>
+      Nové heslo Vám bude zaslané na emailovú adresu.
+      <br>
+      <br>
+      <form class="example-form" [formGroup]="loginForm">
+        <mat-form-field>
+          <input type="email" matInput placeholder="Rodné čislo" formControlName="rodneCislo" [(ngModel)]="this.user.Cislo">
+          <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('required')">
+            Zadaj rodné číslo!</mat-error>
+          <mat-error *ngIf="this.loginForm.get('rodneCislo')?.touched && this.loginForm.get('rodneCislo')?.hasError('pattern')">
+            Zadaj valídne rodné čislo!</mat-error>
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Emailová adresa" formControlName="email" [(ngModel)]="this.user.heslo">
+          <mat-error
+            *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('required')">
+            Zadaj email!
+          </mat-error>
+          <mat-error
+            *ngIf="this.loginForm.get('email')?.touched && this.loginForm.get('email')?.hasError('email')">
+            Zadaj valídny email!
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <div class="buttons">
+      <button mat-raised-button class="loginButton" [disabled]="!this.loginForm.valid" (click)="resetHesla()" >Nové heslo</button>
+    </div>
+  </mat-card>
+</div>

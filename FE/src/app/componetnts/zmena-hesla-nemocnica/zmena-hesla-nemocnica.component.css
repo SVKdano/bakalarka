@@ -1,0 +1,39 @@
+mat-card {
+  max-width: 80%;
+  min-width: 75%;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  flex-direction: column;
+}
+
+mat-card-header {
+  justify-content: center;
+}
+
+form {
+  margin-top: 2%;
+
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.popis {
+  justify-self: flex-end;
+  align-self: center;
+}
+
+.inputokno {
+  justify-self: center;
+  align-self: center;
+}
+
+button {
+
+  margin-left: auto;
+  margin-right: auto;
+}
+
+

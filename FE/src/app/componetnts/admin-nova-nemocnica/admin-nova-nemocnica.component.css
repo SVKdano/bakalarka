@@ -1,0 +1,57 @@
+mat-toolbar {
+  background-color: #ec6602;
+}
+
+mat-toolbar img {
+  height: 90%;
+}
+
+mat-toolbar button {
+  margin-left: auto;
+}
+
+.adminButtons {
+  background-color: #f9b591;
+  display: flex;
+  flex-direction: row;
+}
+
+.adminButtons button {
+  margin-left: 1%;
+}
+
+mat-card {
+  margin-top: 2%;
+  margin-right: auto;
+  margin-left: auto;
+
+  min-width: 75%;
+  max-width: 80%;
+
+}
+
+mat-card-header {
+  justify-content: center;
+  text-align: center;
+}
+
+
+form {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.popis {
+  justify-self: flex-end;
+  align-self: center;
+}
+
+.inputokno {
+  justify-self: center;
+  align-self: center;
+}
+
+.registerButton {
+  margin-right: auto;
+  margin-left: auto;
+}

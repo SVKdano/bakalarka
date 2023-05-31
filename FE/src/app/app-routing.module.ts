@@ -88,6 +88,22 @@ import {AdminProfileComponent} from "./componetnts/admin-profile/admin-profile.c
 import {AdminGuardGuard} from "./guards/admin-guard.guard";
 import {NemocnicaOddeleniaComponent} from "./componetnts/nemocnica-oddelenia/nemocnica-oddelenia.component";
 import {NemocnicaDoktoriComponent} from "./componetnts/nemocnica-doktori/nemocnica-doktori.component";
+import {PacientResetHeslaComponent} from "./componetnts/pacient-reset-hesla/pacient-reset-hesla.component";
+import {
+  NemocnicaNoveOddelenieComponent
+} from "./componetnts/nemocnica-nove-oddelenie/nemocnica-nove-oddelenie.component";
+import {ZmenaHeslaDoktorComponent} from "./componetnts/zmena-hesla-doktor/zmena-hesla-doktor.component";
+import {ZmenaHeslaNemocnicaComponent} from "./componetnts/zmena-hesla-nemocnica/zmena-hesla-nemocnica.component";
+import {
+  NemocnicaDoktorOddelenieComponent
+} from "./componetnts/nemocnica-doktor-oddelenie/nemocnica-doktor-oddelenie.component";
+import {
+  NemocnicaDoktorOddelenieZmenaComponent
+} from "./componetnts/nemocnica-doktor-oddelenie-zmena/nemocnica-doktor-oddelenie-zmena.component";
+import {NemocnicaNovyDoktorComponent} from "./componetnts/nemocnica-novy-doktor/nemocnica-novy-doktor.component";
+import {DoktorResetHeslaComponent} from "./componetnts/doktor-reset-hesla/doktor-reset-hesla.component";
+import {NemocnicaResetHeslaComponent} from "./componetnts/nemocnica-reset-hesla/nemocnica-reset-hesla.component";
+import {AdminNovaNemocnicaComponent} from "./componetnts/admin-nova-nemocnica/admin-nova-nemocnica.component";
 
 
 
@@ -136,11 +152,21 @@ const routes: Routes = [
   { path: "zdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZdielaneZaznamyDetailComponent},
   { path: "zazdielanyZaznam/:idzaznam/:osobnecislo", component:DoktorZazdielanieZaznamyDetailComponent},
   { path: "vytazenie/:osobnecislo", component:DoktorBoardComponent},
+  { path: "zmenaHesla/:osobnecislo", component:ZmenaHeslaDoktorComponent},
   { path: "nemocnica", component: NemocnicaWelcomeComponent},
   { path: "nemocnica/:idnemocnice", component:NemocnicaProfileComponent},
   { path: "nemocnica/:idnemocnice/oddelenia", component:NemocnicaOddeleniaComponent},
   { path: "nemocnica/:idnemocnice/doktori", component:NemocnicaDoktoriComponent},
+  { path: "nemocnica/:idnemocnice/pridajOddelenie", component:NemocnicaNoveOddelenieComponent},
+  { path: "nemocnica/:idnemocnice/zmenaHesla", component: ZmenaHeslaNemocnicaComponent},
+  { path: "nemocnica/:idnemocnice/doktorOddelenie", component: NemocnicaDoktorOddelenieComponent},
+  { path: "nemocnica/:idnemocnice/zmenaOddelenia/:osobnecislo", component:NemocnicaDoktorOddelenieZmenaComponent},
+  { path: "nemocnica/:idnemocnice/novyDoktor", component: NemocnicaNovyDoktorComponent},
   { path: "admin", component:AdminProfileComponent, canActivate:[AdminGuardGuard]},
+  { path: "admin/novaNemocnica", component: AdminNovaNemocnicaComponent, canActivate:[AdminGuardGuard]},
+  { path: "resetHeslaPacient", component: PacientResetHeslaComponent},
+  { path: "resetHeslaDoktor", component: DoktorResetHeslaComponent},
+  { path: "resetHeslaNemocnica", component: NemocnicaResetHeslaComponent},
   { path: "registracia", component:RegisterComponent},
   { path: "**", component: WelcomePageComponent}
 ];

@@ -5,6 +5,8 @@ import {environment} from "../../environments/environmenst";
 import {Nemocnica} from "../models/Nemocnica";
 import {Doktor} from "../models/Doktor";
 import {Oddelenie} from "../models/Oddelenie";
+import {DoktorPacient} from "../models/DoktorPacient";
+import {OddelenieUpdate} from "../UpdateModels/OddelenieUpdate";
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +25,9 @@ export class NemocnicaService {
 
   public getOddeleniaNemocnice(idNemocnice:string) : Observable<Oddelenie[]> {
     return this.http.get<Oddelenie[]>(`${environment.apiUrl}/oddeleniaNemocnice/${idNemocnice}`);
+  }
+
+  public addOddelenie(oddelenie: OddelenieUpdate) : Observable<Oddelenie[]> {
+    return this.http.post<Oddelenie[]>(`${environment.apiUrl}/pridajOddelenie`, oddelenie);
   }
 }

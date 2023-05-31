@@ -1,0 +1,19 @@
+mat-card {
+  max-width: 60%;
+  min-width: 55%;
+
+  margin-top: 2%;
+  margin-right: auto;
+  margin-left: auto;
+
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formButtons button {
+  min-width: 50%;
+}

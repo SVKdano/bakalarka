@@ -10,3 +10,42 @@
 h2 {
   text-align: center;
 }
+
+#printButton {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+
+  width: 50px;
+  height: 50px;
+
+  background-color: #ec6602;
+}
+
+@media only screen and (max-width: 650px) {
+
+  .row {
+    width: unset;
+    height: unset;
+  }
+
+}
+
+@media print {
+  h2 {
+    margin-left: 430px;
+    margin-right: 0;
+  }
+  app-panel-doktor {
+   visibility: hidden;
+  }
+
+  app-doktor-panel {
+    visibility: hidden;
+  }
+
+  #printButton {
+    visibility: hidden;
+  }
+}
+

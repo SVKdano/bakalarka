@@ -23,3 +23,53 @@ mat-card {
   margin-left: auto;
   margin-right: auto;
 }
+
+#printButton {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+
+  width: 50px;
+  height: 50px;
+
+  background-color: #ec6602;
+}
+
+@media only screen and (max-width: 650px) {
+  .cards {
+    flex-direction: column;
+  }
+
+  .cards mat-card {
+    min-width: 85%;
+    max-width: 90%;
+
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
+@media print {
+  .cards {
+    flex-direction: column;
+  }
+
+  .cards mat-card {
+    min-width: 85%;
+    max-width: 90%;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    height: 100px;
+  }
+
+  app-navbar {
+    visibility: hidden;
+  }
+
+  #printButton {
+    visibility: hidden;
+  }
+}

@@ -20,7 +20,6 @@ export class NemocnicaPanelComponent implements OnInit {
       (result:Nemocnica[]) =>
       {
         this.nemocnica = result[0];
-        console.log(result)
       }
     )
   }
