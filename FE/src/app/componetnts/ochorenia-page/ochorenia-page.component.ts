@@ -95,4 +95,38 @@ export class OchoreniaPageComponent implements OnInit {
     window.print();
   }
 
+  downloadFile() {
+    const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
+    let startDateUkoncene:string = this.startDate.toISOString().substring(0,10);
+    let endDateUkoncene:string = this.endDate.toISOString().substring(0,10);
+    let startDateNeukoncene:string = this.startDateTwo.toISOString().substring(0,10);
+
+    this.pacientService.ochoreniaCsvDownload(rc,startDateUkoncene,endDateUkoncene,startDateNeukoncene)
+      .subscribe(response => {
+        let fileName = "ochorenia.csv"
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
+
+  downloadJson() {
+    const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
+    let startDateUkoncene:string = this.startDate.toISOString().substring(0,10);
+    let endDateUkoncene:string = this.endDate.toISOString().substring(0,10);
+    let startDateNeukoncene:string = this.startDateTwo.toISOString().substring(0,10);
+
+    this.pacientService.ochoreniaJsonDownload(rc,startDateUkoncene,endDateUkoncene,startDateNeukoncene)
+      .subscribe( response => {
+        let fileName = "ochorenia.json";
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
+
 }

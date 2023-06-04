@@ -27,4 +27,33 @@ export class DoktoriPageComponent implements OnInit {
   printPage() {
     window.print();
   }
+
+
+  downloadFile() {
+    const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
+
+    this.pacientService.doktoriCsvDownload(rc)
+      .subscribe(response => {
+        let fileName = "doktori.csv"
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
+
+  downloadJson() {
+    const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
+
+    this.pacientService.doktoriJsonDownload(rc)
+      .subscribe( response => {
+        let fileName = "doktori.json";
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
 }

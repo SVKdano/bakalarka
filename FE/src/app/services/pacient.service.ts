@@ -63,4 +63,62 @@ export class PacientService {
   public updateHeslo(hesloUpdate: HesloUpdate) : Observable<Pacient[]> {
     return this.http.put<Pacient[]>(`${environment.apiUrl}/zmenaHesla`,hesloUpdate);
   }
+
+  public csvDownload(rodneCislo:string) {
+    return this.http.get(`${environment.apiUrl}/csvDownloadAlergie/${rodneCislo}`, {observe:'response', responseType:'blob'});
+  }
+
+  public jsonDownload(rodneCislo:string) {
+    return this.http.get(`${environment.apiUrl}/alergie/${rodneCislo}`, {observe:'response', responseType: 'blob'});
+  }
+
+  public ochoreniaCsvDownload(rodneCislo:string, datumod:string, datumdo:string, datumodneukoncene:string) {
+    return this.http.get(`${environment.apiUrl}/ochoreniaCSV/${rodneCislo}/${datumod}/${datumdo}/${datumodneukoncene}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public ochoreniaJsonDownload(rodneCislo:string, datumod:string, datumdo:string, datumodneukoncene:string) {
+    return this.http.get(`${environment.apiUrl}/ochoreniaJson/${rodneCislo}/${datumod}/${datumdo}/${datumodneukoncene}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public liekyCsvDownload(rodneCislo:string, datumod:string, datumdo:string, datumodneukoncene:string) {
+    return this.http.get(`${environment.apiUrl}/liekyCSV/${rodneCislo}/${datumod}/${datumdo}/${datumodneukoncene}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public liekyJsonDownload(rodneCislo:string, datumod:string, datumdo:string, datumodneukoncene:string) {
+    return this.http.get(`${environment.apiUrl}/liekyJson/${rodneCislo}/${datumod}/${datumdo}/${datumodneukoncene}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public listkyCsvDownload(rodneCislo:string, datumod:string, datumdo:string) {
+    return this.http.get(`${environment.apiUrl}/listkyCsv/${rodneCislo}/${datumod}/${datumdo}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public listkyJsonDownload(rodneCislo:string, datumod:string, datumdo:string) {
+    return this.http.get(`${environment.apiUrl}/listkyJson/${rodneCislo}/${datumod}/${datumdo}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public doktoriCsvDownload(rodneCislo:string) {
+    return this.http.get(`${environment.apiUrl}/doktoriCsv/${rodneCislo}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public doktoriJsonDownload(rodneCislo:string) {
+    return this.http.get(`${environment.apiUrl}/doktori/${rodneCislo}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public zaznamCsvDownload(idZaznam:string) {
+    return this.http.get(`${environment.apiUrl}/zaznamCsv/${idZaznam}`
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public zaznamJsonDownload(idZaznam:string) {
+    return this.http.get(`${environment.apiUrl}/zaznamJson/${idZaznam}`
+      , {observe:'response', responseType: 'blob'});
+  }
 }

@@ -95,4 +95,38 @@ export class LiekyPageComponent implements OnInit {
     window.print();
   }
 
+  downloadFile() {
+    const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
+    let startDateUkoncene:string = this.startDateEnd.toISOString().substring(0,10);
+    let endDateUkoncene:string = this.endDateEnd.toISOString().substring(0,10);
+    let startDateNeukoncene:string = this.startDateNoEnd.toISOString().substring(0,10);
+
+    this.pacientService.liekyCsvDownload(rc,startDateUkoncene,endDateUkoncene,startDateNeukoncene)
+      .subscribe(response => {
+        let fileName = "lieky.csv"
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
+
+  downloadJson() {
+    const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
+    let startDateUkoncene:string = this.startDateEnd.toISOString().substring(0,10);
+    let endDateUkoncene:string = this.endDateEnd.toISOString().substring(0,10);
+    let startDateNeukoncene:string = this.startDateNoEnd.toISOString().substring(0,10);
+
+    this.pacientService.liekyJsonDownload(rc,startDateUkoncene,endDateUkoncene,startDateNeukoncene)
+      .subscribe( response => {
+        let fileName = "lieky.json";
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
+
 }
