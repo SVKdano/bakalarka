@@ -61,4 +61,9 @@ export class LoginService {
     const user = JSON.parse(localStorage.getItem("loggedUser")!);
     return user.idnemocnice;
   }
+
+  public loggedUserDoktorOC() : any {
+    const user = JSON.parse(localStorage.getItem("loggedUser")!);
+    return user.osobnecislo;
+  }
 }

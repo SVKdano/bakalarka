@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using bakalarkaBE.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -603,6 +604,76 @@ namespace bakalarkaBE.Controllers
                 .ToListAsync();
             
             return Ok(dbZdielaneAlergie);
+        }
+        
+        [HttpGet("Hash")]
+        public string EncryptToken(string? token)
+        {
+            string _publicKey = "IdkwtdwtIdkwtdwt";
+            string? _privateKey = Environment.GetEnvironmentVariable("PrivateKey", EnvironmentVariableTarget.Process) ??
+                          Environment.GetEnvironmentVariable("PrivateKey", EnvironmentVariableTarget.User);
+            
+            var crypted = "";
+
+            byte[] secretKeyByte = { };
+            secretKeyByte = System.Text.Encoding.UTF8.GetBytes(_privateKey!);
+            byte[] publicKeyByte = { };
+            publicKeyByte = System.Text.Encoding.UTF8.GetBytes(_publicKey!);
+
+            byte[] inputByteArray = System.Text.Encoding.UTF8.GetBytes(token!);
+
+            MemoryStream? ms = null;
+            CryptoStream? cs = null;
+
+            using (Aes des = Aes.Create())
+            {
+                ms = new MemoryStream();
+                cs = new CryptoStream(ms, des.CreateEncryptor(secretKeyByte, publicKeyByte), CryptoStreamMode.Write);
+
+                cs.Write(inputByteArray, 0, inputByteArray.Length);
+                cs.FlushFinalBlock();
+                crypted = Convert.ToBase64String(ms.ToArray());
+            }
+
+            return crypted;
+        }
+        
+        [HttpGet("Decrpipt")]
+        public string DecryptToken(string? token)
+        {
+            string _publicKey = "IdkwtdwtIdkwtdwt";
+            string? _privateKey = Environment.GetEnvironmentVariable("PrivateKey", EnvironmentVariableTarget.Process) ??
+                                  Environment.GetEnvironmentVariable("PrivateKey", EnvironmentVariableTarget.User);
+            
+            if (token == null)
+                return "";
+
+            var decrypted = "";
+
+            byte[] secretKeyByte = { };
+            secretKeyByte = System.Text.Encoding.UTF8.GetBytes(_privateKey!);
+            byte[] publicKeyByte = { };
+            publicKeyByte = System.Text.Encoding.UTF8.GetBytes(_publicKey!);
+
+            MemoryStream? ms = null;
+            CryptoStream? cs = null;
+
+            byte[] inputByteArray = new byte[token.Replace(" ", "+").Length];
+            inputByteArray = Convert.FromBase64String(token.Replace(" ", "+"));
+
+            using (Aes des = Aes.Create())
+            {
+                ms = new MemoryStream();
+                cs = new CryptoStream(ms, des.CreateDecryptor(secretKeyByte, publicKeyByte), CryptoStreamMode.Write);
+
+                cs.Write(inputByteArray, 0, inputByteArray.Length);
+                cs.FlushFinalBlock();
+
+                Encoding encoding = Encoding.UTF8;
+                decrypted = encoding.GetString(ms.ToArray());
+            }
+
+            return decrypted;
         }
     }
 }
