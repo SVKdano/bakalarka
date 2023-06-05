@@ -31,7 +31,7 @@ export class AlergiePageComponent {
 
   downloadJson() {
     const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
-    this.pacientService.jsonDownload("rc")
+    this.pacientService.jsonDownload(rc)
       .subscribe( response => {
         let fileName = "alergie.json";
         let blob:Blob = response.body as Blob;

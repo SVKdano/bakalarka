@@ -64,4 +64,36 @@ export class DoktorPacientListkyComponent {
   printPage() {
     window.print();
   }
+
+  downloadFile() {
+    const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
+    let startDateUkoncene:string = this.start.toISOString().substring(0,10);
+    let endDateUkoncene:string = this.end.toISOString().substring(0,10);
+
+    this.pacientService.listkyCsvDownload(rc,startDateUkoncene,endDateUkoncene)
+      .subscribe(response => {
+        let fileName = "listky.csv"
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
+
+  downloadJson() {
+    const rc = this.route.snapshot.paramMap.get('rodnecislo')!;
+    let startDateUkoncene:string = this.start.toISOString().substring(0,10);
+    let endDateUkoncene:string = this.end.toISOString().substring(0,10);
+
+    this.pacientService.listkyJsonDownload(rc,startDateUkoncene,endDateUkoncene)
+      .subscribe( response => {
+        let fileName = "listky.json";
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
 }

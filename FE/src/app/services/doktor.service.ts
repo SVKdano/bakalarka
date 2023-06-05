@@ -28,6 +28,7 @@ import {LiekyZdielanie} from "../models/LiekyZdielanie";
 import {OchoreniaZdielanie} from "../models/OchoreniaZdielanie";
 import {ZaznamyZdielanie} from "../models/ZaznamyZdielanie";
 import {GraphData} from "../models/GraphData";
+import {FilterDTO} from "../models/FilterDTO";
 
 @Injectable({
   providedIn: 'root'
@@ -166,6 +167,17 @@ export class DoktorService {
 
   public deleteVysetrenie(kod:string, idzaznam:number) : Observable<VysetrenieZaznam[]> {
     return this.http.delete<VysetrenieZaznam[]>(`${environment.apiUrl}/vymazVystrenie/${kod}/${idzaznam}`);
+  }
+
+  //--------------DOWNLOAD reports------------------------
+  public pacientiCsv(osobneCislo:string, filterDTO:FilterDTO) {
+    return this.http.post(`${environment.apiUrl}/pacientiCsv/${osobneCislo}`, filterDTO
+      , {observe:'response', responseType: 'blob'});
+  }
+
+  public pacientiJson(osobneCislo:string, filterDTO:FilterDTO) {
+    return this.http.post(`${environment.apiUrl}/pacientiJson/${osobneCislo}`, filterDTO
+      , {observe:'response', responseType: 'blob'});
   }
 
 }

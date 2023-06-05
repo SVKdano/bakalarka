@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {DoktorService} from "../../services/doktor.service";
 import {DoktorPacient} from "../../models/DoktorPacient";
+import {FilterDTO} from "../../models/FilterDTO"
 
 @Component({
   selector: 'app-doktor-pacienti',
@@ -17,6 +18,8 @@ export class DoktorPacientiComponent implements OnInit {
   priezviskoFilter: string = "";
   rodnecisloFilter: string = "";
 
+  filterDTO:FilterDTO = new FilterDTO();
+
   constructor(private doktorService:DoktorService, private route:ActivatedRoute) {}
 
   ngOnInit() {
@@ -31,6 +34,9 @@ export class DoktorPacientiComponent implements OnInit {
 
   filter() {
     this.pacientiFiltered = [];
+    this.filterDTO.menoFilter = this.menoFilter;
+    this.filterDTO.priezviskoFilter = this.priezviskoFilter;
+    this.filterDTO.rodnecisloFilter = this.rodnecisloFilter;
 
     this.pacienti.forEach(a => {
       if (a.rodnecisloNavigation && a.rodnecisloNavigation.meno.toLowerCase().includes(this.menoFilter.toLowerCase()))
@@ -50,10 +56,43 @@ export class DoktorPacientiComponent implements OnInit {
     this.priezviskoFilter = "";
     this.rodnecisloFilter = "";
 
+    this.filterDTO.menoFilter = this.menoFilter;
+    this.filterDTO.priezviskoFilter = this.priezviskoFilter;
+    this.filterDTO.rodnecisloFilter = this.rodnecisloFilter;
+
     this.pacientiFiltered = this.pacienti;
   }
 
   printPage() {
     window.print();
+  }
+
+
+  downloadFile() {
+    const oc = this.route.snapshot.paramMap.get('osobnecislo')!;
+
+    this.doktorService.pacientiCsv(oc,this.filterDTO)
+      .subscribe(response => {
+        let fileName = "mojiPacienti.csv"
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
+  }
+
+  downloadJson() {
+    const oc = this.route.snapshot.paramMap.get('osobnecislo')!;
+
+    this.doktorService.pacientiJson(oc,this.filterDTO)
+      .subscribe( response => {
+        let fileName = "mojiPacienti.json";
+        let blob:Blob = response.body as Blob;
+        let a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        a.click();
+      })
   }
 }

@@ -56,3 +56,20 @@
   <mat-icon>print</mat-icon>
 </button>
 
+<button mat-icon-button [matMenuTriggerFor]="menu" id="downloadButton">
+  <mat-icon>download</mat-icon>
+</button>
+
+<div class="menu">
+  <mat-menu #menu="matMenu">
+    <buttom mat-menu-item (click)="downloadFile()">
+      <mat-icon>download</mat-icon>
+      CSV
+    </buttom>
+
+    <buttom mat-menu-item (click)="downloadJson()">
+      <mat-icon>download</mat-icon>
+      JSON
+    </buttom>
+  </mat-menu>
+</div>

@@ -1,6 +1,7 @@
 using bakalarkaBE.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 namespace bakalarkaBE.Controllers
 {
@@ -495,6 +496,113 @@ namespace bakalarkaBE.Controllers
             }
             
             return Ok(data);
+        }
+
+        [HttpPost("pacientiCsv/{osobneCislo}")]
+        public async Task<ActionResult>
+            DownloadCsvPacientiDoktora(string osobneCislo, FilterDTO filterDto)
+        {
+            var docPacienti = await
+                _dbContext.PacientDoktors
+                    .Include(a => a.OsobnecisloNavigation)
+                    .Include(a => a.RodnecisloNavigation)
+                    .Where(a => a.Osobnecislo == osobneCislo 
+                                && a.RodnecisloNavigation.Meno.ToLower().Contains(filterDto.menoFilter.ToLower())
+                                && a.RodnecisloNavigation.Priezvisko.ToLower().Contains(filterDto.priezviskoFilter.ToLower())
+                                && a.RodnecisloNavigation.Rodnecislo.Contains(filterDto.rodnecisloFilter))
+                    .ToListAsync();
+            
+            var csvContent = "OsobneCislo;MenoDoktora;PriezviskoDoktora;RodneCislo;MenoPacienta;PriezviskoPacienta;\n";
+
+            foreach (var pacient in docPacienti)
+            {
+                csvContent += pacient.Osobnecislo + ";";
+                csvContent += pacient.OsobnecisloNavigation.Meno + ";";
+                csvContent += pacient.OsobnecisloNavigation.Priezvisko + ";";
+                csvContent += pacient.Rodnecislo + ";";
+                csvContent += pacient.RodnecisloNavigation.Meno + ";";
+                csvContent += pacient.RodnecisloNavigation.Priezvisko + ";\n";
+            }
+            var fileBytes = Encoding.UTF8.GetBytes(csvContent);
+
+            return File(fileBytes, "text/csv", "example.csv");
+            
+        }
+        
+        [HttpPost("pacientiJson/{osobneCislo}")]
+        public async Task<ActionResult>
+            DownloadJsonPacientiDoktora(string osobneCislo, FilterDTO filterDTO)
+        {
+            var docPacienti = await
+                _dbContext.PacientDoktors
+                    .Include(a => a.OsobnecisloNavigation)
+                    .Include(a => a.RodnecisloNavigation)
+                    .Where(a => a.Osobnecislo == osobneCislo 
+                                && a.RodnecisloNavigation.Meno.ToLower().Contains(filterDTO.menoFilter.ToLower())
+                                && a.RodnecisloNavigation.Priezvisko.ToLower().Contains(filterDTO.priezviskoFilter.ToLower())
+                                && a.RodnecisloNavigation.Rodnecislo.Contains(filterDTO.rodnecisloFilter))
+                    .ToListAsync();
+            
+            
+            return Ok(docPacienti);
+            
+        }
+        
+        [HttpPost("zazdielaneAlergieCsv/{osobneCislo}")]
+        public async Task<ActionResult>
+            DownloadCsvZazdielaneAlergie(string osobneCislo, FilterDTO filterDTO)
+        {
+            var dbZdielaneAlergie = await _dbContext.Alergiazdielanies
+                .Where(a => a.Zdielajuci == osobneCislo)
+                .Include(b => b.PacientAlergie)
+                .ThenInclude(c => c.KodalergieNavigation)
+                .Include(b => b.PacientAlergie)
+                .ThenInclude(c => c.RodnecisloNavigation)
+                .Include(b => b.CielovyNavigation)
+                .Where(a => a.PacientAlergie.RodnecisloNavigation.Meno.ToLower().Contains(filterDTO.menoFilter.ToLower())
+                            && a.PacientAlergie.RodnecisloNavigation.Priezvisko.ToLower().Contains(filterDTO.priezviskoFilter.ToLower())
+                            && a.PacientAlergie.RodnecisloNavigation.Rodnecislo.Contains(filterDTO.rodnecisloFilter))
+                .ToListAsync();
+            
+            var csvContent = "OsobneCisloZdielajuceho;OsobneCisloCieloveho;MenoCieloveho;" +
+                             "PriezviskoCieloveho;RodneCislo;MenoPacienta;PriezviskoPacienta;" +
+                             "KodAlergie;Alergia;DoplnujuceInformacie;\n";
+
+            foreach (var alergia in dbZdielaneAlergie)
+            {
+                csvContent += alergia.Zdielajuci + ";";
+                csvContent += alergia.Cielovy + ";";
+                csvContent += alergia.CielovyNavigation.Meno + ";";
+                csvContent += alergia.CielovyNavigation.Priezvisko + ";";
+                csvContent += alergia.Rodnecislo + ";";
+                csvContent += alergia.PacientAlergie.RodnecisloNavigation.Meno + ";";
+                csvContent += alergia.PacientAlergie.RodnecisloNavigation.Priezvisko + ";";
+                csvContent += alergia.PacientAlergie.Kodalergie + ";";
+                csvContent += alergia.PacientAlergie.KodalergieNavigation.Nazov + ";";
+                csvContent += alergia.PacientAlergie.Informacie + ";\n";
+            }
+            var fileBytes = Encoding.UTF8.GetBytes(csvContent);
+
+            return File(fileBytes, "text/csv", "example.csv");
+        }
+        
+        [HttpPost("zazdielaneAlergieJson/{osobneCislo}")]
+        public async Task<ActionResult>
+            DownloadJsonZazdielaneAlergie(string osobneCislo, FilterDTO filterDTO)
+        {
+            var dbZdielaneAlergie = await _dbContext.Alergiazdielanies
+                .Where(a => a.Zdielajuci == osobneCislo)
+                .Include(b => b.PacientAlergie)
+                .ThenInclude(c => c.KodalergieNavigation)
+                .Include(b => b.PacientAlergie)
+                .ThenInclude(c => c.RodnecisloNavigation)
+                .Include(b => b.CielovyNavigation)
+                .Where(a => a.PacientAlergie.RodnecisloNavigation.Meno.ToLower().Contains(filterDTO.menoFilter.ToLower())
+                            && a.PacientAlergie.RodnecisloNavigation.Priezvisko.ToLower().Contains(filterDTO.priezviskoFilter.ToLower())
+                            && a.PacientAlergie.RodnecisloNavigation.Rodnecislo.Contains(filterDTO.rodnecisloFilter))
+                .ToListAsync();
+            
+            return Ok(dbZdielaneAlergie);
         }
     }
 }
